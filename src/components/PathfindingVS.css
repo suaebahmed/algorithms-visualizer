@@ -1,0 +1,49 @@
+.container{
+   margin: 20px 50px;
+}
+.header{
+   height: 50px;
+   width: 100%;
+}
+
+.ROW{
+    display: flex;
+}
+
+.square{
+    border: 1px solid rgb(226, 226, 226);
+    width: 36px;
+    height: 36px;
+    background-color: rgb(255, 255, 255);
+ }
+
+ .START_NODE{
+    background-color: aquamarine;
+    border: 1px solid rgb(176, 245, 236);
+
+ }
+ .END_NODE{
+    background-color: red;
+    border: 1px solid rgb(252, 128, 128);
+ }
+
+ .obtacle{
+   border: 1px solid rgb(107, 62, 59);
+   background-color: rgb(110, 49, 49);
+   transition-duration: 1.6s;
+}
+/* -------- animation ------ */
+.node-shortest-path{
+   width: 36px;
+   height: 36px;
+   background-color: rgb(241, 220, 25);
+   border: 1px solid rgb(245, 202, 59);
+   transition-duration: 2s;
+}
+.pathNode{
+   width: 36px;
+   height: 36px;
+   background-color: rgb(55, 233, 31) !important;
+   border: 1px solid rgb(217, 247, 213);
+   transition-duration: 2s;
+}
