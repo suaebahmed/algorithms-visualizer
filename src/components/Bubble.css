@@ -1,0 +1,11 @@
+.wrapperBar{
+    display: flex;
+    align-items: flex-end;
+    margin: 10px 5px;
+    height: 400px;
+    justify-content: center;
+}
+.bar{
+    border: 1px solid rgb(228, 242, 250);
+    background-color: rgb(114, 157, 250);
+}

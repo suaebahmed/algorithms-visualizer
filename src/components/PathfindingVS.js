@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import './PathfindingVS.css';
-import Astar from './A_star_algo';
+import Astar from '../algorithm/A_star_algo';
 
 /*
 Density of primes = n/ln(n);
