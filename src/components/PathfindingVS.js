@@ -93,7 +93,7 @@ function App(){
     return (
         <div className='container'>
             <div className='header'>
-                <button onClick={clickHandle}>add a square</button>
+                <button onClick={clickHandle}>Find path</button>
             </div>
             <div className='grid'>
                 {gridOFNode}

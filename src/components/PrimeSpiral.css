@@ -1,0 +1,66 @@
+
+.primeGridContainer{
+    margin: 30px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.ROW{
+    display: flex;
+}
+
+.primeSquare{
+    border: 1px solid rgb(226, 226, 226);
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+ }
+.circle{
+    background-color: rgb(39, 133, 54);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    top : 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rectangle-1{
+    background-color: rgb(39, 133, 54);
+    width: 24px;
+    height: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(0,-50%);
+    /* Stacking Elements in Layers Using z-index Property */
+    z-index: 2; 
+} 
+.rectangle-3{
+    background-color: rgb(39, 133, 54);
+    width: 30px;
+    height: 6px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.rectangle-2{
+    background-color: rgb(39, 133, 54);
+    width: 6px;
+    height: 24px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.rectangle-4{
+    background-color: rgb(39, 133, 54);
+    width: 6px;
+    height: 24.99px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+}

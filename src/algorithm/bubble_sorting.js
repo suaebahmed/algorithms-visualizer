@@ -24,6 +24,7 @@ function Sorting(b,n){
                 // in C++  pair<int,int> mp or;
                 // map<string,int> mp;   mp['ff'] = j;
 
+                // for => mp.set('ss',33) -- you can retrieve by  => mp.get('ss);
                 // ------ I want to know more this ----
                 // mp.set("ff",j);
                 // mp.set("ss",j+1);

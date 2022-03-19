@@ -4,7 +4,9 @@
 button{
   margin-top: 10px;
 }
-
+.btn{
+  margin-right: 10px;
+}
 /* ------------  react logo animation  ---------- */
 
 @media (prefers-reduced-motion: no-preference) {
