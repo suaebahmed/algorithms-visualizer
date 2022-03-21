@@ -6,6 +6,7 @@ const N = 21;
 
 function PrimeApp(){
     const[Grid,setGrid] = useState([]);
+    const[cntPrime, setCntPrime] = useState(0);
 
     useEffect(()=>{
         gridInitialize();
@@ -51,11 +52,14 @@ function PrimeApp(){
 
     const startPrimeSpiral = () =>{
         var arr = prime_Spiral_Generate(N);
-
+        var c = 0;
         for(let i=0; i<arr.length; i++){
             setTimeout(()=>{
                 var node = document.getElementById('node-row'+arr[i].r+'-col'+arr[i].c);
-                if(isPrime(arr[i].num)) node.children[0].className = 'circle';
+                if(isPrime(arr[i].num)){
+                    node.children[0].className = 'circle';
+                    setCntPrime(++c);
+                }
                 node.children[1].className = 'rectangle-'+arr[i].direction;
 
                 // node.innerHTML = '<b style = text-align: center>'+arr[i].num+'</b>';
@@ -64,7 +68,7 @@ function PrimeApp(){
     }
     return (
         <>
-            <button onClick={startPrimeSpiral}>Show Prime spiral</button>
+            <button onClick={startPrimeSpiral}>Show Prime spiral ({cntPrime}/{N*N})</button>
             <div className='primeGridContainer'>
                 <div>
                 {gridOfNode}
