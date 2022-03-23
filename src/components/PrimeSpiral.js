@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './PrimeSpiral.css'
 import prime_Spiral_Generate from '../algorithm/prime_spiral';
 
+// Density of primes = n/ln(n);
 const N = 21;
 
 function PrimeApp(){

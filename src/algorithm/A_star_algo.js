@@ -50,6 +50,7 @@ function Astar(startNode,endNode){
         for(let i=0; i<neighbors.length; i++){
             
             var child = neighbors[i];
+            if(child.isWall === true) continue;
 
             var newGScore  = curr_node.g + 1;
             var HScore = Math.abs(child.x - endNode.x)+Math.abs(child.y - endNode.y);

@@ -3,7 +3,6 @@ import './PathfindingVS.css';
 import Astar from '../algorithm/A_star_algo';
 
 /*
-Density of primes = n/ln(n);
 super(props);// call the super class constructor and pass in the props parameter
 */
 
@@ -13,10 +12,17 @@ var cols = 25;
 const START_NODE_ROW = 0, START_NODE_COL = 0;
 const END_NODE_ROW = rows-1, END_NODE_COL = cols-1;
 
+async function waitForAnimatoin(animation_time){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve('');
+        },animation_time)
+    })
+}
+
 function App(){
     const [Grid,setGrid] = useState([]);
-    const [Path,setPath] = useState([]);
-    const [visitedNodes,setVisitedNodes] = useState([]);
+    const [isMousePress,setIsMousePress] = useState(false);
 
     useEffect(()=>{
         gridInitialize();
@@ -28,21 +34,66 @@ function App(){
 
         for(let i=0; i<rows; i++){
             for(let j=0; j<cols; j++){
-                grid[i][j] = new Spot(i,j);
+                grid[i][j] = new Spot(i,j,false);
             }
         }
-        setGrid(grid);
-
+        //add neighbors of each node
         for(let i=0; i<rows; i++){
             for(let j=0; j<cols; j++){
                 grid[i][j].getNeighbors(grid);
 
             }
         }
+        setGrid(grid);
+    }
+    // animate the algorithm
+    async function animateVisitedNodes(visitedNodes){
+        for(let i=0; i<visitedNodes.length; i++){
+            const node = visitedNodes[i];
+            await waitForAnimatoin(50);
+            document.getElementById(`row${node.x}_col${node.y}`).className = "node-visited";
+        }
+    }
+    async function animateShortestPath(pathNode){
+        for(let i=0; i<pathNode.length; i++){
+            const node = pathNode[i];
+            await waitForAnimatoin(50);
+            document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath";
 
-        var obj = Astar(grid[START_NODE_ROW][START_NODE_COL],grid[END_NODE_ROW][END_NODE_COL]);
-        setPath(obj.path);
-        setVisitedNodes(obj.close_list);
+        }
+    }
+
+    async function  startAStar(){
+        var startNode = Grid[START_NODE_ROW][START_NODE_COL];
+        var endNode = Grid[END_NODE_ROW][END_NODE_COL];
+        var obj = Astar(startNode,endNode);
+
+        await animateVisitedNodes(obj.close_list);
+        animateShortestPath(obj.path);
+    }
+
+    const createWall=(row,col)=>{
+        /*
+            ********* the concept should be known array reference and copy *****
+        */
+        var newGrid = [...Grid] // array copy
+        var node = newGrid[row][col];
+        node.isWall = !node.isWall;
+        newGrid[row][col] = node;
+        setGrid(newGrid);
+    }
+    
+    const onMouseDown = (row,col)=>{
+        setIsMousePress(true);
+        createWall(row,col);
+    }
+    const onMouseEnter = (row,col)=>{
+        if(isMousePress === true){
+            createWall(row,col);
+        }
+    }
+    const onMouseUp = ()=>{
+        setIsMousePress(false);
     }
 
     // jsx Node of grid (2D array)
@@ -52,48 +103,22 @@ function App(){
                 <div key={idx_r} className='ROW'>
                     {
                         R.map((Value,idx_c)=>{
-                            
                             // console.log(Value);
-
-                            const {x,y,isStart,isEnd,isObtacle} = Value;
-                            return <Node key={idx_c} pv={{x,y,isStart,isEnd,isObtacle}}></Node>
+                            const {x,y,isStart,isEnd,isWall} = Value;
+                            return <Node key={idx_c} 
+                            pv={{x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp}}>
+                            </Node>
                         })
                     }
                 </div>
             )
         })
     )
-    // animate the algorithm
-    const animateVisitedNodes=(visitedNodes)=>{
-        for(let i=0; i<visitedNodes.length; i++){
-            const node = visitedNodes[i];
-            setTimeout(()=>{
-                document.getElementById(`row${node.x}_col${node.y}`).className = "node node-shortest-path";
-            },10*i);
-        }
-    }
-    const animateShortestPath=(pathNode)=>{
-        for(let i=0; i<pathNode.length; i++){
-            const node = pathNode[i];
-            setTimeout(()=>{
-                document.getElementById(`row${node.x}_col${node.y}`).className = "pathNode";
-            },5*i);
-        }
-    }
-
-    const clickHandle=()=>{
-        animateVisitedNodes(visitedNodes);
-        console.log('start');
-        setTimeout(()=>{
-            console.log('end');
-            animateShortestPath(Path);
-        },2500);
-    }
 
     return (
         <div className='container'>
             <div className='header'>
-                <button onClick={clickHandle}>Find path</button>
+                <button onClick={startAStar}>Find path</button>
             </div>
             <div className='grid'>
                 {gridOFNode}
@@ -103,12 +128,12 @@ function App(){
 }
 
 class Spot {
-    constructor(i, j) {
+    constructor(i, j,bool) {
         this.x = i;
         this.y = j;
         this.f = 1e9;
         this.g = 1e9;
-        this.isObtacle = false;
+        this.isWall = bool;
         this.isStart = (i===START_NODE_ROW && j===START_NODE_COL);
         this.isEnd = (i===END_NODE_ROW && j===END_NODE_COL);
         this.previous = undefined;
@@ -124,19 +149,12 @@ class Spot {
 }
 
 function Node({pv}){
-    const {x,y,isStart,isEnd,isObtacle} = pv;
-    const [obtacle,setObtacle] = useState(isObtacle);
-
-    var classNode = isStart?"START_NODE":isEnd?"END_NODE":"";
-    var classObstacle = obtacle && !(isStart || isEnd)?"obtacle":'';
-
-    const clickH = () =>{
-        setObtacle(!obtacle) 
-        
-    }
+    const {x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp} = pv;
+    var classNode = isStart?"START_NODE":isEnd?"END_NODE":isWall?"obtacle":'';
 
     return(
-        <div onMouseDown={clickH} className={'square '+classNode+''+classObstacle} id={'row'+x+'_col'+y}>
+        <div onMouseDown={()=>{onMouseDown(x,y)}} onMouseEnter={()=>{onMouseEnter(x,y)}}
+        onMouseUp={()=>{onMouseUp()}} className={'square '+classNode} id={'row'+x+'_col'+y}>
         </div>
     )
 }
