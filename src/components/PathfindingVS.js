@@ -7,7 +7,7 @@ super(props);// call the super class constructor and pass in the props parameter
 */
 
 var rows = 10;
-var cols = 25;
+var cols = 20;
 
 const START_NODE_ROW = 0, START_NODE_COL = 0;
 const END_NODE_ROW = rows-1, END_NODE_COL = cols-1;
@@ -51,15 +51,24 @@ function App(){
         for(let i=0; i<visitedNodes.length; i++){
             const node = visitedNodes[i];
             await waitForAnimatoin(50);
-            document.getElementById(`row${node.x}_col${node.y}`).className = "node-visited";
+            if(node.x === START_NODE_ROW && node.y === START_NODE_COL)
+            document.getElementById(`row${node.x}_col${node.y}`).className = "node-visited START_NODE";
+
+            else if(node.x === END_NODE_ROW && node.y === END_NODE_COL)
+            document.getElementById(`row${node.x}_col${node.y}`).className = "node-visited END_NODE";
+
+            else document.getElementById(`row${node.x}_col${node.y}`).className = "node-visited";
         }
     }
     async function animateShortestPath(pathNode){
         for(let i=0; i<pathNode.length; i++){
             const node = pathNode[i];
             await waitForAnimatoin(50);
-            document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath";
-
+            if(i===0) 
+            document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath END_NODE";
+            else if(i+1 === pathNode.length) 
+            document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath START_NODE";
+            else document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath";
         }
     }
 

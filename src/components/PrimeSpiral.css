@@ -10,14 +10,14 @@
 }
 
 .primeSquare{
-    border: 1px solid rgb(226, 226, 226);
+    border: 1px solid #E5E7E9;
     width: 20px;
     height: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: #FBFCFC;
     position: relative;
  }
 .circle{
-    background-color: rgb(39, 133, 54);
+    background-color: #40E0D0;
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -33,7 +33,7 @@
 */
 
 .rectangle-1{
-    background-color: rgb(39, 133, 54);
+    background-color: #40E0D0;
     width: 24px;
     height: 6px;
     position: absolute;
@@ -44,7 +44,7 @@
     z-index: 2; 
 } 
 .rectangle-3{
-    background-color: rgb(39, 133, 54);
+    background-color: #40E0D0;
     width: 30px;
     height: 6px;
     position: absolute;
@@ -52,7 +52,7 @@
     transform: translate(-50%, -50%);
 }
 .rectangle-2{
-    background-color: rgb(39, 133, 54);
+    background-color: #40E0D0;
     width: 6px;
     height: 24px;
     position: absolute;
@@ -60,7 +60,7 @@
     transform: translate(-50%, -50%);
 }
 .rectangle-4{
-    background-color: rgb(39, 133, 54);
+    background-color: #40E0D0;
     width: 6px;
     height: 24.99px;
     position: absolute;

@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import './App.css'
 import PathfindingVS from './components/PathfindingVS'
 import SortingApp from './components/BubbleSort';
 import PrimeApp from './components/PrimeSpiral';
 
 function App() {
-  const [flag,setFlag] = useState(0);
+  const [flag,setFlag] = useState(1);
   var project = undefined;
   switch (flag) {
     case 1:

@@ -1,3 +1,13 @@
+/* 
+$WIDTH : 46px;
+$HEIGHT : 46px 
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333; 
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+} */
 
 .header{
    height: 50px;
@@ -16,18 +26,22 @@
  }
 
  .START_NODE{
-    background-color: aquamarine;
-    border: 1px solid rgb(176, 245, 236);
-
+    border: 1px solid rgb(226, 226, 226);
+    background-image: url(../icons/pin.png);
+    background-repeat: no-repeat;
+    background-size: 36px;
  }
  .END_NODE{
-    background-color: red;
-    border: 1px solid rgb(252, 128, 128);
+   border: 1px solid rgb(226, 226, 226);
+   background-image: url(../icons/goal.png);
+   background-repeat: no-repeat;
+   background-size: 36px;
  }
 
  .obtacle{
-   border: 1px solid rgb(107, 62, 59);
-   background-color: rgb(110, 49, 49);
+   border: 1px solid #2C3E50;
+   /* background-color: rgb(110, 49, 49); */
+   background-color: #2C3E50;
    transition-duration: 1.6s;
 }
 /* -------- animation ------ */
@@ -67,9 +81,9 @@
 .shortestPath{
    width: 36px;
    height: 36px;
-   border: 1px solid rgb(252, 130, 246);
+   border: 1px solid rgb(252, 215, 10);
    animation-name: shortestPathAnimation;
-   animation-duration: 1s;
+   animation-duration: 500ms;
    animation-iteration-count: 1;
    animation-fill-mode: forwards;
    animation-play-state: running;
@@ -77,20 +91,20 @@
 
 @keyframes shortestPathAnimation {
    0%{
-      transform: scale(0.3);
-      background-color: rgba(85, 29, 77, 0.75);
+      transform: scale(0.5);
+      background-color: rgba(151, 143, 70, 0.75);
       border-radius: 50%;
    }
    50%{
-      transform: scale(0.5);
-      background-color: rgba(193, 146, 221, 0.75);
+      transform: scale(0.8);
+      background-color: rgba(192, 187, 39, 0.75);
    }
    75%{
-      transform: scale(0.8);
-      background-color: rgba(247, 130, 221, 0.75);
+      transform: scale(0.9);
+      background-color: rgba(247, 235, 130, 0.75);
    }
    100%{
       transform: scale(1);
-      background-color: rgb(255, 126, 244);
+      background-color: #FFC300;
    }
 }

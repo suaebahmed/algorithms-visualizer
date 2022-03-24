@@ -69,12 +69,15 @@ function PrimeApp(){
     }
     return (
         <>
-            <button onClick={startPrimeSpiral}>Show Prime spiral ({cntPrime}/{N*N})</button>
+            <button onClick={startPrimeSpiral}>Show Prime spiral</button>
             <div className='primeGridContainer'>
                 <div>
                 {gridOfNode}
                 </div>
             </div>
+            <h2 style={{textAlign:'center'}}>{cntPrime} prime numbers out of {N*N}</h2>
+            <h2 style={{textAlign:'center'}}><a href='https://en.wikipedia.org/wiki/Ulam_spiral'>Wikipedia Ulam Spiral</a></h2>
+
         </>
 
     )

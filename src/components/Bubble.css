@@ -3,9 +3,17 @@
     align-items: flex-end;
     margin: 10px 5px;
     height: 400px;
+    width: 700px;
+    margin: 0 auto;
     justify-content: center;
+}
+#formBubble1{
+    margin-top: 10px;
+}
+#num{
+    margin-top: 5px;
 }
 .bar{
     border: 1px solid rgb(228, 242, 250);
-    background-color: blue;
+    background-color: #005F99;
 }
