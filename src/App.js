@@ -27,7 +27,11 @@ function App() {
         <button className='btn' onClick={()=>{setFlag(2)}}> Prime spiral </button>
         <button className='btn' onClick={()=>{}}> Comming soon... </button>
       </div>
+      <hr></hr>
         {project}
+      <div>
+        <h4 style={{color: '#34495E'}}>Created by <u>Suaeb Ahmed</u></h4>
+      </div>
     </div>
   );
 }

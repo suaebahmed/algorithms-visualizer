@@ -75,9 +75,11 @@ function PrimeApp(){
                 {gridOfNode}
                 </div>
             </div>
-            <h2 style={{textAlign:'center'}}>{cntPrime} prime numbers out of {N*N}</h2>
-            <h2 style={{textAlign:'center'}}><a href='https://en.wikipedia.org/wiki/Ulam_spiral'>Wikipedia Ulam Spiral</a></h2>
-
+            <h5 style={{textAlign:'center'}}>
+                {cntPrime} prime numbers out of {N*N} <br></br>
+                What is the Ulam/prime Spiral ?
+                <a href='https://en.wikipedia.org/wiki/Ulam_spiral'>wikipedia</a>
+            </h5>
         </>
 
     )

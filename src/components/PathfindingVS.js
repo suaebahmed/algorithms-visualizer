@@ -50,7 +50,7 @@ function App(){
     async function animateVisitedNodes(visitedNodes){
         for(let i=0; i<visitedNodes.length; i++){
             const node = visitedNodes[i];
-            await waitForAnimatoin(50);
+            await waitForAnimatoin(30);
             if(node.x === START_NODE_ROW && node.y === START_NODE_COL)
             document.getElementById(`row${node.x}_col${node.y}`).className = "node-visited START_NODE";
 
@@ -61,13 +61,14 @@ function App(){
         }
     }
     async function animateShortestPath(pathNode){
+        pathNode.reverse();
         for(let i=0; i<pathNode.length; i++){
             const node = pathNode[i];
-            await waitForAnimatoin(50);
+            await waitForAnimatoin(30);
             if(i===0) 
-            document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath END_NODE";
-            else if(i+1 === pathNode.length) 
             document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath START_NODE";
+            else if(i+1 === pathNode.length) 
+            document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath END_NODE";
             else document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath";
         }
     }
@@ -127,7 +128,7 @@ function App(){
     return (
         <div className='container'>
             <div className='header'>
-                <button onClick={startAStar}>Find path</button>
+                <button onClick={startAStar}>Find the shortest path</button>
             </div>
             <div className='grid'>
                 {gridOFNode}

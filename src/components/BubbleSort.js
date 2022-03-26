@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Sorting from '../algorithm/bubble_sorting';
+// import Sorting from '../algorithm/bubble_sorting';
 import './Bubble.css';
 
 var BARS = 25;
@@ -37,24 +37,40 @@ function SortingApp(){
         setBar(arr);
     }
 
-    async function starSortingHandle(){
-        // for(let i=0; i<swap.length; i++){
-        //     document.getElementById('bar-'+swap[i].ff).style.background = '#FF5959';
-        //     document.getElementById('bar-'+swap[i].ss).style.background = '#FF5959';
-        //     // we control animation speed with async/await and Promise.
-        //     await waitForAnimate(SPEED); // global
+    async function startSortingHandle(){
+        var newBars = []; //copy the array
+        for(let i=0; i<bar.length; i++) newBars.push(bar[i]);
 
-        //     document.getElementById('bar-'+swap[i].ff).style.height = swap[i].ssHeight+'px';
-        //     document.getElementById('bar-'+swap[i].ss).style.height = swap[i].ffHeight+'px';
-        //     document.getElementById('bar-'+swap[i].ff).style.background = '#005F99';
-        //     document.getElementById('bar-'+swap[i].ss).style.background = '#005F99';
-        // }
+        for(var i=0; i<newBars.length; i++){
+            for(var j=0; j<newBars.length-1-i; j++){
+                
+                document.getElementById('bar-'+j).style.background = '#FF5959';
+                document.getElementById('bar-'+(j+1)).style.background = '#FF5959';
+                // we control animation speed with async/await and Promise.
+                await waitForAnimate(SPEED); // global var
+                document.getElementById('bar-'+j).style.background = '#3498DB';
+                document.getElementById('bar-'+(j+1)).style.background = '#3498DB';
+
+
+                if(newBars[j] > newBars[j+1]){
+                    document.getElementById('bar-'+j).style.height = newBars[j+1]+'px';
+                    document.getElementById('bar-'+(j+1)).style.height = newBars[j]+'px';
+
+                    var tmp = newBars[j];
+                    newBars[j] = newBars[j+1];
+                    newBars[j+1] = tmp;
+                }
+            }
+            var sorted = newBars.length-1-i;
+            document.getElementById('bar-'+sorted).style.background = '#6C3483';
+        }
     }
-
+    
     const printAllBar = (
             bar.map((item,id)=>{
                 return(
-                    <div className='bar' id={'bar-'+id} key={id} style={{width:barWidth,height:item}}>
+                    <div className='bar' id={'bar-'+id} key={id} 
+                    style={{width:barWidth,height:item}}>
                     </div>
                 )
             })
@@ -73,14 +89,17 @@ function SortingApp(){
             let x = Math.floor(Math.random()*1000)%400;
             arr.push(x);
         }
+        for(let i=0; i<bar.length; i++){
+            var dom = document.getElementById('bar-'+i);
+            dom.style.backgroundColor = '#3498DB';
+        }
         setBar(arr);
     }
-    // console.log(sizeOfBar,speed)
 
     return (
         <div>
             <div>
-                <button onClick={starSortingHandle}>Start Sorting</button>
+                <button onClick={startSortingHandle}>Start Sorting</button>
                 <button onClick={generateNewArray}>Generate New</button>
             </div>
             <div id = 'formBubble1'>
@@ -89,7 +108,7 @@ function SortingApp(){
                     <input type='range' onChange={rangeValueHandle} name='range1' id = 'range1'
                     min='1' value={speed} max='1000' step='1'></input>
                     <div>
-                        <label htmlFor='num'>Choose bar size: </label>
+                        <label htmlFor='num'>Choose size: </label>
                         <select value={bar.length} onChange={sizeHandle} id="num" name="num">
                             <option value="10">10</option>
                             <option value="18">18</option>
