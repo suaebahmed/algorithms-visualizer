@@ -39,7 +39,7 @@ function App(){
 
         for(let i=0; i<rows; i++){
             for(let j=0; j<cols; j++){
-                grid[i][j] = new Spot(i,j,false);
+                grid[i][j] = new Spot(i,j);
             }
         }
         //add neighbors of each node
@@ -91,10 +91,16 @@ function App(){
         
         var ar = basicMaze(rows,cols);
         for(var i=0; i<ar.length; i++){
-            await waitForAnimatoin(animateTime);
-            createWall(ar[i].r,ar[i].c);
+            if((ar[i].r===START_NODE_ROW && ar[i].c===START_NODE_COL) || 
+            (ar[i].r===END_NODE_ROW && ar[i].c===END_NODE_COL)) continue;
+                await waitForAnimatoin(animateTime);
+                createWall(ar[i].r,ar[i].c);
         }
     }
+    const resetHandle = () =>{
+        
+    }
+
 
     const createWall=(row,col)=>{
         /*
@@ -164,8 +170,8 @@ function App(){
                         <option value="4">Other</option>
                     </select>
                     <button onClick={mazeHandle}>Create Maze</button>
-                    <button>Reset board</button>
-                    <button>Clear path</button>
+                    <button onClick={resetHandle}>Reset board</button>
+                    <button onClick={gridInitialize}>Clear path</button>
                 </div>
                 <div>
                     <button onClick={()=>animationTimeHandle(1)}>Fast</button>
@@ -181,12 +187,12 @@ function App(){
 }
 
 class Spot {
-    constructor(i, j,bool) {
+    constructor(i, j) {
         this.x = i;
         this.y = j;
         this.f = 1e9;
         this.g = 1e9;
-        this.isWall = bool;
+        this.isWall = 0;
         this.isStart = (i===START_NODE_ROW && j===START_NODE_COL);
         this.isEnd = (i===END_NODE_ROW && j===END_NODE_COL);
         this.previous = undefined;
