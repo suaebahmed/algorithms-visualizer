@@ -51,20 +51,18 @@ function PrimeApp(){
         return true;
     }
 
-    const startPrimeSpiral = () =>{
+    const startPrimeSpiral = async () =>{
         var arr = prime_Spiral_Generate(N);
         var c = 0;
         for(let i=0; i<arr.length; i++){
-            setTimeout(()=>{
-                var node = document.getElementById('node-row'+arr[i].r+'-col'+arr[i].c);
-                if(isPrime(arr[i].num)){
-                    node.children[0].className = 'circle';
-                    setCntPrime(++c);
-                }
-                node.children[1].className = 'rectangle-'+arr[i].direction;
 
-                // node.innerHTML = '<b style = text-align: center>'+arr[i].num+'</b>';
-            },i*50);
+            var node = document.getElementById('node-row'+arr[i].r+'-col'+arr[i].c);
+            if(isPrime(arr[i].num)){
+                node.children[0].className = 'circle';
+                setCntPrime(++c);
+            }
+            node.children[1].className = 'rectangle-'+arr[i].direction;
+            await waitForAnimatoin(60);
         }
     }
     return (
@@ -85,4 +83,11 @@ function PrimeApp(){
     )
 }
 
+async function waitForAnimatoin(animation_time){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve('');
+        },animation_time)
+    })
+}
 export default PrimeApp;

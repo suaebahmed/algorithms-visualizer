@@ -1,28 +1,33 @@
 import React,{useEffect, useState} from 'react'
 import './PathfindingVS.css';
-import Astar from '../algorithm/A_star_algo';
+import Astar from '../algorithm/path/A_star_algo';
+import basicMaze from '../algorithm/maze/basic-maze';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
 */
 
 var rows = 10;
-var cols = 20;
+var cols = 28;
 
 const START_NODE_ROW = 0, START_NODE_COL = 0;
 const END_NODE_ROW = rows-1, END_NODE_COL = cols-1;
 
-async function waitForAnimatoin(animation_time){
+var animateTime = 35;
+
+async function waitForAnimatoin(time){
     return new Promise((resolve)=>{
         setTimeout(()=>{
             resolve('');
-        },animation_time)
+        },time)
     })
 }
 
 function App(){
-    const [Grid,setGrid] = useState([]);
+    const [Grid,setGrid] = useState([]);  // array distructure
     const [isMousePress,setIsMousePress] = useState(false);
+    const [maze,setMaze] = useState(0);
+
 
     useEffect(()=>{
         gridInitialize();
@@ -50,7 +55,7 @@ function App(){
     async function animateVisitedNodes(visitedNodes){
         for(let i=0; i<visitedNodes.length; i++){
             const node = visitedNodes[i];
-            await waitForAnimatoin(30);
+            await waitForAnimatoin(animateTime);
             if(node.x === START_NODE_ROW && node.y === START_NODE_COL)
             document.getElementById(`row${node.x}_col${node.y}`).className = "node-visited START_NODE";
 
@@ -64,7 +69,7 @@ function App(){
         pathNode.reverse();
         for(let i=0; i<pathNode.length; i++){
             const node = pathNode[i];
-            await waitForAnimatoin(30);
+            await waitForAnimatoin(animateTime);
             if(i===0) 
             document.getElementById(`row${node.x}_col${node.y}`).className = "shortestPath START_NODE";
             else if(i+1 === pathNode.length) 
@@ -80,6 +85,15 @@ function App(){
 
         await animateVisitedNodes(obj.close_list);
         animateShortestPath(obj.path);
+    }
+    const mazeHandle = async () =>{
+        // if(maze == 1) basic;
+        
+        var ar = basicMaze(rows,cols);
+        for(var i=0; i<ar.length; i++){
+            await waitForAnimatoin(animateTime);
+            createWall(ar[i].r,ar[i].c);
+        }
     }
 
     const createWall=(row,col)=>{
@@ -103,7 +117,12 @@ function App(){
         }
     }
     const onMouseUp = ()=>{
-        setIsMousePress(false);
+        setIsMousePress(()=>false);
+    }
+    const animationTimeHandle = (type) =>{
+        if(type === 1) animateTime = 8;
+        else if(type === 2) animateTime = 35;
+        else animateTime = 80;
     }
 
     // jsx Node of grid (2D array)
@@ -128,9 +147,33 @@ function App(){
     return (
         <div className='container'>
             <div className='header'>
-                <button onClick={startAStar}>Find the shortest path</button>
+                <div>
+                    <button onClick={startAStar}>Find the shortest path</button>
+                    {/* <label htmlFor='num'>Choose Algorithm: </label> */}
+                    <select value={1} onChange={()=>{}} id="num" name="num">
+                        <option value="10">A-Star Search</option>
+                        <option value="18">Breadth-First Search</option>
+                        <option value="25">Depth-First Search</option>
+                        <option value="35">Dijkstra</option>
+                    </select>
+                    <select value={maze} onChange={(e)=>{setMaze(()=>{parseInt(e.target.value)})}} id="num2" name="num2">
+                        <option disabled value="0">Select maze</option>
+                        <option value="1">Random basic maze</option>
+                        <option value="2">Recursive maze</option>
+                        <option value="3">Prim's algorithm</option>
+                        <option value="4">Other</option>
+                    </select>
+                    <button onClick={mazeHandle}>Create Maze</button>
+                    <button>Reset board</button>
+                    <button>Clear path</button>
+                </div>
+                <div>
+                    <button onClick={()=>animationTimeHandle(1)}>Fast</button>
+                    <button onClick={()=>animationTimeHandle(2)}>Average</button>
+                    <button onClick={()=>animationTimeHandle(3)}>Slow</button>
+                </div>
             </div>
-            <div className='grid'>
+            <div className='grid' onMouseLeave={()=>{setIsMousePress(false)}}>
                 {gridOFNode}
             </div>
         </div>

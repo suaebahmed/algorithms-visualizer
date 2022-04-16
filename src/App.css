@@ -1,5 +1,6 @@
 .App{
   margin: 20px 50px;
+  position: relative;
 }
 button{
   margin-top: 10px;
@@ -7,6 +8,15 @@ button{
 .btn{
   margin-right: 10px;
 }
+.footer{
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  margin-top: 120px;
+  text-align: center;
+}
+
 /* ------------  react logo animation  ---------- */
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,12 +1,12 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Agenda for path-finding algorithm
+    step 1. implement all algorithm
+    step 2.  "" button for working all button
+    step 3.  "" all maze algorithm
+    step 4.  "" drag and drop API
 
-In the project directory, you can run:
+# Agenda for sorting algorithms
+    step 1. implement all sorting algorithm
+    step 2.  ""  reset button
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

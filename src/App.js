@@ -5,7 +5,7 @@ import SortingApp from './components/BubbleSort';
 import PrimeApp from './components/PrimeSpiral';
 
 function App() {
-  const [flag,setFlag] = useState(1);
+  const [flag,setFlag] = useState(0);
   var project = undefined;
   switch (flag) {
     case 1:
@@ -29,7 +29,8 @@ function App() {
       </div>
       <hr></hr>
         {project}
-      <div>
+
+      <div className='footer'>
         <h4 style={{color: '#34495E'}}>Created by <u>Suaeb Ahmed</u></h4>
       </div>
     </div>

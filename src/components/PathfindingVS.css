@@ -9,27 +9,33 @@ body {
   color: $primary-color;
 } */
 
+/* .grid{
+   width: auto; 
+   height: auto; 
+   border: 1px solid red; 
+}  */
+
 .header{
-   height: 50px;
+   height: 100px;
    width: 100%;
 }
 
 .ROW{
-    display: flex;
+   display: flex;
 }
 
 .square{
-    border: 1px solid rgb(226, 226, 226);
-    width: 36px;
-    height: 36px;
-    background-color: rgb(255, 255, 255);
+   border: 1px solid rgb(226, 226, 226);
+   width: 36px;
+   height: 36px;
+   background-color: rgb(255, 255, 255);
  }
 
  .START_NODE{
-    border: 1px solid rgb(226, 226, 226);
-    background-image: url(../icons/pin.png);
-    background-repeat: no-repeat;
-    background-size: 36px;
+   border: 1px solid rgb(226, 226, 226);
+   background-image: url(../icons/pin.png);
+   background-repeat: no-repeat;
+   background-size: 36px;
  }
  .END_NODE{
    border: 1px solid rgb(226, 226, 226);
