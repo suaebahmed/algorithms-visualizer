@@ -3,6 +3,7 @@ import './PathfindingVS.css';
 import Astar from '../algorithm/path/A_star_algo';
 import basicMaze from '../algorithm/maze/basic-maze';
 import BFS from '../algorithm/path/bfs';
+import DFS from '../algorithm/path/dfs';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -28,7 +29,7 @@ function App(){
     const [Grid,setGrid] = useState([]);  // array destructuring
     const [isMousePress,setIsMousePress] = useState(false);
     const [mazeID,setMazeID] = useState(0);
-    const [pathID,setPathID] = useState(1);
+    const [pathID,setPathID] = useState(2);
 
 
     useEffect(()=>{
@@ -89,10 +90,11 @@ function App(){
                 var obj = BFS(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.visitedNodes);
                 animateShortestPath(obj.path);
-                console.log(obj);
             break;
             case 2: // dfs
-            
+                obj = DFS(Grid,startNode,endNode,rows,cols);
+                await animateVisitedNodes(obj.visitedNodes);
+                animateShortestPath(obj.path);
             break;
             case 3: // dijkstra
             
@@ -101,6 +103,7 @@ function App(){
                 obj = Astar(startNode,endNode);
                 await animateVisitedNodes(obj.close_list);
                 animateShortestPath(obj.path);
+                console.log(obj);
             break;
         }
     }

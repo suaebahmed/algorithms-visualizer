@@ -4,6 +4,7 @@
     step 2.  "" button for working all button
     step 3.  "" all maze algorithm
     step 4.  "" drag and drop API
+    step 5.  re-create A-star algo as like as dfs
 
 # Agenda for sorting algorithms
     step 1. implement all sorting algorithm
