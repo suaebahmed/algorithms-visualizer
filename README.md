@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 
 # Agenda for path-finding algorithm
     step 1. implement all algorithm
@@ -17,4 +15,15 @@ https://user-images.githubusercontent.com/52806080/162614058-a5143de7-6c76-40b0-
 
 # video 2 => bubble sort algorithm visualization
 https://user-images.githubusercontent.com/52806080/162614101-77d2b9f9-25b5-48ee-ad61-f7e25bef9c89.mp4
->>>>>>> cdf5adeb1af1b476464366e457c23cdbf463dc62
+
+
+## what I learn to doing this project
+    1. implementing algorithm to visualize
+    2. initialize each cell to object/class
+    3. JS Promise to run animation asyncronusly
+    4. array destructure (usestate hooks)
+    5. reference variable/
+    6. difference between == and === .For example "false===0" it's false
+    7. For only use React state/useState to re-render dom-elememt. 
+    otherwise use global variable to access from all corner
+    8. writing re-useable code

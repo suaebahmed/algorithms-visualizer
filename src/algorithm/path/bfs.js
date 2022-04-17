@@ -3,7 +3,7 @@ var dx = [0,0,+1,-1]
 var dy = [+1,-1,0,0]
 
 function BFS(Grid,startNode,endNode,N,M){
-    var grid = new Array(N); // not reference variable
+    var grid = new Array(N);  // newArray - for no reference state-Grid;
     for(let i=0; i<N; i++){
         let arr = [];
         for(let j=0; j<M; j++){
