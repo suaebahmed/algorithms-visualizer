@@ -14,7 +14,7 @@ var cols = 28;
 const START_NODE_ROW = 0, START_NODE_COL = 0;
 const END_NODE_ROW = rows-1, END_NODE_COL = cols-1;
 
-var animateTime = 35;
+var animateTime = 8; // 8,35,80
 
 async function waitForAnimatoin(time){
     return new Promise((resolve)=>{
@@ -28,7 +28,7 @@ function App(){
     const [Grid,setGrid] = useState([]);  // array destructuring
     const [isMousePress,setIsMousePress] = useState(false);
     const [mazeID,setMazeID] = useState(0);
-    const [pathID,setPathID] = useState(0);
+    const [pathID,setPathID] = useState(1);
 
 
     useEffect(()=>{
@@ -125,7 +125,8 @@ function App(){
                 else if(i===END_NODE_ROW && j===END_NODE_COL){
                     document.getElementById(`row${i}_col${j}`).className = "square END_NODE";
                 }
-                else document.getElementById(`row${i}_col${j}`).className = "square";
+                else if(!Grid[i][j].isWall)
+                document.getElementById(`row${i}_col${j}`).className = "square";
             }
         }
     }
@@ -199,8 +200,8 @@ function App(){
                     </select>
                     <button onClick={mazeHandle}>Create Maze</button>
                     <button onClick={()=>{clearPathHandle();gridInitialize()}}>Reset board</button>
-                    <button onClick={clearPathHandle}>Clear walls</button>
-                    <button onClick={gridInitialize}>Clear path</button>
+                    <button onClick={clearPathHandle}>Clear path</button>
+                    <button onClick={gridInitialize}>Clear walls</button>
                 </div>
                 <div>
                     <button onClick={()=>animationTimeHandle(1)}>Fast</button>
