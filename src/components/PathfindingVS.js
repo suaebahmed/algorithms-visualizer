@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react'
 import './PathfindingVS.css';
 import Astar from '../algorithm/path/A_star_algo';
 import basicMaze from '../algorithm/maze/basic-maze';
+import BFS from '../algorithm/path/bfs';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -24,9 +25,10 @@ async function waitForAnimatoin(time){
 }
 
 function App(){
-    const [Grid,setGrid] = useState([]);  // array distructure
+    const [Grid,setGrid] = useState([]);  // array destructuring
     const [isMousePress,setIsMousePress] = useState(false);
-    const [maze,setMaze] = useState(0);
+    const [mazeID,setMazeID] = useState(0);
+    const [pathID,setPathID] = useState(0);
 
 
     useEffect(()=>{
@@ -78,14 +80,31 @@ function App(){
         }
     }
 
-    async function  startAStar(){
+    const pathFinding = async () =>{
         var startNode = Grid[START_NODE_ROW][START_NODE_COL];
         var endNode = Grid[END_NODE_ROW][END_NODE_COL];
-        var obj = Astar(startNode,endNode);
 
-        await animateVisitedNodes(obj.close_list);
-        animateShortestPath(obj.path);
+        switch(pathID){
+            case 1: //  bfs
+                var obj = BFS(Grid,startNode,endNode,rows,cols);
+                await animateVisitedNodes(obj.visitedNodes);
+                animateShortestPath(obj.path);
+                console.log(obj);
+            break;
+            case 2: // dfs
+            
+            break;
+            case 3: // dijkstra
+            
+            break;
+            default:
+                obj = Astar(startNode,endNode);
+                await animateVisitedNodes(obj.close_list);
+                animateShortestPath(obj.path);
+            break;
+        }
     }
+
     const mazeHandle = async () =>{
         // if(maze == 1) basic;
         
@@ -97,10 +116,19 @@ function App(){
                 createWall(ar[i].r,ar[i].c);
         }
     }
-    const resetHandle = () =>{
-        
+    const clearPathHandle = () =>{
+        for(let i=0; i<rows; i++){
+            for(let j=0; j<cols; j++){
+                if(i===START_NODE_ROW && j===START_NODE_COL){
+                    document.getElementById(`row${i}_col${j}`).className = "square START_NODE";
+                }
+                else if(i===END_NODE_ROW && j===END_NODE_COL){
+                    document.getElementById(`row${i}_col${j}`).className = "square END_NODE";
+                }
+                else document.getElementById(`row${i}_col${j}`).className = "square";
+            }
+        }
     }
-
 
     const createWall=(row,col)=>{
         /*
@@ -154,15 +182,15 @@ function App(){
         <div className='container'>
             <div className='header'>
                 <div>
-                    <button onClick={startAStar}>Find the shortest path</button>
+                    <button onClick={pathFinding}>Find the shortest path</button>
                     {/* <label htmlFor='num'>Choose Algorithm: </label> */}
-                    <select value={1} onChange={()=>{}} id="num" name="num">
-                        <option value="10">A-Star Search</option>
-                        <option value="18">Breadth-First Search</option>
-                        <option value="25">Depth-First Search</option>
-                        <option value="35">Dijkstra</option>
+                    <select value={pathID} onChange={(e)=>{setPathID(parseInt(e.target.value))}} id="num" name="num">
+                        <option value="0">A-Star Search</option>
+                        <option value="1">Breadth-First Search</option>
+                        <option value="2">Depth-First Search</option>
+                        <option value="3">Dijkstra</option>
                     </select>
-                    <select value={maze} onChange={(e)=>{setMaze(()=>{parseInt(e.target.value)})}} id="num2" name="num2">
+                    <select value={mazeID} onChange={(e)=>{setMazeID(()=>{parseInt(e.target.value)})}} id="num2" name="num2">
                         <option disabled value="0">Select maze</option>
                         <option value="1">Random basic maze</option>
                         <option value="2">Recursive maze</option>
@@ -170,7 +198,8 @@ function App(){
                         <option value="4">Other</option>
                     </select>
                     <button onClick={mazeHandle}>Create Maze</button>
-                    <button onClick={resetHandle}>Reset board</button>
+                    <button onClick={()=>{clearPathHandle();gridInitialize()}}>Reset board</button>
+                    <button onClick={clearPathHandle}>Clear walls</button>
                     <button onClick={gridInitialize}>Clear path</button>
                 </div>
                 <div>
