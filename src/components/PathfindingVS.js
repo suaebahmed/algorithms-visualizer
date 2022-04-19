@@ -256,13 +256,13 @@ function Node({pv}){
         var dom = document.getElementById(data);
 
         if(data === e.target.id) return;
-        // e.target.appendChild(dom);
+        e.target.appendChild(dom);
 
-        let x = e.target.attributes.data_x.value;
-        let y = e.target.attributes.data_y.value;
-        console.log(x,y,dom.nodeValue);
-
-        // SET_START_END_NODE()
+        let id = dom.attributes.data_type.value; // 
+        let r = e.target.attributes.data_x.value;
+        let c = e.target.attributes.data_y.value;
+        // call the function
+        SET_START_END_NODE(parseInt(id),parseInt(r),parseInt(c));
     }
 
     var classNode = isWall?"obtacle":'';
