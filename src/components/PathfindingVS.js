@@ -13,18 +13,9 @@ super(props);// call the super class constructor and pass in the props parameter
 var rows = 12;
 var cols = 20;
 
-const START_NODE_ROW = 3, START_NODE_COL = 4;
-const END_NODE_ROW = rows-5, END_NODE_COL = cols-5;
-
+var START_NODE_ROW = 3, START_NODE_COL = 4;
+var END_NODE_ROW = rows-5, END_NODE_COL = cols-5;
 var animateTime = 35; // 8,35,80
-
-async function waitForAnimatoin(time){
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve('');
-        },time)
-    })
-}
 
 function App(){
     const [Grid,setGrid] = useState([]);  // array destructuring
@@ -145,13 +136,15 @@ function App(){
         newGrid[row][col] = node;
         setGrid(newGrid);
     }
-    
+
     const onMouseDown = (row,col)=>{
-        setIsMousePress(true);
-        createWall(row,col);
+        if(isValid(row,col)){
+            setIsMousePress(true);
+            createWall(row,col);
+        }
     }
     const onMouseEnter = (row,col)=>{
-        if(isMousePress === true){
+        if(isMousePress === true && isValid(row,col)){
             createWall(row,col);
         }
     }
@@ -163,7 +156,16 @@ function App(){
         else if(type === 2) animateTime = 35;
         else animateTime = 80;
     }
-
+    const SET_START_END_NODE = (id, r, c) =>{
+        if(id === 0){
+            START_NODE_ROW = r;
+            START_NODE_COL = c;
+        }
+        else{
+            END_NODE_ROW = r;
+            END_NODE_COL = c;
+        } 
+    }
     // jsx Node of grid (2D array)
     const gridOFNode = (
         Grid.map((R,idx_r)=>{
@@ -174,7 +176,7 @@ function App(){
                             // console.log(Value);
                             const {x,y,isStart,isEnd,isWall} = Value;
                             return <Node key={idx_c} 
-                            pv={{x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp}}>
+                            pv={{x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,SET_START_END_NODE}}>
                             </Node>
                         })
                     }
@@ -245,14 +247,45 @@ class Spot {
 }
 
 function Node({pv}){
-    const {x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp} = pv;
-    var classNode = isStart?"START_NODE":isEnd?"END_NODE":isWall?"obtacle":'';
+    const {x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,SET_START_END_NODE} = pv;
+    const allowDrop=(e)=>{e.preventDefault();}
+    const drag=(e)=>{e.dataTransfer.setData("myID", e.target.id);}
+    const drop=(e)=>{
+        e.preventDefault();
+        var data = e.dataTransfer.getData("myID");
+        var dom = document.getElementById(data);
+
+        if(data === e.target.id) return;
+        // e.target.appendChild(dom);
+
+        let x = e.target.attributes.data_x.value;
+        let y = e.target.attributes.data_y.value;
+        console.log(x,y,dom.nodeValue);
+
+        // SET_START_END_NODE()
+    }
+
+    var classNode = isWall?"obtacle":'';
+    var element = isStart?(<div id='ID_175' data_type="0" draggable="true" onDragStart={drag} className='START_NODE square'></div>):isEnd?(
+    <div id='ID_176' data_type="1" draggable="true" onDragStart={drag} className='END_NODE square'></div>):'';
 
     return(
-        <div onMouseDown={()=>{onMouseDown(x,y)}} onMouseEnter={()=>{onMouseEnter(x,y)}}
-        onMouseUp={()=>{onMouseUp()}} className={'square '+classNode} id={'row'+x+'_col'+y}>
+        <div data_x={x} data_y={y} onMouseDown={()=>{onMouseDown(x,y)}} onMouseEnter={()=>{onMouseEnter(x,y)}}
+        onMouseUp={()=>{onMouseUp()}} onDrop={drop} onDragOver={allowDrop} className={'square '+classNode} id={'row'+x+'_col'+y}>
+            {element}
         </div>
     )
 }
 
+async function waitForAnimatoin(time){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve('');
+        },time)
+    })
+}
+const isValid = (r,c) =>{
+    if((r===START_NODE_ROW && c===START_NODE_COL) || (r===END_NODE_ROW && c===END_NODE_COL)) return 0;
+    else return 1;
+}
 export default App;
