@@ -30,7 +30,7 @@ function App(){
     const [Grid,setGrid] = useState([]);  // array destructuring
     const [isMousePress,setIsMousePress] = useState(false);
     const [mazeID,setMazeID] = useState(0);
-    const [pathID,setPathID] = useState(2);
+    const [pathID,setPathID] = useState(0);
 
 
     useEffect(()=>{
@@ -84,8 +84,6 @@ function App(){
     const pathFinding = async () =>{
         var startNode = Grid[START_NODE_ROW][START_NODE_COL];
         var endNode = Grid[END_NODE_ROW][END_NODE_COL];
-
-        console.log(startNode,endNode);
 
         switch(pathID){
             case 1:
@@ -225,7 +223,7 @@ class Spot {
     constructor(i, j) {
         this.x = i;
         this.y = j;
-        this.isWall = 0;
+        this.isWall = false;
         this.isStart = (i===START_NODE_ROW && j===START_NODE_COL);
         this.isEnd = (i===END_NODE_ROW && j===END_NODE_COL);
         

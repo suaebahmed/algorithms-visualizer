@@ -9,7 +9,7 @@ function Dijkstra(Grid,startNode,endNode,N,M){
     for(let i=0; i<N; i++){
         let arr = [];
         for(let j=0; j<M; j++){
-            arr.push({distance: 1e9, x : 0, y : 0});
+            arr.push({distance: 1e9, x : -1, y : -1});
         }
         grid[i] = arr;
     }
@@ -36,7 +36,7 @@ function Dijkstra(Grid,startNode,endNode,N,M){
                 var tmp = {x,y};
                 path.push({x:tmp.x,y:tmp.y});
 
-                while(grid[tmp.x][tmp.y].x!==tmp.x  || grid[tmp.x][tmp.y].y!==tmp.y){
+                while(grid[tmp.x][tmp.y].x!==-1  || grid[tmp.x][tmp.y].y!==-1){
                     let tmpX = grid[tmp.x][tmp.y].x;
                     let tmpY = grid[tmp.x][tmp.y].y;
                     tmp.x = tmpX;

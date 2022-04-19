@@ -7,7 +7,7 @@ function BFS(Grid,startNode,endNode,N,M){
     for(let i=0; i<N; i++){
         let arr = [];
         for(let j=0; j<M; j++){
-            arr.push({x: 0, y: 0, visited: 0});
+            arr.push({x: -1, y: -1, visited: 0});
         }
         grid[i] = arr;
     }
@@ -33,7 +33,7 @@ function BFS(Grid,startNode,endNode,N,M){
                 var tmp = {x,y};
                 path.push({x:tmp.x,y:tmp.y});   //not reference variable
 
-                while(grid[tmp.x][tmp.y].x!==tmp.x  || grid[tmp.x][tmp.y].y!==tmp.y){
+                while(grid[tmp.x][tmp.y].x!==-1  || grid[tmp.x][tmp.y].y!==-1){
                     let tmpX = grid[tmp.x][tmp.y].x;
                     let tmpY = grid[tmp.x][tmp.y].y;
                     tmp.x = tmpX;
