@@ -4,18 +4,19 @@ import Astar from '../algorithm/path/A_star_algo';
 import basicMaze from '../algorithm/maze/basic-maze';
 import BFS from '../algorithm/path/bfs';
 import DFS from '../algorithm/path/dfs';
+import Dijkstra from '../algorithm/path/dijkstra';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
 */
 
-var rows = 10;
-var cols = 28;
+var rows = 12;
+var cols = 20;
 
-const START_NODE_ROW = 0, START_NODE_COL = 0;
-const END_NODE_ROW = rows-1, END_NODE_COL = cols-1;
+const START_NODE_ROW = 3, START_NODE_COL = 4;
+const END_NODE_ROW = rows-5, END_NODE_COL = cols-5;
 
-var animateTime = 8; // 8,35,80
+var animateTime = 35; // 8,35,80
 
 async function waitForAnimatoin(time){
     return new Promise((resolve)=>{
@@ -45,13 +46,12 @@ function App(){
                 grid[i][j] = new Spot(i,j);
             }
         }
-        //add neighbors of each node
+        /* -- add neighbors of each node ---
         for(let i=0; i<rows; i++){
             for(let j=0; j<cols; j++){
                 grid[i][j].getNeighbors(grid);
-
             }
-        }
+        } */
         setGrid(grid);
     }
     // animate the algorithm
@@ -85,25 +85,28 @@ function App(){
         var startNode = Grid[START_NODE_ROW][START_NODE_COL];
         var endNode = Grid[END_NODE_ROW][END_NODE_COL];
 
+        console.log(startNode,endNode);
+
         switch(pathID){
-            case 1: //  bfs
+            case 1:
                 var obj = BFS(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.visitedNodes);
                 animateShortestPath(obj.path);
             break;
-            case 2: // dfs
+            case 2:
                 obj = DFS(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.visitedNodes);
                 animateShortestPath(obj.path);
             break;
-            case 3: // dijkstra
-            
+            case 3:
+                obj = Dijkstra(Grid,startNode,endNode,rows,cols);
+                await animateVisitedNodes(obj.visitedNodes);
+                animateShortestPath(obj.path);
             break;
             default:
-                obj = Astar(startNode,endNode);
+                obj = Astar(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.close_list);
                 animateShortestPath(obj.path);
-                console.log(obj);
             break;
         }
     }
@@ -187,7 +190,6 @@ function App(){
             <div className='header'>
                 <div>
                     <button onClick={pathFinding}>Find the shortest path</button>
-                    {/* <label htmlFor='num'>Choose Algorithm: </label> */}
                     <select value={pathID} onChange={(e)=>{setPathID(parseInt(e.target.value))}} id="num" name="num">
                         <option value="0">A-Star Search</option>
                         <option value="1">Breadth-First Search</option>
@@ -202,9 +204,9 @@ function App(){
                         <option value="4">Other</option>
                     </select>
                     <button onClick={mazeHandle}>Create Maze</button>
-                    <button onClick={()=>{clearPathHandle();gridInitialize()}}>Reset board</button>
-                    <button onClick={clearPathHandle}>Clear path</button>
                     <button onClick={gridInitialize}>Clear walls</button>
+                    <button onClick={clearPathHandle}>Clear path</button>
+                    <button onClick={()=>{clearPathHandle();gridInitialize()}}>Reset board</button>
                 </div>
                 <div>
                     <button onClick={()=>animationTimeHandle(1)}>Fast</button>
@@ -223,11 +225,14 @@ class Spot {
     constructor(i, j) {
         this.x = i;
         this.y = j;
-        this.f = 1e9;
-        this.g = 1e9;
         this.isWall = 0;
         this.isStart = (i===START_NODE_ROW && j===START_NODE_COL);
         this.isEnd = (i===END_NODE_ROW && j===END_NODE_COL);
+        
+        /*
+        ----  below information we don't use after 16 number of commits in github ---
+        this.f = 1e9;
+        this.g = 1e9;
         this.previous = undefined;
         this.neighbors = [];
         this.getNeighbors = function(grid){
@@ -237,6 +242,7 @@ class Spot {
             if(i+1<rows) this.neighbors.push(grid[i+1][j]); // down
             if(j+1<cols) this.neighbors.push(grid[i][j+1]); // right
         }
+        */
     }
 }
 

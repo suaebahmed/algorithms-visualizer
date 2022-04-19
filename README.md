@@ -10,7 +10,6 @@
     step 1. implement all sorting algorithm
     step 2.  ""  reset button
 
-=======
 # video 1 => A-star algorithm visualization
 https://user-images.githubusercontent.com/52806080/162614058-a5143de7-6c76-40b0-963e-0d78d6e5e982.mp4
 
@@ -27,4 +26,5 @@ https://user-images.githubusercontent.com/52806080/162614101-77d2b9f9-25b5-48ee-
     6. difference between == and === .For example "false===0" it's false
     7. For only use React state/useState to re-render dom-elememt. 
     otherwise use global variable to access from all corner
-    8. writing re-useable code
+    8. writing re-useable code 
+    
