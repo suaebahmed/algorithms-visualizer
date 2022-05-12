@@ -157,7 +157,7 @@ function App(){
         else animateTime = 80;
     }
     const SET_START_END_NODE = (id, r, c) =>{
-        if(id === 0){
+        if(id === 1){
             START_NODE_ROW = r;
             START_NODE_COL = c;
         }
@@ -254,25 +254,36 @@ function Node({pv}){
         e.preventDefault();
         var data = e.dataTransfer.getData("myID");
         var dom = document.getElementById(data);
+        var id = parseInt(dom.attributes.data_type.value);
+        
+        if(e.target.attributes.data_type.value !== "3" || e.target.attributes.wall.value === "true") return;
 
-        if(data === e.target.id) return;
-        e.target.appendChild(dom);
+        var className = (id === 1)?"START_NODE":"END_NODE";
+        var typeId = (id === 1)?"1":"2";
+      
+        // ----- target ------
+        e.target.classList = "square "+className;
+        e.target.draggable = true;
+        e.target.attributes.data_type.value = typeId;
 
-        let id = dom.attributes.data_type.value; // 
+        //---- previous node ---- 
+        dom.classList = "square";
+        dom.draggable = false;
+        dom.attributes.data_type.value = "3";
+
+        // call the function
         let r = e.target.attributes.data_x.value;
         let c = e.target.attributes.data_y.value;
-        // call the function
         SET_START_END_NODE(parseInt(id),parseInt(r),parseInt(c));
     }
 
-    var classNode = isWall?"obtacle":'';
-    var element = isStart?(<div id='ID_175' data_type="0" draggable="true" onDragStart={drag} className='START_NODE square'></div>):isEnd?(
-    <div id='ID_176' data_type="1" draggable="true" onDragStart={drag} className='END_NODE square'></div>):'';
+    var classNode = isStart?"START_NODE":(isEnd?"END_NODE":(isWall?"obtacle":""));
+    var typeId = isStart?"1":(isEnd?"2":"3");
 
     return(
-        <div data_x={x} data_y={y} onMouseDown={()=>{onMouseDown(x,y)}} onMouseEnter={()=>{onMouseEnter(x,y)}}
-        onMouseUp={()=>{onMouseUp()}} onDrop={drop} onDragOver={allowDrop} className={'square '+classNode} id={'row'+x+'_col'+y}>
-            {element}
+        <div data_x={x} data_y={y} onMouseDown={()=>{onMouseDown(x,y)}} onMouseEnter={()=>{onMouseEnter(x,y)}} onMouseUp={()=>{onMouseUp()}} 
+        data_type={typeId} wall={isWall.toString()} draggable={isStart||isEnd} onDragStart={drag} onDrop={drop} onDragOver={allowDrop} className={'square '+classNode} id={'row'+x+'_col'+y}>
+
         </div>
     )
 }
