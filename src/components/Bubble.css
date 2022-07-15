@@ -1,11 +1,17 @@
 .wrapperBar{
     display: flex;
     align-items: flex-end;
-    margin: 10px 5px;
     height: 400px;
-    width: 700px;
+    width: 90%;
     margin: 0 auto;
     justify-content: center;
+}
+.Btn-Wrap{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0 auto;
+
 }
 #formBubble1{
     margin-top: 10px;

@@ -1,10 +1,8 @@
 
 # Agenda for path-finding algorithm
-    step 1. implement all algorithm
-    step 2.  "" button for working all button
-    step 3.  "" all maze algorithm
-    step 4.  "" drag and drop API
-    step 5.  re-create A-star algo as like as dfs
+    step 1. implement all maze algorithm
+    step 2. improve drag and drop API
+    step 3. create state to store START and END Node
 
 # Agenda for sorting algorithms
     step 1. implement all sorting algorithm
@@ -22,7 +20,7 @@ https://user-images.githubusercontent.com/52806080/162614101-77d2b9f9-25b5-48ee-
     2. initialize each cell to object/class
     3. JS Promise to run animation asyncronusly
     4. array destructure (usestate hooks)
-    5. reference variable/
+    5. reference and copy variable
     6. difference between == and === .For example "false===0" it's false
     7. For only use React state/useState to re-render dom-elememt. 
     otherwise use global variable to access from all corner
