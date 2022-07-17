@@ -10,11 +10,14 @@ import Dijkstra from '../algorithm/path/dijkstra';
 super(props);// call the super class constructor and pass in the props parameter
 */
 
-var rows = 12;
-var cols = 20;
+var rows = 8;
+var cols = 10;
 
-var START_NODE_ROW = 3, START_NODE_COL = 4;
-var END_NODE_ROW = rows-5, END_NODE_COL = cols-5;
+var START_NODE_ROW = 1, START_NODE_COL = 1;
+var END_NODE_ROW = rows-5, END_NODE_COL = cols-2;
+var InitSR = START_NODE_ROW, InitSC = START_NODE_COL;
+var InitER = END_NODE_ROW, InitEC = END_NODE_COL;
+
 var animateTime = 35; // 8,35,80
 
 function App(){
@@ -156,34 +159,31 @@ function App(){
         else if(type === 2) animateTime = 35;
         else animateTime = 80;
     }
-    const SET_START_END_NODE = (id, r, c) =>{
+
+    const setStartEndNode = (id, r, c) =>{
         if(id === 1){
+            let newGrid = [...Grid] // array copy
+            let preStartNode = newGrid[START_NODE_ROW][START_NODE_COL];
+            let curStartNode = newGrid[r][c];
+            preStartNode.isStart = !preStartNode.isStart;
+            curStartNode.isStart = !curStartNode.isStart;
+            setGrid(newGrid);
+
             START_NODE_ROW = r;
             START_NODE_COL = c;
         }
         else{
+            let newGrid = [...Grid] // array copy
+            let preEndNode = newGrid[END_NODE_ROW][END_NODE_COL];
+            let curEndNode = newGrid[r][c];
+            preEndNode.isEnd = !preEndNode.isEnd;
+            curEndNode.isEnd = !curEndNode.isEnd;
+            setGrid(newGrid);
+
             END_NODE_ROW = r;
             END_NODE_COL = c;
         } 
     }
-    // jsx Node of grid (2D array)
-    const gridOFNode = (
-        Grid.map((R,idx_r)=>{
-            return (
-                <div key={idx_r} className='ROW'>
-                    {
-                        R.map((Value,idx_c)=>{
-                            // console.log(Value);
-                            const {x,y,isStart,isEnd,isWall} = Value;
-                            return <Node key={idx_c} 
-                            pv={{x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,SET_START_END_NODE}}>
-                            </Node>
-                        })
-                    }
-                </div>
-            )
-        })
-    )
 
     return (
         <div className='container'>
@@ -206,7 +206,16 @@ function App(){
                     <button onClick={mazeHandle}>Create Maze</button>
                     <button onClick={gridInitialize}>Clear walls</button>
                     <button onClick={clearPathHandle}>Clear path</button>
-                    <button onClick={()=>{clearPathHandle();gridInitialize()}}>Reset board</button>
+                    <button onClick={()=>{
+                        START_NODE_ROW = InitSR;
+                        START_NODE_ROW = InitSC;
+                        END_NODE_ROW = InitER;
+                        END_NODE_COL = InitEC;
+                        clearPathHandle();
+                        gridInitialize();
+                    }}>
+                        Reset board
+                    </button>
                 </div>
                 <div>
                     <button onClick={()=>animationTimeHandle(1)}>Fast</button>
@@ -215,7 +224,18 @@ function App(){
                 </div>
             </div>
             <div className='grid' onMouseLeave={()=>{setIsMousePress(false)}}>
-                {gridOFNode}
+            {/* JSX Node Of Grid (2D Array) */}
+            {Grid.map((R,idx_r)=>{
+            return (<div key={idx_r} className='ROW'>
+                        {R.map((Value,idx_c)=>{
+                                const {x,y,isStart,isEnd,isWall} = Value;
+                                return <Node key={idx_c} 
+                                pv={{x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,setStartEndNode}}>
+                                </Node>
+                            })
+                        }
+                    </div>)
+            })}
             </div>
         </div>
     )
@@ -247,7 +267,7 @@ class Spot {
 }
 
 function Node({pv}){
-    const {x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,SET_START_END_NODE} = pv;
+    const {x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,setStartEndNode} = pv;
     const allowDrop=(e)=>{e.preventDefault();}
     const drag=(e)=>{e.dataTransfer.setData("myID", e.target.id);}
     const drop=(e)=>{
@@ -255,37 +275,58 @@ function Node({pv}){
         var data = e.dataTransfer.getData("myID");
         var dom = document.getElementById(data);
         var id = parseInt(dom.attributes.data_type.value);
-        
         if(e.target.attributes.data_type.value !== "3" || e.target.attributes.wall.value === "true") return;
-
-        var className = (id === 1)?"START_NODE":"END_NODE";
-        var typeId = (id === 1)?"1":"2";
-      
-        // ----- target ------
-        e.target.classList = "square "+className;
-        e.target.draggable = true;
-        e.target.attributes.data_type.value = typeId;
-
-        //---- previous node ---- 
-        dom.classList = "square";
-        dom.draggable = false;
-        dom.attributes.data_type.value = "3";
-
+        
         // call the function
-        let r = e.target.attributes.data_x.value;
-        let c = e.target.attributes.data_y.value;
-        SET_START_END_NODE(parseInt(id),parseInt(r),parseInt(c));
+        var r = parseInt(e.target.attributes.data_x.value)
+        var c = parseInt(e.target.attributes.data_y.value)
+        setStartEndNode(id,r,c);
     }
 
     var classNode = isStart?"START_NODE":(isEnd?"END_NODE":(isWall?"obtacle":""));
     var typeId = isStart?"1":(isEnd?"2":"3");
 
-    return(
-        <div data_x={x} data_y={y} onMouseDown={()=>{onMouseDown(x,y)}} onMouseEnter={()=>{onMouseEnter(x,y)}} onMouseUp={()=>{onMouseUp()}} 
-        data_type={typeId} wall={isWall.toString()} draggable={isStart||isEnd} onDragStart={drag} onDrop={drop} onDragOver={allowDrop} className={'square '+classNode} id={'row'+x+'_col'+y}>
-
-        </div>
-    )
+    if(isStart || isEnd){
+        return (
+            <div 
+            className={'square '+classNode} id={'row'+x+'_col'+y}
+            data_x={x} 
+            data_y={y} 
+            data_type={typeId} 
+            wall="false"
+            draggable="true"
+            onDragStart={drag} 
+            onDrop={drop} 
+            onDragOver={allowDrop}
+            >
+            </div>
+        )
+    }
+    else{
+        return(
+            <div onMouseDown={(e)=>{
+                e.preventDefault(); // it is necessary
+                onMouseDown(x,y)}
+            } 
+            onMouseEnter={(e)=>{
+                e.preventDefault();
+                onMouseEnter(x,y)}
+            } 
+            onMouseUp={(e)=>{
+                e.preventDefault();
+                onMouseUp()}
+            } 
+            className={'square '+classNode} id={'row'+x+'_col'+y}
+            data_x={x} 
+            data_y={y} 
+            data_type={typeId} 
+            wall={isWall.toString()}
+            onDrop={drop} 
+            onDragOver={allowDrop}
+            >
+            </div>
+        )
+    }
 }
 
 async function waitForAnimatoin(time){
