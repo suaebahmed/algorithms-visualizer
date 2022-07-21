@@ -6,6 +6,7 @@ import BFS from '../algorithm/path/bfs';
 import DFS from '../algorithm/path/dfs';
 import Dijkstra from '../algorithm/path/dijkstra';
 import Randomized_dfs from '../algorithm/maze/randomized_dfs';
+import recursiveDivision from '../algorithm/maze/recursive_division';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -133,8 +134,9 @@ function App(){
                 arr = Randomized_dfs(rows,cols);
                 mazeGenerator(arr);
             break;
-            case 5: // recursive division
-
+            case 3: // recursive division
+                arr = recursiveDivision(rows,cols);
+                mazeGenerator(arr);
             break;
             default:
         }
@@ -225,9 +227,9 @@ function App(){
                         <option disabled value="0">Select maze</option>
                         <option value="1">Random basic maze</option>
                         <option value="2">Randomized_dfs</option>
-                        <option value="3">Kruskal's algorithm</option>
-                        <option value="4">Prim's algorithm</option>
-                        <option value="5">Recursive division</option>
+                        <option value="3">Recursive division</option>
+                        <option value="4">Kruskal's algorithm</option>
+                        <option value="5">Prim's algorithm</option>
                     </select>
                     <button onClick={mazeHandle}>Create Maze</button>
                     <button onClick={gridInitialize}>Clear walls</button>
