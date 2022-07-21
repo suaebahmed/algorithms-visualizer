@@ -5,13 +5,14 @@ import basicMaze from '../algorithm/maze/basic-maze';
 import BFS from '../algorithm/path/bfs';
 import DFS from '../algorithm/path/dfs';
 import Dijkstra from '../algorithm/path/dijkstra';
+import Randomized_dfs from '../algorithm/maze/randomized_dfs';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
 */
 
-var rows = 8;
-var cols = 10;
+var rows = 16;
+var cols = 20;
 
 var START_NODE_ROW = 1, START_NODE_COL = 1;
 var END_NODE_ROW = rows-5, END_NODE_COL = cols-2;
@@ -103,15 +104,39 @@ function App(){
         }
     }
 
-    const mazeHandle = async () =>{
-        // if(maze == 1) basic;
-        
-        var ar = basicMaze(rows,cols);
+    const mazeGenerator = async (ar) =>{
         for(var i=0; i<ar.length; i++){
             if((ar[i].r===START_NODE_ROW && ar[i].c===START_NODE_COL) || 
             (ar[i].r===END_NODE_ROW && ar[i].c===END_NODE_COL)) continue;
                 await waitForAnimatoin(animateTime);
                 createWall(ar[i].r,ar[i].c);
+        }
+    }
+    const makeAllCellAsAWall = () =>{
+        for(let i=0; i<rows; i++){
+            for(let j=0; j<cols; j++){
+                if(!((i===START_NODE_ROW && j===START_NODE_COL) || (i===END_NODE_ROW && j===END_NODE_COL))){
+                    createWall(i,j);
+                }
+            }
+        }
+    }
+    const mazeHandle = async () =>{        
+        var arr = [];
+        switch(mazeID){
+            case 1:
+                arr = basicMaze(rows,cols);
+                mazeGenerator(arr);
+            break;
+            case 2:
+                makeAllCellAsAWall();
+                arr = Randomized_dfs(rows,cols);
+                mazeGenerator(arr);
+            break;
+            case 5: // recursive division
+
+            break;
+            default:
         }
     }
     const clearPathHandle = () =>{
@@ -196,12 +221,13 @@ function App(){
                         <option value="2">Depth-First Search</option>
                         <option value="3">Dijkstra</option>
                     </select>
-                    <select value={mazeID} onChange={(e)=>{setMazeID(()=>{parseInt(e.target.value)})}} id="num2" name="num2">
+                    <select value={mazeID} onChange={(e)=>{setMazeID(parseInt(e.target.value))}} id="num2" name="num2">
                         <option disabled value="0">Select maze</option>
                         <option value="1">Random basic maze</option>
-                        <option value="2">Recursive maze</option>
-                        <option value="3">Prim's algorithm</option>
-                        <option value="4">Other</option>
+                        <option value="2">Randomized_dfs</option>
+                        <option value="3">Kruskal's algorithm</option>
+                        <option value="4">Prim's algorithm</option>
+                        <option value="5">Recursive division</option>
                     </select>
                     <button onClick={mazeHandle}>Create Maze</button>
                     <button onClick={gridInitialize}>Clear walls</button>
