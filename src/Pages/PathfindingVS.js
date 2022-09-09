@@ -1,5 +1,5 @@
 import React,{useEffect, useState} from 'react'
-import './PathfindingVS.css';
+import '../styles/PathfindingVS.css';
 import Astar from '../algorithm/path/A_star_algo';
 import basicMaze from '../algorithm/maze/basic-maze';
 import BFS from '../algorithm/path/bfs';
@@ -12,11 +12,11 @@ import recursiveDivision from '../algorithm/maze/recursive_division';
 super(props);// call the super class constructor and pass in the props parameter
 */
 
-var rows = 16;
-var cols = 20;
+var rows = 9;
+var cols = 9;
 
-var START_NODE_ROW = 1, START_NODE_COL = 1;
-var END_NODE_ROW = rows-5, END_NODE_COL = cols-2;
+var START_NODE_ROW = 2, START_NODE_COL = 3;
+var END_NODE_ROW = rows-5, END_NODE_COL = cols-4;
 var InitSR = START_NODE_ROW, InitSC = START_NODE_COL;
 var InitER = END_NODE_ROW, InitEC = END_NODE_COL;
 
@@ -228,8 +228,8 @@ function App(){
                         <option value="1">Random basic maze</option>
                         <option value="2">Randomized_dfs</option>
                         <option value="3">Recursive division</option>
-                        <option value="4">Kruskal's algorithm</option>
-                        <option value="5">Prim's algorithm</option>
+                        <option disabled value="4">Kruskal's algorithm</option>
+                        <option disabled value="5">Prim's algorithm</option>
                     </select>
                     <button onClick={mazeHandle}>Create Maze</button>
                     <button onClick={gridInitialize}>Clear walls</button>

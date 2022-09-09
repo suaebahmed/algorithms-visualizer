@@ -46,12 +46,22 @@ body {
 
  .obtacle{
    border: 1px solid #2C3E50;
-   /* background-color: rgb(110, 49, 49); */
    background-color: #2C3E50;
-   transition-duration: 1.6s;
+   animation: wallAnimation 750ms ease-in;
 }
 /* -------- animation ------ */
 
+@keyframes wallAnimation {
+   0%{
+      transform: scale(1);
+   }
+   50%{
+      transform: translate(1.35);
+   }
+   100%{
+      transform: scale(1);
+   }
+}
 
 .node-visited{
    width: 36px;

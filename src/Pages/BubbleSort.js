@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import Sorting from '../algorithm/bubble_sorting';
-import './Bubble.css';
+import '../styles/Bubble.css';
 
 var BARS = 25;
 const barWidth = 20;

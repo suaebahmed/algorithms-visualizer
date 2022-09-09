@@ -1,6 +1,6 @@
 
 # Agenda for path-finding algorithm
-    step 1. implement all maze algorithm
+    step 1. implement all others maze algorithm
     step 2. improve style with CSS
 
 # Agenda for sorting algorithms
@@ -23,4 +23,5 @@ https://user-images.githubusercontent.com/52806080/162614101-77d2b9f9-25b5-48ee-
     7. For only use React state/useState to re-render dom-elememt. 
     otherwise use global variable to access from all corner
     8. writing re-useable code 
-    
+
+how to push code

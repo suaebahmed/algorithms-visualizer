@@ -15,7 +15,7 @@ function Randomized_dfs(N,M){
         }
         vis[i] = arr;
     }
-    dfs(0,0,N,M);
+    dfs(1,1,N,M);
     return visitedNodes;
 }
 // this function is a iterative DFS
