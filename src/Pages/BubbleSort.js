@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Bubble.css';
+import Navbar from '../components/Navbar';
 
-var BARS = 25;
+var BARS = 50;
 const barWidth = 20;
 var SPEED = 500;
 
@@ -258,26 +259,33 @@ function SortingApp(){
     }
 
     return (
-        <div>
-            <div className='Btn-Wrap'>
-                <button onClick={startSortingHandle}>Start Sorting</button>
-                <button onClick={generateNewArray}>Generate New</button>
-                <select value={sortID} onChange={(e)=>{setSortID(parseInt(e.target.value));generateNewArray()}} id="num" name="num">
-                        <option value="0">Bubble Sort</option>
-                        <option value="1">Selection Sort</option>
-                        <option value="2">Insertion Sort</option>
-                        <option value="3">Quick Sort</option>
-                        <option value="4">Merge Sort</option>
-                </select>
-            </div>
-            <div id = 'formBubble1'>
-                <form>
-                    <label htmlFor='range1'>Speed: </label>
-                    <input type='range' onChange={rangeValueHandle} name='range1' id = 'range1'
-                    min='1' value={speed} max='1000' step='1'></input>
+        <>
+            <Navbar msg='Sorting Algorithms'></Navbar>
+            <div className='sorting-continer'>
+                <div className='Btn-Wrap'>
+                    <div>
+                        <button className='button-4 start-btn' onClick={startSortingHandle}>Start Sorting</button>
+                        <button className='button-4' onClick={generateNewArray}>Generate New</button>
+                        <select className='my-drop-down' value={sortID} onChange={(e)=>{setSortID(parseInt(e.target.value));generateNewArray()}} id="num" name="num">
+                                <option value="0">Bubble Sort</option>
+                                <option value="1">Selection Sort</option>
+                                <option value="2">Insertion Sort</option>
+                                <option value="3">Quick Sort</option>
+                                <option value="4">Merge Sort</option>
+                        </select>
+                    </div>
+                    <div className='st-speed-range'>
+                        <div className='st-speed-range-lavel'>
+                            <label className='sorting-label' htmlFor='range1'>Speed: </label>
+                        </div>
+                        <div>
+                            <input type='range' onChange={rangeValueHandle} name='range1' id = 'range1'
+                            min='1' value={speed} max='1000' step='1'></input>
+                        </div>
+                    </div>
                     <div>
                         <label htmlFor='num'>Choose Size: </label>
-                        <select value={bar.length} onChange={sizeHandle} id="num" name="num">
+                        <select className='my-drop-down' value={bar.length} onChange={sizeHandle} id="num" name="num">
                             <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
@@ -285,12 +293,12 @@ function SortingApp(){
                             <option value="200">200</option>
                         </select>
                     </div>
-                </form>
+                </div>
+                <div className='wrapperBar'>
+                {printAllBar}
+                </div>
             </div>
-            <div className='wrapperBar'>
-            {printAllBar}
-            </div>
-        </div>
+        </>
     )
 }
 

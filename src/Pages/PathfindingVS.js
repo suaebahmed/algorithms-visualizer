@@ -13,11 +13,11 @@ import Navbar from '../components/Navbar';
 super(props);// call the super class constructor and pass in the props parameter
 */
 
-var rows = 9;
-var cols = 9;
+var rows = 17;
+var cols = 31;
 
-var START_NODE_ROW = 2, START_NODE_COL = 3;
-var END_NODE_ROW = rows-5, END_NODE_COL = cols-4;
+var START_NODE_ROW = 4, START_NODE_COL = 6;
+var END_NODE_ROW = rows-6, END_NODE_COL = cols-6;
 var InitSR = START_NODE_ROW, InitSC = START_NODE_COL;
 var InitER = END_NODE_ROW, InitEC = END_NODE_COL;
 
@@ -214,61 +214,70 @@ function App(){
     }
 
     return (
-        <div className='container'>
-            <Navbar msg={'Path Finder Visualizer'}></Navbar>
+        <>
+        <Navbar msg='Path Finder Visualizer'></Navbar>
+        <div className='path-container'>
 
-            <div className='header'>
-                <div>
-                    <button onClick={pathFinding}>Find the shortest path</button>
-                    <select value={pathID} onChange={(e)=>{setPathID(parseInt(e.target.value))}} id="num" name="num">
-                        <option value="0">A-Star Search</option>
-                        <option value="1">Breadth-First Search</option>
-                        <option value="2">Depth-First Search</option>
-                        <option value="3">Dijkstra</option>
-                    </select>
-                    <select value={mazeID} onChange={(e)=>{setMazeID(parseInt(e.target.value))}} id="num2" name="num2">
-                        <option disabled value="0">Select maze</option>
-                        <option value="1">Random basic maze</option>
-                        <option value="2">Randomized_dfs</option>
-                        <option value="3">Recursive division</option>
-                        <option disabled value="4">Kruskal's algorithm</option>
-                        <option disabled value="5">Prim's algorithm</option>
-                    </select>
-                    <button onClick={mazeHandle}>Create Maze</button>
-                    <button onClick={gridInitialize}>Clear walls</button>
-                    <button onClick={clearPathHandle}>Clear path</button>
-                    <button onClick={()=>{
-                        START_NODE_ROW = InitSR;
-                        START_NODE_ROW = InitSC;
-                        END_NODE_ROW = InitER;
-                        END_NODE_COL = InitEC;
-                        clearPathHandle();
-                        gridInitialize();
-                    }}>
-                        Reset board
-                    </button>
+            <div className='path-header'>
+                <div className='path-top-btns'>
+                    <div>
+                        <button className='button-4 start-btn' onClick={pathFinding}>Find the shortest path</button>
+                        <select className='my-drop-down' value={pathID} onChange={(e)=>{setPathID(parseInt(e.target.value))}}>
+                            <option value="0">A-Star Search</option>
+                            <option value="1">Breadth-First Search</option>
+                            <option value="2">Depth-First Search</option>
+                            <option value="3">Dijkstra</option>
+                        </select>
+                    </div>
+                    <div>
+                        <select className='my-drop-down' value={mazeID} onChange={(e)=>{setMazeID(parseInt(e.target.value))}}>
+                            <option className='my-drop-down-option' disabled value="0">Select Maze</option>
+                            <option value="1">Random basic maze</option>
+                            <option value="2">Randomized_dfs</option>
+                            <option value="3">Recursive division</option>
+                            <option disabled value="4">Kruskal's algorithm</option>
+                            <option disabled value="5">Prim's algorithm</option>
+                        </select>
+                        <button className='button-4' onClick={mazeHandle}>Create Maze</button>
+                        <button className='button-4' onClick={gridInitialize}>Clear walls</button>
+                        <button className='button-4' onClick={clearPathHandle}>Clear path</button>
+                        <button className='button-4' onClick={()=>{
+                            START_NODE_ROW = InitSR;
+                            START_NODE_ROW = InitSC;
+                            END_NODE_ROW = InitER;
+                            END_NODE_COL = InitEC;
+                            clearPathHandle();
+                            gridInitialize();
+                        }}>
+                            Reset board
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <button onClick={()=>animationTimeHandle(1)}>Fast</button>
-                    <button onClick={()=>animationTimeHandle(2)}>Average</button>
-                    <button onClick={()=>animationTimeHandle(3)}>Slow</button>
+
+                <div className='path-bottom-btns'>
+                    <button className='button-4' onClick={()=>animationTimeHandle(1)}>Fast</button>
+                    <button className='button-4' onClick={()=>animationTimeHandle(2)}>Average</button>
+                    <button className='button-4' onClick={()=>animationTimeHandle(3)}>Slow</button>
                 </div>
             </div>
-            <div className='grid' onMouseLeave={()=>{setIsMousePress(false)}}>
-            {/* JSX Node Of Grid (2D Array) */}
-            {Grid.map((R,idx_r)=>{
-            return (<div key={idx_r} className='ROW'>
-                        {R.map((Value,idx_c)=>{
-                                const {x,y,isStart,isEnd,isWall} = Value;
-                                return <Node key={idx_c} 
-                                pv={{x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,setStartEndNode}}>
-                                </Node>
-                            })
-                        }
-                    </div>)
-            })}
+            <div className='grid'>
+                <div onMouseLeave={()=>{setIsMousePress(false)}}>
+                {/* JSX Node Of Grid (2D Array) */}
+                {Grid.map((R,idx_r)=>{
+                return (<div key={idx_r} className='ROW'>
+                            {R.map((Value,idx_c)=>{
+                                    const {x,y,isStart,isEnd,isWall} = Value;
+                                    return <Node key={idx_c} 
+                                    pv={{x,y,isStart,isEnd,isWall,onMouseDown,onMouseEnter,onMouseUp,setStartEndNode}}>
+                                    </Node>
+                                })
+                            }
+                        </div>)
+                })}
+                </div>
             </div>
         </div>
+        </>
     )
 }
 

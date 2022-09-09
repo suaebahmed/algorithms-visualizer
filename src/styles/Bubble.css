@@ -1,23 +1,26 @@
-.wrapperBar{
-    display: flex;
-    align-items: flex-end;
-    height: 400px;
-    width: 90%;
-    margin: 0 auto;
-    justify-content: center;
+.sorting-continer{
+    margin: 20px 60px;
 }
+
 .Btn-Wrap{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin: 0 auto;
+    margin-bottom: 60px;
+}
+.st-speed-range{
+    display: flex;
+}
+.st-speed-range-lavel{
+    margin: 1px 5px;
+}
 
-}
-#formBubble1{
-    margin-top: 10px;
-}
-#num{
-    margin-top: 5px;
+.wrapperBar{
+    display: flex;
+    align-items: flex-end;
+    height: 400px;
+    width: 100%;
+    justify-content: center;
 }
 .bar{
     border: 1px solid rgb(228, 242, 250);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import '../styles/PrimeSpiral.css'
 import prime_Spiral_Generate from '../algorithm/prime_spiral';
+import Navbar from '../components/Navbar';
 
 // Density of primes = n/ln(n);
 const N = 21;
@@ -67,19 +68,18 @@ function PrimeApp(){
     }
     return (
         <>
-            <button onClick={startPrimeSpiral}>Show Prime spiral</button>
-            <div className='primeGridContainer'>
-                <div>
-                {gridOfNode}
+            <Navbar msg='Spiral Primes'></Navbar>
+            <div className='spiral-continer'>
+                <button className='button-4 start-btn' onClick={startPrimeSpiral}>Show Prime spiral</button>
+                <button className='button-4'>{cntPrime} prime numbers found out of {N*N}</button>
+
+                <div className='primeGridContainer'>
+                    <div>
+                    {gridOfNode}
+                    </div>
                 </div>
             </div>
-            <h5 style={{textAlign:'center'}}>
-                {cntPrime} prime numbers out of {N*N} <br></br>
-                What is the Ulam/prime Spiral ?
-                <a href='https://en.wikipedia.org/wiki/Ulam_spiral'>wikipedia</a>
-            </h5>
         </>
-
     )
 }
 

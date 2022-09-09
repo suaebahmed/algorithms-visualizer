@@ -1,23 +1,104 @@
-/* 
-$WIDTH : 46px;
-$HEIGHT : 46px 
-$font-stack: Helvetica, sans-serif;
-$primary-color: #333; 
+.path-container{
+   margin : 5px 50px;
+}
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
-} */
-
-/* .grid{
-   width: auto; 
-   height: auto; 
-   border: 1px solid red; 
-}  */
-
-.header{
-   height: 100px;
+.path-header{
+   height: 80px;
    width: 100%;
+}
+.path-top-btns{
+   display: flex;
+   justify-content: space-between;
+}
+.path-bottom-btns{
+   margin-top: 5px;
+}
+
+.my-drop-down{
+   cursor: pointer;
+   padding: 5.5px;
+   margin-right: 8px;
+}
+/* this css does not work drop-down inside text */
+.my-drop-down-option:hover{
+   padding: 5px;
+   font-family: 'Raleway', sans-serif;
+   background-color: red;
+}
+
+/* CSS */
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 4px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 4px 12px;
+  margin-right: 8px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #F3F4F6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+.button-4:before {
+  display: none;
+}
+.button-4:-webkit-details-marker {
+  display: none;
+}
+
+.start-btn{
+   background-color: #FFA07A;
+   color: white;
+}
+.start-btn:hover{
+   background-color: #FFA07A;
+   opacity: 0.8;
+   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+   transition: none 0s;
+}
+
+/* this grid desing */
+.grid{
+   display: flex;
+   justify-content: center;
+   margin: auto auto;
 }
 
 .ROW{
@@ -25,29 +106,29 @@ body {
 }
 
 .square{
-   border: 1px solid rgb(226, 226, 226);
-   width: 36px;
-   height: 36px;
+   outline: 1px solid #afd8f8;
+   width: 30px;
+   height: 30px;
    background-color: rgb(255, 255, 255);
  }
 
  .START_NODE{
-   border: 1px solid rgb(226, 226, 226);
+   outline: 1px solid #afd8f8;
    background-image: url(../icons/pin.png);
    background-repeat: no-repeat;
-   background-size: 36px;
+   background-size: 30px;
  }
  .END_NODE{
-   border: 1px solid rgb(226, 226, 226);
+   outline: 1px solid #afd8f8;
    background-image: url(../icons/goal.png);
    background-repeat: no-repeat;
-   background-size: 36px;
+   background-size: 30px;
  }
 
  .obtacle{
-   border: 1px solid #2C3E50;
+   outline: 1px solid #2C3E50;
    background-color: #2C3E50;
-   animation: wallAnimation 750ms ease-in;
+   animation: wallAnimation 250ms ease-in;
 }
 /* -------- animation ------ */
 
@@ -56,7 +137,7 @@ body {
       transform: scale(1);
    }
    50%{
-      transform: translate(1.35);
+      transform: scale(1.15);
    }
    100%{
       transform: scale(1);
@@ -64,9 +145,9 @@ body {
 }
 
 .node-visited{
-   width: 36px;
-   height: 36px;
-   border: 1px solid rgb(107, 218, 233);
+   width: 30px;
+   height: 30px;
+   outline: 1px solid rgb(107, 218, 233);
    animation-name: visitedAnimation;
    animation-duration: 1.5s;
    animation-iteration-count: 1;
@@ -95,9 +176,9 @@ body {
 }
 
 .shortestPath{
-   width: 36px;
-   height: 36px;
-   border: 1px solid #FFC300;
+   width: 30px;
+   height: 30px;
+   outline: 1px solid #FFC300;
    animation-name: shortestPathAnimation;
    animation-duration: 500ms;
    animation-iteration-count: 1;

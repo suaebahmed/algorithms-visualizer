@@ -1,4 +1,7 @@
 
+.spiral-continer{
+    margin: 15px 100px;
+}
 .primeGridContainer{
     margin: 30px 0;
     display: flex;
