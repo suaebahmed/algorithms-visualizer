@@ -1,6 +1,6 @@
 
 # Algorithm Visualizer
-A react-based visualization of a pathfinder, built without any UI library. You can view live [here]().
+A react-based algorithms visualizer, built without any UI library. You can view live [here](https://suaebahmed.github.io/Algorithms-Visualizer/).
 
 ## Concepts
 
@@ -12,9 +12,9 @@ Each grid cell represents a node in a implicit graph.
 - [x] Search algorithms
   - [x] Depth-First Search
   - [x] Breadth-First Search
-  - [x] Dijkstra Algo
   - [x] A\* Search
-
+  - [x] Dijkstra
+  
 - [x] Pattern generation algorithms
   - [x] Basic random
   - [x] Randomized DFS
