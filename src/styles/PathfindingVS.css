@@ -93,6 +93,20 @@
    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
    transition: none 0s;
 }
+.start-maze-btn{
+   background-color: #3498db;
+   color: white;
+}
+.start-maze-btn:hover{
+   background-color: #2980b9;
+}
+.curr-speed-btn{
+   background-color: #afd8f8;
+}
+.curr-speed-btn:hover{
+   background-color: #a4c7e2;
+}
+
 
 /* this grid desing */
 .grid{

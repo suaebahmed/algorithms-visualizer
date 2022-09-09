@@ -28,6 +28,7 @@ function App(){
     const [isMousePress,setIsMousePress] = useState(false);
     const [mazeID,setMazeID] = useState(0);
     const [pathID,setPathID] = useState(0);
+    const [animateType,setAnimateTimeType] = useState(2);
 
 
     useEffect(()=>{
@@ -186,6 +187,7 @@ function App(){
         if(type === 1) animateTime = 8;
         else if(type === 2) animateTime = 35;
         else animateTime = 80;
+        setAnimateTimeType(type);
     }
 
     const setStartEndNode = (id, r, c) =>{
@@ -238,7 +240,7 @@ function App(){
                             <option disabled value="4">Kruskal's algorithm</option>
                             <option disabled value="5">Prim's algorithm</option>
                         </select>
-                        <button className='button-4' onClick={mazeHandle}>Create Maze</button>
+                        <button className='button-4 start-maze-btn' onClick={mazeHandle}>Create Maze</button>
                         <button className='button-4' onClick={gridInitialize}>Clear walls</button>
                         <button className='button-4' onClick={clearPathHandle}>Clear path</button>
                         <button className='button-4' onClick={()=>{
@@ -255,9 +257,9 @@ function App(){
                 </div>
 
                 <div className='path-bottom-btns'>
-                    <button className='button-4' onClick={()=>animationTimeHandle(1)}>Fast</button>
-                    <button className='button-4' onClick={()=>animationTimeHandle(2)}>Average</button>
-                    <button className='button-4' onClick={()=>animationTimeHandle(3)}>Slow</button>
+                    <button className={`button-4 ${animateType===1 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(1)}>Fast</button>
+                    <button className={`button-4 ${animateType===2 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(2)}>Average</button>
+                    <button className={`button-4 ${animateType===3 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(3)}>Slow</button>
                 </div>
             </div>
             <div className='grid'>
