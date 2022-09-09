@@ -1,6 +1,6 @@
 
 # Algorithm Visualizer
-A react-based algorithms visualizer, built without any UI library. You can view live [here](https://suaebahmed.github.io/Algorithms-Visualizer/).
+A react-based algorithms visualizer, built without any UI library. You can view live [here](https://suaebahmed.github.io/algorithms-visualizer/).
 
 ## Concepts
 
