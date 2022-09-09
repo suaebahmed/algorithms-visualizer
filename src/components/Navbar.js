@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 
-function Navbar({Txt}) {
+function Navbar({msg}) {
   return (
     <nav className="navbar">
       <div>
@@ -10,8 +10,8 @@ function Navbar({Txt}) {
           Home
         </Link>
       </div>
-      <div>
-        {Txt}
+      <div className="nav-title">
+        <div className="nav-title-hd">{msg}</div>
       </div>
     </nav>
   )

@@ -7,6 +7,7 @@ import DFS from '../algorithm/path/dfs';
 import Dijkstra from '../algorithm/path/dijkstra';
 import Randomized_dfs from '../algorithm/maze/randomized_dfs';
 import recursiveDivision from '../algorithm/maze/recursive_division';
+import Navbar from '../components/Navbar';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -214,6 +215,8 @@ function App(){
 
     return (
         <div className='container'>
+            <Navbar msg={'Path Finder Visualizer'}></Navbar>
+
             <div className='header'>
                 <div>
                     <button onClick={pathFinding}>Find the shortest path</button>

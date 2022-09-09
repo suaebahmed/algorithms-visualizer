@@ -1,5 +1,18 @@
+
 .container{
     height: 100%;
     width: 100%;
     background-color: rgb(255, 255, 255);
+}
+
+.cards-container{
+    margin: 0px 50px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 50px 50px;
+    justify-content: center;
+}
+
+.no_underline{
+    text-decoration: none;
 }

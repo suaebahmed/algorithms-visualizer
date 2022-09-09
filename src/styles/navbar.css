@@ -1,15 +1,24 @@
 
 .navbar{
-    background-color: gray;
-    padding: 10px 50px;
+    background-color: #4B0150;
+    padding: 15px 50px;
+    display: flex;
 }
+
+.nav-title{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.nav-title-hd{
+    color: white;
+}
+
 .navbarlink{
     padding: 5px;
     cursor: pointer;
     color: white;
     text-decoration: none;
-    font-size: larger;
-    font-weight: 600;
     border: 1px solid transparent;
 }
 .navbarlink:hover{

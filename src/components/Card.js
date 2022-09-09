@@ -1,11 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
+import '../styles/card.css';
 
-function Card() {
+function Card(props) {
+  const [imgURL,text] = props.array;
   return (
-    <div>
+    <div className='card-body'>
       <div>
-        <Link to="/path-finding">Path Finding</Link>
+        <img className='card-img' src={imgURL} alt=""></img>
+      </div>
+      <div className='card-bottom'>
+        <p>{text}</p>
       </div>
     </div>
   )
