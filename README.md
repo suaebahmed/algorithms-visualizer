@@ -1,17 +1,46 @@
 
-# Agenda for path-finding algorithm
-    step 1. implement all others maze algorithm
-    step 2. improve style with CSS
+# Algorithm Visualizer
+A react-based visualization of a pathfinder, built without any UI library. You can view live [here]().
 
-# Agenda for sorting algorithms
-    step 1. add more style
+## Concepts
 
-# video 1 => A-star algorithm visualization
-https://user-images.githubusercontent.com/52806080/162614058-a5143de7-6c76-40b0-963e-0d78d6e5e982.mp4
+Each grid cell represents a node in a implicit graph.
+    - Each node has 4 adjacent node
+    - The distance between adjecent node is 1 unit
 
-# video 2 => bubble sort algorithm visualization
-https://user-images.githubusercontent.com/52806080/162614101-77d2b9f9-25b5-48ee-ad61-f7e25bef9c89.mp4
+## Features
+- [x] Search algorithms
+  - [x] Depth-First Search
+  - [x] Breadth-First Search
+  - [x] Dijkstra Algo
+  - [x] A\* Search
 
+- [x] Pattern generation algorithms
+  - [x] Basic random
+  - [x] Randomized DFS
+  - [x] Recursive division
+  - [ ] Kruskal's Algorithm
+  - [ ] Prim's Algorithm
+
+- [x] Draw your own wall nodes with mouse
+- [x] Drag and drop the source and target nodes
+- [x] Control animation speed
+
+## Installation
+
+```bash
+# To install all dependencies of the project.
+> yarn install
+> npm install
+
+# To run the app on http://localhost:3000.
+> yarn start
+> npm run start
+
+# To build the bundled app for production on the `build` folder.
+> yarn build
+> npm run build
+```
 
 ## what I revision/learn during doing this project
     1. implementing algorithm to visualize
@@ -23,5 +52,3 @@ https://user-images.githubusercontent.com/52806080/162614101-77d2b9f9-25b5-48ee-
     7. For only use React state/useState to re-render dom-elememt. 
     otherwise use global variable to access from all corner
     8. writing re-useable code 
-
-how to push code

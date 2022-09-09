@@ -1,5 +1,6 @@
 {
-  "name": "myapp",
+  "name": "Algorithms-Visualizer",
+  "homepage": "https://suaebahmed.github.io/Algorithms-Visualizer",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
