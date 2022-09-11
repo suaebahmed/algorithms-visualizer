@@ -38,7 +38,7 @@ function dfs(r,c,N,M){
         else s.pop();
     }
 } 
-
+// pr => parent-row
 function goForward(pr,pc,r,c){
     if(r===pr){
         if(c < pc) for(let i=pc-1; i>=c; i--)visitedNodes.push({r,c:i});

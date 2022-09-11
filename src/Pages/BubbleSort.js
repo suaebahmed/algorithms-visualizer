@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Bubble.css';
 import Navbar from '../components/Navbar';
 
-var BARS = 50;
+var BARS = 100;
 const barWidth = 20;
 var SPEED = 500;
 

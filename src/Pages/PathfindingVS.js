@@ -223,7 +223,7 @@ function App(){
             <div className='path-header'>
                 <div className='path-top-btns'>
                     <div>
-                        <button className='button-4 start-btn' onClick={pathFinding}>Find the shortest path</button>
+                        <button className='button-4 start-btn' onClick={pathFinding}>Find the possible path</button>
                         <select className='my-drop-down' value={pathID} onChange={(e)=>{setPathID(parseInt(e.target.value))}}>
                             <option value="0">A-Star Search</option>
                             <option value="1">Breadth-First Search</option>
@@ -237,8 +237,8 @@ function App(){
                             <option value="1">Random basic maze</option>
                             <option value="2">Randomized_dfs</option>
                             <option value="3">Recursive division</option>
-                            <option disabled value="4">Kruskal's algorithm</option>
-                            <option disabled value="5">Prim's algorithm</option>
+                            {/* <option value="4">Kruskal's algorithm</option>
+                            <option value="5">Prim's algorithm</option> */}
                         </select>
                         <button className='button-4 start-maze-btn' onClick={mazeHandle}>Create Maze</button>
                         <button className='button-4' onClick={gridInitialize}>Clear walls</button>
