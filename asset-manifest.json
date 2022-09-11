@@ -1,7 +1,7 @@
 {
-  "main.css": "/algorithms-visualizer/static/css/main.61767e7d.chunk.css",
-  "main.js": "/algorithms-visualizer/static/js/main.bb5888c3.chunk.js",
-  "main.js.map": "/algorithms-visualizer/static/js/main.bb5888c3.chunk.js.map",
+  "main.css": "/algorithms-visualizer/static/css/main.27fc5d36.chunk.css",
+  "main.js": "/algorithms-visualizer/static/js/main.10fd1757.chunk.js",
+  "main.js.map": "/algorithms-visualizer/static/js/main.10fd1757.chunk.js.map",
   "static/js/1.c31d7b36.chunk.js": "/algorithms-visualizer/static/js/1.c31d7b36.chunk.js",
   "static/js/1.c31d7b36.chunk.js.map": "/algorithms-visualizer/static/js/1.c31d7b36.chunk.js.map",
   "runtime~main.js": "/algorithms-visualizer/static/js/runtime~main.4d2f082b.js",
@@ -10,8 +10,8 @@
   "static/media/sort-algo.png": "/algorithms-visualizer/static/media/sort-algo.b32220b6.png",
   "static/media/prime-spiral.png": "/algorithms-visualizer/static/media/prime-spiral.aa4f6636.png",
   "static/media/PathfindingVS.css": "/algorithms-visualizer/static/media/goal.4cfe82ce.png",
-  "static/css/main.61767e7d.chunk.css.map": "/algorithms-visualizer/static/css/main.61767e7d.chunk.css.map",
+  "static/css/main.27fc5d36.chunk.css.map": "/algorithms-visualizer/static/css/main.27fc5d36.chunk.css.map",
   "index.html": "/algorithms-visualizer/index.html",
-  "precache-manifest.d224ed6a4440fb466456765160b30bef.js": "/algorithms-visualizer/precache-manifest.d224ed6a4440fb466456765160b30bef.js",
+  "precache-manifest.cf2090d23ec5dd64eb7c50461189aff7.js": "/algorithms-visualizer/precache-manifest.cf2090d23ec5dd64eb7c50461189aff7.js",
   "service-worker.js": "/algorithms-visualizer/service-worker.js"
 }
