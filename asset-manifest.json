@@ -1,7 +1,7 @@
 {
   "main.css": "/algorithms-visualizer/static/css/main.27fc5d36.chunk.css",
-  "main.js": "/algorithms-visualizer/static/js/main.9d00edfc.chunk.js",
-  "main.js.map": "/algorithms-visualizer/static/js/main.9d00edfc.chunk.js.map",
+  "main.js": "/algorithms-visualizer/static/js/main.92a7c686.chunk.js",
+  "main.js.map": "/algorithms-visualizer/static/js/main.92a7c686.chunk.js.map",
   "static/js/1.91683bbe.chunk.js": "/algorithms-visualizer/static/js/1.91683bbe.chunk.js",
   "static/js/1.91683bbe.chunk.js.map": "/algorithms-visualizer/static/js/1.91683bbe.chunk.js.map",
   "runtime~main.js": "/algorithms-visualizer/static/js/runtime~main.4d2f082b.js",
@@ -9,9 +9,9 @@
   "static/media/path-finding.png": "/algorithms-visualizer/static/media/path-finding.22453ad4.png",
   "static/media/sort-algo.png": "/algorithms-visualizer/static/media/sort-algo.b32220b6.png",
   "static/media/prime-spiral.png": "/algorithms-visualizer/static/media/prime-spiral.aa4f6636.png",
-  "static/media/PathfindingVS.css": "/algorithms-visualizer/static/media/pin.050aff51.png",
+  "static/media/PathfindingVS.css": "/algorithms-visualizer/static/media/goal.4cfe82ce.png",
   "static/css/main.27fc5d36.chunk.css.map": "/algorithms-visualizer/static/css/main.27fc5d36.chunk.css.map",
   "index.html": "/algorithms-visualizer/index.html",
-  "precache-manifest.4bff670d21727fbeddb088571b827a49.js": "/algorithms-visualizer/precache-manifest.4bff670d21727fbeddb088571b827a49.js",
+  "precache-manifest.9ef707aea65d576273ce33013e17cecb.js": "/algorithms-visualizer/precache-manifest.9ef707aea65d576273ce33013e17cecb.js",
   "service-worker.js": "/algorithms-visualizer/service-worker.js"
 }
