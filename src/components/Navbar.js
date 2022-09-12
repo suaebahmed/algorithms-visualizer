@@ -5,7 +5,7 @@ function Navbar({msg}) {
   return (
     <nav className="navbar">
       <div>
-        <a className='navbarlink' href='/'>
+        <a className='navbarlink' href='/algorithms-visualizer'>
           Home
         </a>
       </div>
