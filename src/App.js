@@ -1,10 +1,8 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Routes,
   Route
 } from "react-router-dom";
-
 import './App.css'
 import PathfindingVS from './Pages/PathfindingVS'
 import Home from './Pages/Home';
@@ -15,14 +13,12 @@ function App() {
 
   return (
       <div className="App">
-        <Router>
           <Routes>
-            <Route path="https://suaebahmed.github.io/algorithms-visualizer" element={<Home/>} />
-            <Route path="https://suaebahmed.github.io/algorithms-visualizer/path-finding" element={<PathfindingVS/>} />
-            <Route path="https://suaebahmed.github.io/algorithms-visualizer/sorting" element={<SortingApp/>} />
-            <Route path="https://suaebahmed.github.io/algorithms-visualizer/spiral-prime" element={<PrimeApp/>} />
+            <Route exact path="/" element={<Home/>} />
+            <Route exact path="/path-finding" element={<PathfindingVS/>} />
+            <Route exact path="/sorting" element={<SortingApp/>} />
+            <Route exact path="/spiral-prime" element={<PrimeApp/>} />
           </Routes>
-        </Router>
     </div>
   );
 }
