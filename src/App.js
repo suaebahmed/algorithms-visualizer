@@ -17,10 +17,10 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/path-finding" element={<PathfindingVS/>} />
-            <Route path="/sorting" element={<SortingApp/>} />
-            <Route path="/spiral-prime" element={<PrimeApp/>} />
+            <Route path="https://suaebahmed.github.io/algorithms-visualizer" element={<Home/>} />
+            <Route path="https://suaebahmed.github.io/algorithms-visualizer/path-finding" element={<PathfindingVS/>} />
+            <Route path="https://suaebahmed.github.io/algorithms-visualizer/sorting" element={<SortingApp/>} />
+            <Route path="https://suaebahmed.github.io/algorithms-visualizer/spiral-prime" element={<PrimeApp/>} />
           </Routes>
         </Router>
     </div>
