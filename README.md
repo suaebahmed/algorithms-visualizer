@@ -3,9 +3,9 @@
 A react-based algorithms visualizer, built without any UI library. You can view live [here](https://suaebahmed.github.io/algorithms-visualizer/).
 
 # *** This project has 3 sub-project ***
-  - [Path Finding](https://github.com/suaebahmed/algorithms-visualizer#1.-Path-Finding)
-  - [Sorting](https://github.com/suaebahmed/algorithms-visualizer#2.-Sorting)
-  - [Spiral Prime](https://github.com/suaebahmed/algorithms-visualizer#3.-Spiral-Prime)
+  - [Path Finding](https://github.com/suaebahmed/algorithms-visualizer#1-Path-Finding)
+  - [Sorting](https://github.com/suaebahmed/algorithms-visualizer#2-Sorting)
+  - [Spiral Prime](https://github.com/suaebahmed/algorithms-visualizer#3-Spiral-Prime)
 
 # 1. Path Finding
 
