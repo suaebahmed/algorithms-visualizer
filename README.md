@@ -1,12 +1,18 @@
 
-# Algorithm Visualizer
+# Algorithms Visualizer
 A react-based algorithms visualizer, built without any UI library. You can view live [here](https://suaebahmed.github.io/algorithms-visualizer/).
 
-## Concepts
+# *** This project has 3 sub-project ***
+  - [Path Finding](https://github.com/suaebahmed/algorithms-visualizer#1.-Path-Finding)
+  - [Sorting](https://github.com/suaebahmed/algorithms-visualizer#2.-Sorting)
+  - [Spiral Prime](https://github.com/suaebahmed/algorithms-visualizer#3.-Spiral-Prime)
 
+# 1. Path Finding
+
+## Concepts
 Each grid cell represents a node in a implicit graph.
-    - Each node has 4 adjacent node
-    - The distance between adjecent node is 1 unit
+  - Each node has 4 adjacent node
+  - The distance between adjecent node is 1 unit
 
 ## Features
 - [x] Search algorithms
@@ -26,6 +32,34 @@ Each grid cell represents a node in a implicit graph.
 - [x] Drag and drop the source and target nodes
 - [x] Control animation speed
 
+# 2. Sorting
+
+## Concepts
+Each bar represent a positive integer value and we compare two value to sort in ascending order 
+
+## Features
+- [x] Sorting Algorithms
+  - [x] Bubble sort
+  - [x] Selection sort
+  - [x] Insertion sort
+  - [x] Quick sort
+  - [x] Merge sort
+
+- [x] Control size of bars
+- [x] Generate new random bars
+- [x] Control animation speed
+
+# 3. Spiral Prime
+
+## Concepts
+Each grid represent a positive interger number 
+  - we check the number is prime or not
+  - if the number is prime then mark as a circle
+
+## Features
+ - [x] Count the total of prime numbers
+ - [x] Creating Spiral from the center of grid
+
 ## Installation
 
 ```bash
@@ -42,7 +76,7 @@ Each grid cell represents a node in a implicit graph.
 > npm run build
 ```
 
-## what I revision/learn during doing this project
+## What I revision/learn during doing this project
     1. implementing algorithm to visualize
     2. initialize each cell to object/class
     3. JS Promise to run animation asyncronusly
