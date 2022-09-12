@@ -1,17 +1,17 @@
 {
   "main.css": "/algorithms-visualizer/static/css/main.27fc5d36.chunk.css",
-  "main.js": "/algorithms-visualizer/static/js/main.ff444b4d.chunk.js",
-  "main.js.map": "/algorithms-visualizer/static/js/main.ff444b4d.chunk.js.map",
-  "static/js/1.c31d7b36.chunk.js": "/algorithms-visualizer/static/js/1.c31d7b36.chunk.js",
-  "static/js/1.c31d7b36.chunk.js.map": "/algorithms-visualizer/static/js/1.c31d7b36.chunk.js.map",
+  "main.js": "/algorithms-visualizer/static/js/main.9d00edfc.chunk.js",
+  "main.js.map": "/algorithms-visualizer/static/js/main.9d00edfc.chunk.js.map",
+  "static/js/1.91683bbe.chunk.js": "/algorithms-visualizer/static/js/1.91683bbe.chunk.js",
+  "static/js/1.91683bbe.chunk.js.map": "/algorithms-visualizer/static/js/1.91683bbe.chunk.js.map",
   "runtime~main.js": "/algorithms-visualizer/static/js/runtime~main.4d2f082b.js",
   "runtime~main.js.map": "/algorithms-visualizer/static/js/runtime~main.4d2f082b.js.map",
   "static/media/path-finding.png": "/algorithms-visualizer/static/media/path-finding.22453ad4.png",
   "static/media/sort-algo.png": "/algorithms-visualizer/static/media/sort-algo.b32220b6.png",
   "static/media/prime-spiral.png": "/algorithms-visualizer/static/media/prime-spiral.aa4f6636.png",
-  "static/media/PathfindingVS.css": "/algorithms-visualizer/static/media/goal.4cfe82ce.png",
+  "static/media/PathfindingVS.css": "/algorithms-visualizer/static/media/pin.050aff51.png",
   "static/css/main.27fc5d36.chunk.css.map": "/algorithms-visualizer/static/css/main.27fc5d36.chunk.css.map",
   "index.html": "/algorithms-visualizer/index.html",
-  "precache-manifest.375fa761ca46f92c2dd841c2313f1489.js": "/algorithms-visualizer/precache-manifest.375fa761ca46f92c2dd841c2313f1489.js",
+  "precache-manifest.4bff670d21727fbeddb088571b827a49.js": "/algorithms-visualizer/precache-manifest.4bff670d21727fbeddb088571b827a49.js",
   "service-worker.js": "/algorithms-visualizer/service-worker.js"
 }
