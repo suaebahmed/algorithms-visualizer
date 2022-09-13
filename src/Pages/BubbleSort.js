@@ -263,7 +263,7 @@ function SortingApp(){
             <Navbar msg='Sorting Algorithms'></Navbar>
             <div className='sorting-continer'>
                 <div className='Btn-Wrap'>
-                    <div>
+                    <div style={{"display":"flex"}}>
                         <button className='button-4 start-btn' onClick={startSortingHandle}>Start Sorting</button>
                         <button className='button-4' onClick={generateNewArray}>Generate New</button>
                         <select className='my-drop-down' value={sortID} onChange={(e)=>{setSortID(parseInt(e.target.value));generateNewArray()}} id="num" name="num">

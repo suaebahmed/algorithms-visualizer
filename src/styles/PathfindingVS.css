@@ -1,16 +1,19 @@
 .path-container{
-   margin : 5px 50px;
+   margin: 0px 25px;
 }
 
 .path-header{
-   height: 80px;
-   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   padding-bottom: 10px;
 }
+
 .path-top-btns{
    display: flex;
    justify-content: space-between;
 }
-.path-bottom-btns{
+
+path-speed-btns{
    margin-top: 5px;
 }
 
@@ -19,14 +22,15 @@
    padding: 5.5px;
    margin-right: 8px;
 }
-/* this css does not work drop-down inside text */
+
+/* this css does not work drop-down inside text 
 .my-drop-down-option:hover{
    padding: 5px;
    font-family: 'Raleway', sans-serif;
    background-color: red;
 }
+ ------------- button CSS ---------  */
 
-/* CSS */
 .button-4 {
   appearance: none;
   background-color: #FAFBFC;
@@ -82,37 +86,37 @@
 .button-4:-webkit-details-marker {
   display: none;
 }
-
+/*  */
 .start-btn{
-   background-color: #FFA07A;
+   background-color: #027ad6;
    color: white;
 }
 .start-btn:hover{
-   background-color: #FFA07A;
+   background-color: #027ad6;
    opacity: 0.8;
    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
    transition: none 0s;
 }
 .start-maze-btn{
-   background-color: #3498db;
+   background-color: #000;
    color: white;
 }
 .start-maze-btn:hover{
-   background-color: #2980b9;
+   background-color: #000;
 }
 .curr-speed-btn{
-   background-color: #afd8f8;
+   background-color: #ae75f8;
+   color: white;
 }
 .curr-speed-btn:hover{
-   background-color: #a4c7e2;
+   background-color: #ae75f8;
 }
 
 
-/* this grid desing */
+/* this grid designing */
 .grid{
    display: flex;
-   justify-content: center;
-   margin: auto auto;
+   justify-content: stretch;
 }
 
 .ROW{

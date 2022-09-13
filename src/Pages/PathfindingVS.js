@@ -221,47 +221,56 @@ function App(){
         <div className='path-container'>
 
             <div className='path-header'>
-                <div className='path-top-btns'>
                     <div>
-                        <button className='button-4 start-btn' onClick={pathFinding}>Find the possible path</button>
-                        <select className='my-drop-down' value={pathID} onChange={(e)=>{setPathID(parseInt(e.target.value))}}>
-                            <option value="0">A-Star Search</option>
-                            <option value="1">Breadth-First Search</option>
-                            <option value="2">Depth-First Search</option>
-                            <option value="3">Dijkstra</option>
-                        </select>
+                        <div style={{"display":"flex","margin":"6px auto"}}>
+                            <div>
+                                <button className='button-4 start-btn' onClick={pathFinding}>Find the possible path</button>
+                            </div>
+                            <div>
+                                <select className='my-drop-down' value={pathID} onChange={(e)=>{setPathID(parseInt(e.target.value))}}>
+                                    <option value="0">A-Star Search</option>
+                                    <option value="1">Breadth-First Search</option>
+                                    <option value="2">Depth-First Search</option>
+                                    <option value="3">Dijkstra</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className='path-speed-btns'>
+                            <button className={`button-4 ${animateType===1 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(1)}>Fast</button>
+                            <button className={`button-4 ${animateType===2 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(2)}>Average</button>
+                            <button className={`button-4 ${animateType===3 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(3)}>Slow</button>
+                        </div>
                     </div>
-                    <div>
-                        <select className='my-drop-down' value={mazeID} onChange={(e)=>{setMazeID(parseInt(e.target.value))}}>
-                            <option className='my-drop-down-option' disabled value="0">Select Maze</option>
-                            <option value="1">Random basic maze</option>
-                            <option value="2">Randomized_dfs</option>
-                            <option value="3">Recursive division</option>
-                            {/* <option value="4">Kruskal's algorithm</option>
-                            <option value="5">Prim's algorithm</option> */}
-                        </select>
-                        <button className='button-4 start-maze-btn' onClick={mazeHandle}>Create Maze</button>
-                        <button className='button-4' onClick={gridInitialize}>Clear walls</button>
-                        <button className='button-4' onClick={clearPathHandle}>Clear path</button>
-                        <button className='button-4' onClick={()=>{
-                            START_NODE_ROW = InitSR;
-                            START_NODE_ROW = InitSC;
-                            END_NODE_ROW = InitER;
-                            END_NODE_COL = InitEC;
-                            clearPathHandle();
-                            gridInitialize();
-                        }}>
-                            Reset board
-                        </button>
-                    </div>
-                </div>
 
-                <div className='path-bottom-btns'>
-                    <button className={`button-4 ${animateType===1 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(1)}>Fast</button>
-                    <button className={`button-4 ${animateType===2 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(2)}>Average</button>
-                    <button className={`button-4 ${animateType===3 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(3)}>Slow</button>
-                </div>
+                    <div>
+                        <div style={{"display":"flex","margin":"6px auto"}}>
+                            <select className='my-drop-down' value={mazeID} onChange={(e)=>{setMazeID(parseInt(e.target.value))}}>
+                                <option className='my-drop-down-option' disabled value="0">Select Maze</option>
+                                <option value="1">Random basic maze</option>
+                                <option value="2">Randomized_dfs</option>
+                                <option value="3">Recursive division</option>
+                                {/* <option value="4">Kruskal's algorithm</option>
+                                <option value="5">Prim's algorithm</option> */}
+                            </select>
+                            <button className='button-4 start-maze-btn' onClick={mazeHandle}>Create Maze</button>
+                            <button className='button-4' onClick={gridInitialize}>Clear walls</button>
+                        </div>
+                        <div style={{"display":"flex"}}>
+                            <button className='button-4' onClick={clearPathHandle}>Clear path</button>
+                            <button className='button-4' onClick={()=>{
+                                START_NODE_ROW = InitSR;
+                                START_NODE_ROW = InitSC;
+                                END_NODE_ROW = InitER;
+                                END_NODE_COL = InitEC;
+                                clearPathHandle();
+                                gridInitialize();
+                            }}>
+                                Reset board
+                            </button>
+                        </div>
+                    </div>
             </div>
+            
             <div className='grid'>
                 <div onMouseLeave={()=>{setIsMousePress(false)}}>
                 {/* JSX Node Of Grid (2D Array) */}
