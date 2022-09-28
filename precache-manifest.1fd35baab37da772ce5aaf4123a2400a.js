@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "1e26d939075af756bf16",
-    "url": "/algorithms-visualizer/static/css/main.3691a70d.chunk.css"
+    "revision": "ec59db7df1aa2ed5bbe9",
+    "url": "/algorithms-visualizer/static/css/main.6ec65ce2.chunk.css"
   },
   {
-    "revision": "1e26d939075af756bf16",
-    "url": "/algorithms-visualizer/static/js/main.1e26d939.chunk.js"
+    "revision": "ec59db7df1aa2ed5bbe9",
+    "url": "/algorithms-visualizer/static/js/main.ec59db7d.chunk.js"
   },
   {
-    "revision": "91683bbe53384012e418",
-    "url": "/algorithms-visualizer/static/js/1.91683bbe.chunk.js"
+    "revision": "5911ecf820c097877dd0",
+    "url": "/algorithms-visualizer/static/js/1.5911ecf8.chunk.js"
   },
   {
     "revision": "4d2f082bf78c1ce2d9a9",
@@ -28,6 +28,10 @@ self.__precacheManifest = [
     "url": "/algorithms-visualizer/static/media/prime-spiral.aa4f6636.png"
   },
   {
+    "revision": "1a72c07b5818d311a6ef58d079f06b4b",
+    "url": "/algorithms-visualizer/static/media/nqueens.1a72c07b.png"
+  },
+  {
     "revision": "050aff5122a19577248c7f8721a7242b",
     "url": "/algorithms-visualizer/static/media/pin.050aff51.png"
   },
@@ -36,7 +40,11 @@ self.__precacheManifest = [
     "url": "/algorithms-visualizer/static/media/goal.4cfe82ce.png"
   },
   {
-    "revision": "042064bac4d9bd42d6b21cbd41062ab2",
+    "revision": "20d76d4edbc9d4859976534d5475ee74",
+    "url": "/algorithms-visualizer/static/media/queen.20d76d4e.png"
+  },
+  {
+    "revision": "fcec58ffce000a4ca8ecabe634dead79",
     "url": "/algorithms-visualizer/index.html"
   }
 ];
