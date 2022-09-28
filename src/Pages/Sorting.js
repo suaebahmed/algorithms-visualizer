@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/Bubble.css';
+import '../styles/sorting.css';
 import Navbar from '../components/Navbar';
 
 var BARS = 100;

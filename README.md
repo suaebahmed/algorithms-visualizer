@@ -64,17 +64,22 @@ Each grid represent a positive interger number
 
 ```bash
 # To install all dependencies of the project.
-> yarn install
 > npm install
 
 # To run the app on http://localhost:3000.
-> yarn start
 > npm run start
 
 # To build the bundled app for production on the `build` folder.
-> yarn build
 > npm run build
+> npm run deploy
 ```
+### Acknowledge
+
+I took inspirations from the following sources for some of the segments.
+
+- `Pathfinder` : [This Projects That Got Me Into Google](https://youtu.be/n4t_-NjY_Sg)
+- `Sorting` : [Sorting Visualizer Tutorial (software engineering project)](https://youtu.be/pFXYym4Wbkc)
+- `Spiral of Primes` : [Coding a Spiral of Primes](https://youtu.be/a35KWEjRvc0)
 
 ## What I revision/learn during doing this project
     1. implementing algorithm to visualize

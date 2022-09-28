@@ -6,8 +6,9 @@ import {
 import './App.css'
 import PathfindingVS from './Pages/PathfindingVS'
 import Home from './Pages/Home';
-import SortingApp from './Pages/BubbleSort';
+import SortingApp from './Pages/Sorting';
 import PrimeApp from './Pages/PrimeSpiral';
+import NQueen from './Pages/N_Queen';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/path-finding" element={<PathfindingVS/>} />
             <Route exact path="/sorting" element={<SortingApp/>} />
             <Route exact path="/spiral-prime" element={<PrimeApp/>} />
+            <Route exact path="/nqueens" element={<NQueen/>} />
           </Routes>
     </div>
   );

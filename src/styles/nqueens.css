@@ -1,0 +1,55 @@
+.queen_contianer{
+    height: 90vh;
+    width: 100vw;
+}
+.queen_header{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+.queen_range{
+    display: flex;
+    justify-content: space-between;
+}
+.queen_btn{
+    font-size: medium;
+    margin-bottom: 10px;
+}
+.queenlabel{
+    color: rgb(79, 79, 82);
+    padding-right: 5px;
+    padding-top: 2px;
+}
+
+/* grid */
+.queen-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.queen-cell{
+    width: 70px;
+    height: 70px;
+    outline: 1px solid rgb(180, 179, 179);
+}
+.queen-img{
+    background-image: url(../icons/queen.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
+.gray-cell{
+    background-color: gray;
+}
+.green-cell{
+    background-color: rgb(118, 218, 118);
+}
+.yellow-cell{
+    background-color: rgb(228, 228, 49);
+}
+.red-cell{
+    background-color: rgb(216, 59, 59);
+}
+.blue-cell{
+    background-color: rgb(131, 186, 236);
+}
