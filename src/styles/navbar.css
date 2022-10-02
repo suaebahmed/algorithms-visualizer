@@ -1,6 +1,7 @@
 
 .navbar{
-    background-color: #4B0150;
+    /* background-color: #4B0150; */
+    background-color: rgba(10, 25, 47, 1);
     padding: 15px 50px;
     display: flex;
 }
@@ -22,6 +23,6 @@
     border: 1px solid transparent;
 }
 .navbarlink:hover{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     border-radius: 5px;
 }

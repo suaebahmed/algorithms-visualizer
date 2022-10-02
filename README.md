@@ -6,6 +6,7 @@ A react-based algorithms visualizer, built without any UI library. You can view 
   - [Path Finding](https://github.com/suaebahmed/algorithms-visualizer#1-Path-Finding)
   - [Sorting](https://github.com/suaebahmed/algorithms-visualizer#2-Sorting)
   - [Spiral Prime](https://github.com/suaebahmed/algorithms-visualizer#3-Spiral-Prime)
+  - [N Queen Problem]()
 
 # 1. Path Finding
 
@@ -80,6 +81,7 @@ I took inspirations from the following sources for some of the segments.
 - `Pathfinder` : [This Projects That Got Me Into Google](https://youtu.be/n4t_-NjY_Sg)
 - `Sorting` : [Sorting Visualizer Tutorial (software engineering project)](https://youtu.be/pFXYym4Wbkc)
 - `Spiral of Primes` : [Coding a Spiral of Primes](https://youtu.be/a35KWEjRvc0)
+- `N-Queen Problem` : [Algorithm Visualizer](https://github.com/TamimEhsan/AlgorithmVisualizer)
 
 ## What I revision/learn during doing this project
     1. implementing algorithm to visualize

@@ -30,7 +30,7 @@
 .queen-cell{
     width: 70px;
     height: 70px;
-    outline: 1px solid rgb(180, 179, 179);
+    outline: 1px solid #607d8b;
 }
 .queen-img{
     background-image: url(../icons/queen.png);
@@ -42,14 +42,14 @@
     background-color: gray;
 }
 .green-cell{
-    background-color: rgb(118, 218, 118);
+    background-color: rgb(70, 216, 70);
 }
 .yellow-cell{
-    background-color: rgb(228, 228, 49);
+    background-color: rgb(243, 243, 75);
 }
 .red-cell{
-    background-color: rgb(216, 59, 59);
+    background-color: rgb(250, 114, 114);
 }
 .blue-cell{
-    background-color: rgb(131, 186, 236);
+    background-color: rgb(148, 200, 248);
 }
