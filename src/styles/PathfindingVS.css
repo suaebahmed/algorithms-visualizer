@@ -54,44 +54,17 @@ path-speed-btns{
 }
 
 .button-4:hover {
-  background-color: #F3F4F6;
   text-decoration: none;
   transition-duration: 0.1s;
+  opacity: 0.8;
 }
 
-.button-4:disabled {
-  background-color: #FAFBFC;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #959DA5;
-  cursor: default;
-}
-
-.button-4:active {
-  background-color: #EDEFF2;
-  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-  transition: none 0s;
-}
-
-.button-4:focus {
-  outline: 1px transparent;
-}
-.button-4:before {
-  display: none;
-}
-.button-4:-webkit-details-marker {
-  display: none;
-}
 /*  */
 .start-btn{
    background-color: #027ad6;
    color: white;
 }
-.start-btn:hover{
-   background-color: #027ad6;
-   opacity: 0.8;
-   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-   transition: none 0s;
-}
+
 .start-maze-btn{
    background-color: #000;
    color: white;

@@ -1,7 +1,15 @@
+
+/* modal backround */
+#Container-blur{
+    position: relative;
+}
+.active{
+    filter: blur(3px);
+}
+
 .sorting-continer{
     margin: 20px 60px;
 }
-
 .Btn-Wrap{
     display: flex;
     align-items: flex-end;

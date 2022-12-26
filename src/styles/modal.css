@@ -1,0 +1,32 @@
+
+#popup{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 700px;
+    padding: 20px 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0,.30);
+    background-color: #fff;
+    z-index: 10;
+}
+/* animation effects */
+.unActive{
+    top: 0% !important; 
+    transition: 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* close button */
+.close{
+    color: #aaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+}
+.close:hover,.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

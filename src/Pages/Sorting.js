@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/sorting.css';
 import Navbar from '../components/Navbar';
+import Modal from '../components/Modal';
 
 var BARS = 100;
 const barWidth = 20;
@@ -26,7 +27,8 @@ function SortingApp(){
     const [sortID,setSortID] = useState(3);
 
     useEffect(()=>{
-       init(); 
+        init(); 
+        popupClickHandle();
     },[])
 
     const init=()=>{
@@ -205,6 +207,11 @@ function SortingApp(){
     // -----------  End Sorting Algorithm  ----------
 
     const startSortingHandle = async () =>{
+        document.getElementsByTagName('button')[0].disabled = true;
+        document.getElementsByTagName('button')[1].disabled = true;
+        document.getElementsByTagName('select')[0].disabled = true;
+        document.getElementsByTagName('select')[1].disabled = true;
+
         var newBars = [];
         switch(sortID){
             case 1:
@@ -226,17 +233,12 @@ function SortingApp(){
                 bubbleSort();
             break;
         }
+        document.getElementsByTagName('button')[0].disabled = false;
+        document.getElementsByTagName('button')[1].disabled = false;
+        document.getElementsByTagName('select')[0].disabled = false;
+        document.getElementsByTagName('select')[1].disabled = false;
     }
 
-    const printAllBar = (
-            bar.map((item,id)=>{
-                return(
-                    <div className='bar' id={'bar-'+id} key={id} 
-                    style={{width:barWidth,height:item}}>
-                    </div>
-                )
-            })
-    )
     const rangeValueHandle = (event) =>{    
         SPEED = parseInt(event.target.max)-parseInt(event.target.value);
         setSpeed(event.target.valueAsNumber);
@@ -257,9 +259,17 @@ function SortingApp(){
         }
         setBar(arr);
     }
-
+    const popupClickHandle = () =>{
+        var blur = document.getElementById("Container-blur");
+        blur.classList.toggle('active');
+        var popup = document.getElementById("popup");
+        popup.classList.toggle('unActive');
+    }
     return (
-        <>
+    <>
+        {/* pop up modal */}
+        <Modal popupClickHandle = {popupClickHandle}></Modal>
+        <div id="Container-blur">
             <Navbar msg='Sorting Algorithms'></Navbar>
             <div className='sorting-continer'>
                 <div className='Btn-Wrap'>
@@ -291,14 +301,24 @@ function SortingApp(){
                             <option value="50">50</option>
                             <option value="100">100</option>
                             <option value="200">200</option>
+                            <option value="500">500</option>
                         </select>
                     </div>
                 </div>
                 <div className='wrapperBar'>
-                {printAllBar}
+                {
+                    bar.map((item,id)=>{
+                        return(
+                            <div className='bar' id={'bar-'+id} key={id} 
+                            style={{width:barWidth,height:item}}>
+                            </div>
+                        )
+                    })
+                }
                 </div>
             </div>
-        </>
+        </div>
+    </>
     )
 }
 
