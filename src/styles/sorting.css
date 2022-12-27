@@ -2,9 +2,10 @@
 /* modal backround */
 #Container-blur{
     position: relative;
+    transition: 600ms;
 }
 .active{
-    filter: blur(3px);
+    filter: blur(3.5px);
 }
 
 .sorting-continer{

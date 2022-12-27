@@ -8,6 +8,7 @@ import Dijkstra from '../algorithm/path/dijkstra';
 import Randomized_dfs from '../algorithm/maze/randomized_dfs';
 import recursiveDivision from '../algorithm/maze/recursive_division';
 import Navbar from '../components/Navbar';
+import Modal from '../components/Modal';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -33,6 +34,7 @@ function App(){
 
     useEffect(()=>{
         gridInitialize();
+        popupClickHandle();
     },[])
 
     const gridInitialize =()=>{
@@ -80,6 +82,13 @@ function App(){
     }
 
     const pathFinding = async () =>{
+        var btns = document.getElementsByClassName('button-4');
+        document.getElementsByTagName('select')[0].disabled = true;
+        document.getElementsByTagName('select')[1].disabled = true;
+        for(let i=0; i<btns.length; i++){
+            btns[i].disabled = true;
+        }
+
         var startNode = Grid[START_NODE_ROW][START_NODE_COL];
         var endNode = Grid[END_NODE_ROW][END_NODE_COL];
 
@@ -87,23 +96,28 @@ function App(){
             case 1:
                 var obj = BFS(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.visitedNodes);
-                animateShortestPath(obj.path);
+                await animateShortestPath(obj.path);
             break;
             case 2:
                 obj = DFS(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.visitedNodes);
-                animateShortestPath(obj.path);
+                await animateShortestPath(obj.path);
             break;
             case 3:
                 obj = Dijkstra(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.visitedNodes);
-                animateShortestPath(obj.path);
+                await animateShortestPath(obj.path);
             break;
             default:
                 obj = Astar(Grid,startNode,endNode,rows,cols);
                 await animateVisitedNodes(obj.close_list);
-                animateShortestPath(obj.path);
+                await animateShortestPath(obj.path);
             break;
+        }
+        document.getElementsByTagName('select')[0].disabled = false;
+        document.getElementsByTagName('select')[1].disabled = false;
+        for(let i=0; i<btns.length; i++){
+            btns[i].disabled = false;
         }
     }
 
@@ -214,12 +228,26 @@ function App(){
             END_NODE_COL = c;
         } 
     }
+    const popupClickHandle = () =>{
+        var blur = document.getElementById("Container-blur");
+        blur.classList.toggle('active');
+        var popup = document.getElementById("popup");
+        popup.classList.toggle('unActive');
+    }
 
     return (
-        <>
+    <>
+    <Modal popupClickHandle = {popupClickHandle}>
+        <h1 style={{"textAlign":"center"}}>Video Tutorial</h1>
+        <div style={{"display":"flex","justify-content":"center","margin-right":"15px"}}>
+            <iframe width="90%" height="300px" src="https://www.youtube.com/embed/MXkh3dPxEQg?autoplay=1&mute=1" title='myVideo'>
+            </iframe> 
+        </div>
+    </Modal>
+
+    <div id="Container-blur">
         <Navbar msg='Path Finder Visualizer'></Navbar>
         <div className='path-container'>
-
             <div className='path-header'>
                     <div>
                         <div style={{"display":"flex","margin":"6px auto"}}>
@@ -236,12 +264,11 @@ function App(){
                             </div>
                         </div>
                         <div className='path-speed-btns'>
-                            <button className={`button-4 ${animateType===1 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(1)}>Fast</button>
-                            <button className={`button-4 ${animateType===2 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(2)}>Average</button>
-                            <button className={`button-4 ${animateType===3 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(3)}>Slow</button>
+                            <button className={`button-1 ${animateType===1 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(1)}>Fast</button>
+                            <button className={`button-1 ${animateType===2 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(2)}>Average</button>
+                            <button className={`button-1 ${animateType===3 && 'curr-speed-btn'}`} onClick={()=>animationTimeHandle(3)}>Slow</button>
                         </div>
                     </div>
-
                     <div>
                         <div style={{"display":"flex","margin":"6px auto"}}>
                             <select className='my-drop-down' value={mazeID} onChange={(e)=>{setMazeID(parseInt(e.target.value))}}>
@@ -270,7 +297,6 @@ function App(){
                         </div>
                     </div>
             </div>
-            
             <div className='grid'>
                 <div onMouseLeave={()=>{setIsMousePress(false)}}>
                 {/* JSX Node Of Grid (2D Array) */}
@@ -288,7 +314,8 @@ function App(){
                 </div>
             </div>
         </div>
-        </>
+    </div>
+    </>
     )
 }
 

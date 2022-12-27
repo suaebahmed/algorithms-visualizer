@@ -215,10 +215,10 @@ function SortingApp(){
         var newBars = [];
         switch(sortID){
             case 1:
-                selectionSort();
+                await selectionSort();
             break;
             case 2:
-                insertionSort();
+                await insertionSort();
             break;
             case 3:
                 for(let i=0; i<bar.length; i++) newBars.push(bar[i]); 
@@ -230,13 +230,14 @@ function SortingApp(){
                 await mergeSort(0,newBars.length-1,newBars);
             break;
             default:
-                bubbleSort();
+                await bubbleSort();
             break;
         }
         document.getElementsByTagName('button')[0].disabled = false;
         document.getElementsByTagName('button')[1].disabled = false;
         document.getElementsByTagName('select')[0].disabled = false;
         document.getElementsByTagName('select')[1].disabled = false;
+        bar.sort((a,b)=>a>b);
     }
 
     const rangeValueHandle = (event) =>{    
@@ -268,7 +269,75 @@ function SortingApp(){
     return (
     <>
         {/* pop up modal */}
-        <Modal popupClickHandle = {popupClickHandle}></Modal>
+        <Modal popupClickHandle = {popupClickHandle}>
+            <div style={{"margin-right":"20px"}}>
+                <h1 style={{"textAlign":"center"}}>Some Sorting Algorithms Tutorial</h1>
+                <h2>Bubble Sort</h2>
+                <p>
+                Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.The pass through the list is repeated until the list is sorted.
+                </p>
+                <h3>Performence</h3>
+                <ul>
+                    <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                    <li>Average time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                    <li>Best-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                </ul>
+
+                <h2>Selection Sort</h2>
+                <p>
+                    The selection sort algorithm sorts an array by repeatedly finding the minimum eleme (considering ascending order) from the unsorted part and putting it at the beginning.
+                </p>
+                <h3>Performence</h3>
+                <ul>
+                    <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                    <li>Average time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                    <li>Best-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                </ul>
+
+                <h2>insertion Sort</h2>
+                <p>
+                    Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.
+                </p>
+                <h3>Performence</h3>
+                <ul>
+                    <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                    <li>Average time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                    <li>Best-case time complexity: <span>O(<em>n</em>)</span></li>
+                </ul>
+
+                <h2>Quick Sort</h2>
+                <p>
+                    QuickSort is a Divide and Conquer algorithm. It picks an element as a pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
+                </p>
+                <ul>
+                    <li>Always pick the first element as a pivot.</li>
+                    <li>Always pick the last element as a pivot (implemented below)</li>
+                    <li>Pick a random element as a pivot.</li>
+                    <li>Pick median as the pivot.</li>
+                </ul>
+                <p>The key process in quickSort is a partition(). The target of partitions is, given an array and an element x of an array as the pivot, put x at its correct position in a sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. All this should be done in linear time.</p>
+                <h3>Performence</h3>
+                <ul>
+                    <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
+                    <li>Average time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
+                    <li>Best-case time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
+                </ul>
+
+                <h2>Merge Sort</h2>
+                <p>Merge Sort is an efficient, stable sorting algorith that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows:</p>
+                <ol>
+                    <li>Divide the unsorted list into n sublists, each containing one element(a list of one element is considered sorted)</li>
+                    <li>Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.</li>
+                </ol>
+                <h3>Performence</h3>
+                <ul>
+                    <li>Worst-case time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
+                    <li>Average time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
+                    <li>Best-case time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
+                </ul>
+            </div>
+        </Modal>
+
         <div id="Container-blur">
             <Navbar msg='Sorting Algorithms'></Navbar>
             <div className='sorting-continer'>
@@ -301,7 +370,7 @@ function SortingApp(){
                             <option value="50">50</option>
                             <option value="100">100</option>
                             <option value="200">200</option>
-                            <option value="500">500</option>
+                            <option value="400">350</option>
                         </select>
                     </div>
                 </div>
