@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar';
 import Modal from '../components/Modal';
 
 var BARS = 100;
-const barWidth = 20;
+const barWidth = 15;
 var SPEED = 500;
 
 async function waitForAnimate(sp){
@@ -285,7 +285,7 @@ function SortingApp(){
 
                 <h2>Selection Sort</h2>
                 <p>
-                    The selection sort algorithm sorts an array by repeatedly finding the minimum eleme (considering ascending order) from the unsorted part and putting it at the beginning.
+                    The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from the unsorted part and putting it at the beginning.
                 </p>
                 <h3>Performence</h3>
                 <ul>
@@ -311,7 +311,7 @@ function SortingApp(){
                 </p>
                 <ul>
                     <li>Always pick the first element as a pivot.</li>
-                    <li>Always pick the last element as a pivot (implemented below)</li>
+                    <li>Always pick the last element as a pivot</li>
                     <li>Pick a random element as a pivot.</li>
                     <li>Pick median as the pivot.</li>
                 </ul>
@@ -324,7 +324,7 @@ function SortingApp(){
                 </ul>
 
                 <h2>Merge Sort</h2>
-                <p>Merge Sort is an efficient, stable sorting algorith that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows:</p>
+                <p>Merge Sort is an efficient, stable sorting algorithm that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows:</p>
                 <ol>
                     <li>Divide the unsorted list into n sublists, each containing one element(a list of one element is considered sorted)</li>
                     <li>Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.</li>
@@ -345,7 +345,7 @@ function SortingApp(){
                     <div style={{"display":"flex"}}>
                         <button className='button-4 start-btn' onClick={startSortingHandle}>Start Sorting</button>
                         <button className='button-4' onClick={generateNewArray}>Generate New</button>
-                        <select className='my-drop-down' value={sortID} onChange={(e)=>{setSortID(parseInt(e.target.value));generateNewArray()}} id="num" name="num">
+                        <select className='my-drop-down' value={sortID} onChange={(e)=>{setSortID(parseInt(e.target.value));generateNewArray()}} id="num1" name="num1">
                                 <option value="0">Bubble Sort</option>
                                 <option value="1">Selection Sort</option>
                                 <option value="2">Insertion Sort</option>
@@ -365,12 +365,12 @@ function SortingApp(){
                     <div>
                         <label htmlFor='num'>Choose Size: </label>
                         <select className='my-drop-down' value={bar.length} onChange={sizeHandle} id="num" name="num">
-                            <option value="10">10</option>
                             <option value="25">25</option>
                             <option value="50">50</option>
                             <option value="100">100</option>
                             <option value="200">200</option>
-                            <option value="400">350</option>
+                            <option value="350">350</option>
+                            <option value="600">600</option>
                         </select>
                     </div>
                 </div>

@@ -161,7 +161,13 @@ function N_Queen() {
     }
 
     const startHandle = async () =>{
+        document.getElementsByTagName('button')[0].disabled = true;
+        document.getElementsByTagName('button')[1].disabled = true;
+        document.getElementById('gridSizeRange').disabled = true;
         await n_queen(0,0);
+        document.getElementsByTagName('button')[0].disabled = false;
+        document.getElementsByTagName('button')[1].disabled = false;
+        document.getElementById('gridSizeRange').disabled = false;
     }
 
     const timeHandle = (e) =>{

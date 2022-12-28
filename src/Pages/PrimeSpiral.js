@@ -53,6 +53,7 @@ function PrimeApp(){
     }
 
     const startPrimeSpiral = async () =>{
+        document.getElementsByTagName('button')[0].disabled = true;
         var arr = prime_Spiral_Generate(N);
         var c = 0;
         for(let i=0; i<arr.length; i++){
@@ -65,6 +66,7 @@ function PrimeApp(){
             node.children[1].className = 'rectangle-'+arr[i].direction;
             await waitForAnimatoin(60);
         }
+        document.getElementsByTagName('button')[0].disabled = false;
     }
     return (
         <>
