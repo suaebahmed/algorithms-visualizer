@@ -1,7 +1,7 @@
 {
-  "main.css": "/algorithms-visualizer/static/css/main.d39fc10b.chunk.css",
-  "main.js": "/algorithms-visualizer/static/js/main.801e7ee9.chunk.js",
-  "main.js.map": "/algorithms-visualizer/static/js/main.801e7ee9.chunk.js.map",
+  "main.css": "/algorithms-visualizer/static/css/main.9e71ddd1.chunk.css",
+  "main.js": "/algorithms-visualizer/static/js/main.90aa3b9d.chunk.js",
+  "main.js.map": "/algorithms-visualizer/static/js/main.90aa3b9d.chunk.js.map",
   "static/js/1.5911ecf8.chunk.js": "/algorithms-visualizer/static/js/1.5911ecf8.chunk.js",
   "static/js/1.5911ecf8.chunk.js.map": "/algorithms-visualizer/static/js/1.5911ecf8.chunk.js.map",
   "runtime~main.js": "/algorithms-visualizer/static/js/runtime~main.4d2f082b.js",
@@ -12,8 +12,8 @@
   "static/media/nqueens.png": "/algorithms-visualizer/static/media/nqueens.1a72c07b.png",
   "static/media/PathfindingVS.css": "/algorithms-visualizer/static/media/goal.4cfe82ce.png",
   "static/media/nqueens.css": "/algorithms-visualizer/static/media/queen.20d76d4e.png",
-  "static/css/main.d39fc10b.chunk.css.map": "/algorithms-visualizer/static/css/main.d39fc10b.chunk.css.map",
+  "static/css/main.9e71ddd1.chunk.css.map": "/algorithms-visualizer/static/css/main.9e71ddd1.chunk.css.map",
   "index.html": "/algorithms-visualizer/index.html",
-  "precache-manifest.20f72d45fd441b8caa4154e9354ba442.js": "/algorithms-visualizer/precache-manifest.20f72d45fd441b8caa4154e9354ba442.js",
+  "precache-manifest.ec9e746cb59d86e5bcd509209fe5e3ab.js": "/algorithms-visualizer/precache-manifest.ec9e746cb59d86e5bcd509209fe5e3ab.js",
   "service-worker.js": "/algorithms-visualizer/service-worker.js"
 }
