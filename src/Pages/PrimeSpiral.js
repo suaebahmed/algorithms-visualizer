@@ -72,9 +72,10 @@ function PrimeApp(){
         <>
             <Navbar msg='Spiral Primes'></Navbar>
             <div className='spiral-continer'>
-                <button className='button-4 start-btn' onClick={startPrimeSpiral}>Show Prime spiral</button>
-                <button className='button-4'>{cntPrime} prime numbers found out of {N*N}</button>
-
+                <div className='spiral-btns'>
+                    <button className='button-4 start-btn' onClick={startPrimeSpiral}>Show Prime spiral</button>
+                    <button className='button-4'>{cntPrime} prime numbers found out of {N*N}</button>
+                </div>
                 <div className='primeGridContainer'>
                     <div>
                     {gridOfNode}

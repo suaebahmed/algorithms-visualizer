@@ -17,13 +17,18 @@
     justify-content: space-between;
     margin-bottom: 60px;
 }
+@media only screen and (max-width: 768px) {
+    .Btn-Wrap{
+        display: grid;
+        grid-template-columns: auto;
+        row-gap: 10px;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+}
 .st-speed-range{
     display: flex;
 }
-.st-speed-range-lavel{
-    margin: 1px 5px;
-}
-
 .wrapperBar{
     display: flex;
     align-items: flex-end;

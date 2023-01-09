@@ -16,6 +16,9 @@
     overflow: scroll;
     scrollbar-width: none;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 /* animation effects */
 .unActive{
     top: 0% !important; 
