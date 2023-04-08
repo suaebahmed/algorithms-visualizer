@@ -269,43 +269,43 @@ function SortingApp(){
     return (
     <>
         {/* pop up modal */}
-        <Modal popupClickHandle = {popupClickHandle}>
-            <div style={{"margin-right":"20px"}}>
-                <h1 style={{"textAlign":"center"}}>Some Sorting Algorithms Tutorial</h1>
-                <h2>Bubble Sort</h2>
+        <Modal style={{border: "1px solid #334155", padding: "40px"}} popupClickHandle = {popupClickHandle}>
+            <div style={{"margin-right":"20px", color: "#64748b"}}>
+                <h1 style={{"textAlign":"center", color:"#334155"}}>Some Sorting Algorithms Tutorial</h1>
+                <h2 style={{ color:"#475569"}}>Bubble Sort</h2>
                 <p>
                 Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.The pass through the list is repeated until the list is sorted.
                 </p>
-                <h3>Performence</h3>
+                <h3 style={{ color:"#475569"}}>Performence</h3>
                 <ul>
                     <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                     <li>Average time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                     <li>Best-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                 </ul>
 
-                <h2>Selection Sort</h2>
+                <h2 style={{ color:"#475569"}}>Selection Sort</h2>
                 <p>
                     The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from the unsorted part and putting it at the beginning.
                 </p>
-                <h3>Performence</h3>
+                <h3 style={{ color:"#475569"}}>Performence</h3>
                 <ul>
                     <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                     <li>Average time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                     <li>Best-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                 </ul>
 
-                <h2>insertion Sort</h2>
+                <h2 style={{ color:"#475569"}}>Insertion Sort</h2>
                 <p>
                     Insertion sort is a simple sorting algorithm that works similar to the way you sort playing cards in your hands. The array is virtually split into a sorted and an unsorted part. Values from the unsorted part are picked and placed at the correct position in the sorted part.
                 </p>
-                <h3>Performence</h3>
+                <h3 style={{ color:"#475569"}}>Performence</h3>
                 <ul>
                     <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                     <li>Average time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                     <li>Best-case time complexity: <span>O(<em>n</em>)</span></li>
                 </ul>
 
-                <h2>Quick Sort</h2>
+                <h2 style={{ color:"#475569"}}>Quick Sort</h2>
                 <p>
                     QuickSort is a Divide and Conquer algorithm. It picks an element as a pivot and partitions the given array around the picked pivot. There are many different versions of quickSort that pick pivot in different ways.
                 </p>
@@ -316,20 +316,20 @@ function SortingApp(){
                     <li>Pick median as the pivot.</li>
                 </ul>
                 <p>The key process in quickSort is a partition(). The target of partitions is, given an array and an element x of an array as the pivot, put x at its correct position in a sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. All this should be done in linear time.</p>
-                <h3>Performence</h3>
+                <h3 style={{ color:"#475569"}}>Performence</h3>
                 <ul>
                     <li>Worst-case time complexity: <span>O(<em>n<sup>2</sup></em>)</span></li>
                     <li>Average time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
                     <li>Best-case time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
                 </ul>
 
-                <h2>Merge Sort</h2>
+                <h2 style={{ color:"#475569"}}>Merge Sort</h2>
                 <p>Merge Sort is an efficient, stable sorting algorithm that makes use of the divide and conquer strategy. Conceptually the algorithm works as follows:</p>
                 <ol>
                     <li>Divide the unsorted list into n sublists, each containing one element(a list of one element is considered sorted)</li>
                     <li>Repeatedly merge sublists to produce new sorted sublists until there is only one sublist remaining. This will be the sorted list.</li>
                 </ol>
-                <h3>Performence</h3>
+                <h3 style={{ color:"#475569"}}>Performence</h3>
                 <ul>
                     <li>Worst-case time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
                     <li>Average time complexity: <span>O(<em>n</em> log <em>n</em>)</span></li>
@@ -370,7 +370,6 @@ function SortingApp(){
                             <option value="100">100</option>
                             <option value="200">200</option>
                             <option value="350">350</option>
-                            <option value="600">600</option>
                         </select>
                     </div>
                 </div>

@@ -1,11 +1,12 @@
 .path-container{
-   margin: 0px 25px 25px 25px;
+   margin : 30px auto;
+   max-width: 938px;
 }
 
 .path-header{
    display: flex;
    justify-content: space-between;
-   padding-bottom: 10px;
+   padding-bottom: 30px;
 }
 
 path-speed-btns{
@@ -101,7 +102,7 @@ path-speed-btns{
 /* this grid designing */
 .grid{
    display: flex;
-   justify-content: stretch;
+   justify-content: center;
 }
 
 .ROW{

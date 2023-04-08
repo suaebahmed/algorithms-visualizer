@@ -1,7 +1,13 @@
 
 .spiral-continer{
-    margin: 15px 100px;
+    margin: 20px auto;
+    max-width: 450px;
 }
+.spiral-btns{
+    display: flex;
+    justify-content: space-around;
+}
+
 @media only screen and (max-width: 768px) {
     .spiral-btns{
         display: grid;

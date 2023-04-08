@@ -237,9 +237,9 @@ function App(){
 
     return (
     <>
-    <Modal popupClickHandle = {popupClickHandle}>
-        <h1 style={{"textAlign":"center"}}>Video Tutorial</h1>
-        <div style={{"display":"flex","justify-content":"center","margin-right":"15px"}}>
+    <Modal style={{border: "1px solid #334155", paddingBottom: "20px"}} popupClickHandle = {popupClickHandle}>
+        <h1 style={{color:"#334155",textAlign:"center"}}>Video Tutorial</h1>
+        <div style={{display:"flex",justifyContent:"center"}}>
             <iframe width="90%" height="300px" src="https://www.youtube.com/embed/iK95rIRVbMo?autoplay=1&mute=1" title='myVideo'>
             </iframe> 
         </div>

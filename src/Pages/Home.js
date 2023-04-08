@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
     <div className="container">
-      <Navbar msg={'Wellcome To My Algorithms Visualizer'}></Navbar>
+      <Navbar msg={'Algorithms Visualizer'}></Navbar>
       <h1 style={{"textAlign": "center"}}>A Better Visualization Of Different Algorithms</h1>
 
       <div className='cards-container'>

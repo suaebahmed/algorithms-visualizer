@@ -1,18 +1,12 @@
 
 .navbar{
     /* background-color: #4B0150; */
-    background-color: rgba(10, 25, 47, 1);
+    max-width: 1250px;
     padding: 15px 50px;
-    display: flex;
-}
+    margin: auto;
 
-.nav-title{
     display: flex;
-    justify-content: center;
-    width: 100%;
-}
-.nav-title-hd{
-    color: white;
+    justify-content: space-between;
 }
 
 .navbarlink{
