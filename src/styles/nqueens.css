@@ -5,8 +5,15 @@
 .queen_header{
     display: flex;
     justify-content: space-around;
-    margin: 10px;
+    margin: 30px auto;
+    max-width: 680px;
 }
+@media only screen and (max-width: 768px) {
+    .queen_header{
+        margin: 15px 10px;
+    } 
+}
+
 .queen_range{
     display: flex;
     justify-content: space-between;

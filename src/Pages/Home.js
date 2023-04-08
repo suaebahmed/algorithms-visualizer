@@ -13,7 +13,7 @@ function Home() {
   return (
     <div className="container">
       <Navbar msg={'Algorithms Visualizer'}></Navbar>
-      <h1 style={{"textAlign": "center"}}>A Better Visualization Of Different Algorithms</h1>
+      <h2 style={{"textAlign": "center", color: '#1e293b', padding: '8px'}}>A Better Visualization Of Different Algorithms</h2>
 
       <div className='cards-container'>
         <Link className='no_underline' to="/path-finding">

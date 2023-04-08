@@ -1,10 +1,16 @@
-.footer{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    width: 100%;
-    text-align: center;
-    font-weight: 500;
-    padding: 2px;
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  padding: 2px;
+  color: #64748b
+}
+
+@media only screen and (max-width: 768px) {
+    .footer{
+        position: static;
+    }    
 }
