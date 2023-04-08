@@ -95,12 +95,12 @@ I took inspirations from the following sources for some of the segments.
 - `N-Queen Problem` : [Algorithm Visualizer](https://github.com/TamimEhsan/AlgorithmVisualizer)
 
 ## What I have revised/learnt by doing this project
-    1. implementing algorithm to visualize
-    2. initialize each cell to object/class
-    3. JS Promise to run animation asyncronusly
-    4. array destructure (usestate hooks)
-    5. reference and copy variable
-    6. difference between == and === .For example "false===0" it's false
-    7. For only use React state/useState to re-render dom-elememt. 
-    otherwise use global variable to access from all corner
-    8. writing re-useable code 
+  1. implementing algorithm to visualize
+  2. initialize each cell to object/class
+  3. JS Promise to run animation asyncronusly
+  4. array destructure (usestate hooks)
+  5. reference and copy variable
+  6. difference between == and === .For example "false===0" it's false
+  7. For only use React state/useState to re-render dom-elememt. 
+  otherwise use global variable to access from all corner
+  8. writing re-useable code
