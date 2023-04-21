@@ -1,19 +1,20 @@
 {
-  "main.css": "/algorithms-visualizer/static/css/main.9e71ddd1.chunk.css",
-  "main.js": "/algorithms-visualizer/static/js/main.90aa3b9d.chunk.js",
-  "main.js.map": "/algorithms-visualizer/static/js/main.90aa3b9d.chunk.js.map",
-  "static/js/1.5911ecf8.chunk.js": "/algorithms-visualizer/static/js/1.5911ecf8.chunk.js",
-  "static/js/1.5911ecf8.chunk.js.map": "/algorithms-visualizer/static/js/1.5911ecf8.chunk.js.map",
-  "runtime~main.js": "/algorithms-visualizer/static/js/runtime~main.4d2f082b.js",
-  "runtime~main.js.map": "/algorithms-visualizer/static/js/runtime~main.4d2f082b.js.map",
-  "static/media/path-finding.png": "/algorithms-visualizer/static/media/path-finding.22453ad4.png",
-  "static/media/sort-algo.png": "/algorithms-visualizer/static/media/sort-algo.b32220b6.png",
-  "static/media/prime-spiral.png": "/algorithms-visualizer/static/media/prime-spiral.aa4f6636.png",
-  "static/media/nqueens.png": "/algorithms-visualizer/static/media/nqueens.1a72c07b.png",
-  "static/media/PathfindingVS.css": "/algorithms-visualizer/static/media/goal.4cfe82ce.png",
-  "static/media/nqueens.css": "/algorithms-visualizer/static/media/queen.20d76d4e.png",
-  "static/css/main.9e71ddd1.chunk.css.map": "/algorithms-visualizer/static/css/main.9e71ddd1.chunk.css.map",
-  "index.html": "/algorithms-visualizer/index.html",
-  "precache-manifest.ec9e746cb59d86e5bcd509209fe5e3ab.js": "/algorithms-visualizer/precache-manifest.ec9e746cb59d86e5bcd509209fe5e3ab.js",
-  "service-worker.js": "/algorithms-visualizer/service-worker.js"
+  "files": {
+    "main.css": "/algorithms-visualizer/static/css/main.729e4d19.css",
+    "main.js": "/algorithms-visualizer/static/js/main.d533d94a.js",
+    "static/media/queen.png": "/algorithms-visualizer/static/media/queen.a967028b1cea0addb244.png",
+    "static/media/goal.png": "/algorithms-visualizer/static/media/goal.38300215940be4d9bef8.png",
+    "static/media/nqueens.png": "/algorithms-visualizer/static/media/nqueens.f0571b864b781bd79a5f.png",
+    "static/media/prime-spiral.png": "/algorithms-visualizer/static/media/prime-spiral.78439d48d896ddd57145.png",
+    "static/media/sort-algo.png": "/algorithms-visualizer/static/media/sort-algo.cb3b2057c6886981694e.png",
+    "static/media/pin.png": "/algorithms-visualizer/static/media/pin.c4670350c2ac7c63718e.png",
+    "static/media/path-finding.png": "/algorithms-visualizer/static/media/path-finding.1c35d5dd249e79e6b9c3.png",
+    "index.html": "/algorithms-visualizer/index.html",
+    "main.729e4d19.css.map": "/algorithms-visualizer/static/css/main.729e4d19.css.map",
+    "main.d533d94a.js.map": "/algorithms-visualizer/static/js/main.d533d94a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.729e4d19.css",
+    "static/js/main.d533d94a.js"
+  ]
 }
