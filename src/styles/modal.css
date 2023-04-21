@@ -22,7 +22,7 @@
 }
 /* animation effects */
 .unActive {
-  top: 0% !important;
+  top: 25% !important;
   transition: 500ms;
   visibility: hidden;
   opacity: 0;

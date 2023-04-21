@@ -1,12 +1,12 @@
 .path-container{
-   margin : 30px auto;
+   margin : 10px auto;
    max-width: 938px;
 }
 
 .path-header{
    display: flex;
    justify-content: space-between;
-   padding-bottom: 30px;
+   padding-bottom: 10px;
 }
 
 path-speed-btns{

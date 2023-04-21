@@ -1,12 +1,10 @@
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
   text-align: center;
   font-weight: 500;
   padding: 2px;
-  color: #64748b
+  margin-top: 25px;
+  color: gray
 }
 
 @media only screen and (max-width: 768px) {
