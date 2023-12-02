@@ -28,22 +28,24 @@ function dfs(r,c,N,M){
     while(s.length > 0){
         let top = s[s.length-1];
 
-        let neighbours = getNeighbors(top,N,M);
+        let neighbours = getNeighbours(top,N,M);
         if(neighbours.length){
             let ren_id = (Math.floor(Math.random()*10))%neighbours.length;
-            goForward(top.x,top.y,neighbours[ren_id][0],neighbours[ren_id][1]);
-            s.push({x:neighbours[ren_id][0], y: neighbours[ren_id][1]});
-            vis[neighbours[ren_id][0]][neighbours[ren_id][1]] = true;
+            let cx = neighbours[ren_id][0]; // current x
+            let cy = neighbours[ren_id][1]; // current y
+
+            goForward(top.x,top.y,cx,cy);
+            s.push({x:cx, y: cy});
+            vis[cx][cy] = true;
         }
-        else s.pop();
+        else s.pop();  
     }
 } 
 // pr => parent-row
-function goForward(pr,pc,r,c){
+export function goForward(pr,pc,r,c){
     if(r===pr){
         if(c < pc) for(let i=pc-1; i>=c; i--)visitedNodes.push({r,c:i});
         else for(let i=pc+1; i<=c; i++) visitedNodes.push({r,c:i});
-                
     }
     else{
         if(r < pr) for(let i=pr-1; i>=r; i--) visitedNodes.push({r:i,c});
@@ -51,7 +53,7 @@ function goForward(pr,pc,r,c){
     }
 }
 
-function getNeighbors(top,N,M){
+export function getNeighbours(top,N,M){
     let arr = [];
     for(let i=0; i<4; i++){
         let x = top.x + dx[i];
