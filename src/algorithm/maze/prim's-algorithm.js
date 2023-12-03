@@ -21,62 +21,60 @@ export const PrimsAlgorithm = (N,M)=>{
 // Modified: instead of selecting the edge with the smallest weight, you select an edge at random
 
 const PrimMST = (N,M) =>{
-    let s = new Set();
-    const src = (Math.floor(Math.random()*100))%N;
-    s.add({ x:src, y:src});
+    let s = [];
+    let src = (Math.floor(Math.random()*100))%N;
+    src = (src%2===0)?src:src+1; // make it even
+    src %= N;
+    s.push({ x:src, y:src});
     visitedNodes.push({r:src, c:src}); //first node
 
-    while(s.size){
-        // select a random element from set
-        let top = [...s][(Math.floor(Math.random()*s.size))%s.size];
+    while(s.length > 0){
+        let top = s[(Math.floor(Math.random()*100))%s.length];
         vis[top.x][top.y] = true;
         FindParentAndPush(top.x, top.y, N, M);
-        s.delete(top);
+
+        s = [...(s.filter((item) => (JSON.stringify(item) !== JSON.stringify(top))))];
 
         let neighbours = getNeighbours(top,N,M);
         for(let i=0; i<neighbours.length; i++){
             const cx = neighbours[i][0];
             const cy = neighbours[i][1];
-
-            if(!vis[cx][cy]){
-                s.add({x:cx, y:cy});
-            }
+            s.push({x:cx, y:cy});
         }
     }
 }
 
 export function FindParentAndPush(r,c,N,M){
-    // find parent x,y
-    let pr, pc;
-
     // go up
+    let choice = [];
     if(r-2 >= 0 && vis[r-2][c]){
-        pr = r-2;
-        pc = c;
+        choice.push({r:r-2,c});
     }
     // go down
-    else if(r+2 < N && vis[r+2][c]){
-        pr = r+2;
-        pc = c;
+    if(r+2 < N && vis[r+2][c]){
+        choice.push({r:r+2,c});
     }
     // go left
-    else if(c-2 >= 0 && vis[r][c-2]){
-        pr = r;
-        pc = c-2;
+    if(c-2 >= 0 && vis[r][c-2]){
+        choice.push({r,c:c-2});
     }
     // go right
-    else if(c+2 < M && vis[r][c+2]){
-        pr = r;
-        pc = c+2;
+    if(c+2 < M && vis[r][c+2]){
+        choice.push({r,c:c+2});
     }
-
+    if(choice.length === 0) return;
+    
+    // find parent x,y
+    const random = choice[(Math.floor(Math.random()*100))%choice.length];
+    const pr = random.r;
+    const pc = random.c;
     if(r===pr){
-        if(c < pc) for(let i=pc-1; i>=c; i--)visitedNodes.push({r,c:i});
+        if(c < pc) for(let i=pc-1; i>=c; i--) visitedNodes.push({r,c:i});
         else for(let i=pc+1; i<=c; i++) visitedNodes.push({r,c:i});
     }
     else{
         if(r < pr) for(let i=pr-1; i>=r; i--) visitedNodes.push({r:i,c});
-        else for(let i=pr+1; i<=r; i++)visitedNodes.push({r:i,c});
+        else for(let i=pr+1; i<=r; i++) visitedNodes.push({r:i,c});
     }
 }
 
