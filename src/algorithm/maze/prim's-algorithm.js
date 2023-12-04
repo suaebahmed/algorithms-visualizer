@@ -23,7 +23,7 @@ export const PrimsAlgorithm = (N,M)=>{
 const PrimMST = (N,M) =>{
     let s = [];
     let src = (Math.floor(Math.random()*100))%N;
-    src = (src%2===0)?src:src+1; // make it even
+    src = (src%2===0)?src+1:src; // make it odd
     src %= N;
     s.push({ x:src, y:src});
     visitedNodes.push({r:src, c:src}); //first node

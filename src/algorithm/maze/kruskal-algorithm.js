@@ -20,41 +20,57 @@ export const KruskalAlgorithm = (N,M)=>{
 const RunKruskal = (N,M) =>{
     let edges = [];
     // push all egde of the grid 
-    for(let i=0; i<N; i++){
-        for(let j=0; j<M; j++){
+    for(let i=0; i<N; i+=2){
+        for(let j=0; j<M; j+=2){
             if(j>=2) edges.push({x1: i, y1: j-2, x2: i, y2: j});
             if(i>=2) edges.push({x1: i-2, y1: j, x2: i, y2: j});
         }
     }
-
     Build(N*100+M+5);
-    for(let i=0; i<edges.length; i++){
+    while(edges.length > 0){
         // select random edge
-        let id = Math.floor((Math.random()*edges.length)%edges.length);
-
+        let id = Math.floor((Math.random()*100)%edges.length);
         let px = edges[id].x1;
         let py = edges[id].y1;
         let cx = edges[id].x2;
         let cy = edges[id].y2;
 
-        if(i === 0) visitedNodes.push({r:px,c:py}); // first node
+        edges.splice(id,1); // remove edge from list
 
         // check if they are in same component
-        if(Find(px*100+py) !== Find(cx*100+cy)){
+        const a = Find(px*100+py);
+        const b = Find(cx*100+cy);
+        if(a !== b){
             goForward(px,py,cx,cy);
-            Union(px*100+py,cx*100+cy);
+            Union(a,b);
         }
     }
 }
 
 export function goForward(pr,pc,r,c){
     if(r===pr){ // same row
-        if(c < pc) for(let i=pc-1; i>=c; i--) visitedNodes.push({r,c:i}); // Go right to left
-        else for(let i=pc+1; i<=c; i++) visitedNodes.push({r,c:i}); // Go left to right
+        if(c < pc) for(let i=pc; i>=c; i--){
+            if(vis[r][i]) continue;
+            visitedNodes.push({r,c:i});
+            vis[r][i] = true;
+        }
+        else for(let i=pc; i<=c; i++){
+            if(vis[r][i]) continue;
+            visitedNodes.push({r,c:i});
+            vis[r][i] = true;
+        }
     }
     else{
-        if(r < pr) for(let i=pr-1; i>=r; i--) visitedNodes.push({r:i,c});
-        else for(let i=pr+1; i<=r; i++) visitedNodes.push({r:i,c});
+        if(r < pr) for(let i=pr; i>=r; i--){
+            if(vis[i][c]) continue;
+            visitedNodes.push({r:i,c});
+            vis[i][c] = true;
+        }
+        else for(let i=pr; i<=r; i++){
+            if(vis[i][c]) continue;
+            visitedNodes.push({r:i,c});
+            vis[i][c] = true;
+        }
     }
 }
 export function getNeighbours(top,N,M){
