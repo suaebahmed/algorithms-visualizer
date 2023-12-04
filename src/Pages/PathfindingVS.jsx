@@ -11,6 +11,7 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { KruskalAlgorithm } from "../algorithm/maze/kruskal-algorithm";
 import { PrimsAlgorithm } from "../algorithm/maze/prim's-algorithm";
+import { CostomCheckBox } from "../components/Costom-checkbox.tsx";
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -303,9 +304,9 @@ function App() {
       <div id="Container-blur">
         <Navbar msg="Path Finder Visualizer"></Navbar>
         <div className="path-container">
-          <div className="path-header">
+          <div className="path-header mb-4">
             <div>
-              <div style={{ display: "flex", margin: "6px auto" }}>
+              <div style={{ display: "flex", margin: "12px auto" }}>
                 <div>
                   <button className="button-4 start-btn" onClick={pathFinding}>
                     Find the possible path
@@ -327,34 +328,27 @@ function App() {
                 </div>
               </div>
               <div className="path-speed-btns">
-                <button
-                  className={`button-1 ${
-                    animateType === 1 && "curr-speed-btn"
-                  }`}
-                  onClick={() => animationTimeHandle(1)}
-                >
-                  Fast
-                </button>
-                <button
-                  className={`button-1 ${
-                    animateType === 2 && "curr-speed-btn"
-                  }`}
-                  onClick={() => animationTimeHandle(2)}
-                >
-                  Average
-                </button>
-                <button
-                  className={`button-1 ${
-                    animateType === 3 && "curr-speed-btn"
-                  }`}
-                  onClick={() => animationTimeHandle(3)}
-                >
-                  Slow
-                </button>
+                <div className="-m-1 flex flex-row flex-wrap">
+                  <CostomCheckBox
+                    checked={animateType == 1}
+                    onClick={() => animationTimeHandle(1)}
+                    label="Fast"
+                  />
+                  <CostomCheckBox
+                    checked={animateType == 2}
+                    onClick={() => animationTimeHandle(2)}
+                    label="Average"
+                  />
+                  <CostomCheckBox
+                    checked={animateType == 3}
+                    onClick={() => animationTimeHandle(3)}
+                    label="Slow"
+                  />
+                </div>
               </div>
             </div>
             <div>
-              <div style={{ display: "flex", margin: "6px auto" }}>
+              <div style={{ display: "flex", margin: "12px auto" }}>
                 <select
                   className="my-drop-down"
                   value={mazeID}
