@@ -413,24 +413,24 @@ function Node({pv}){
     else{
         return(
             <div onMouseDown={(e)=>{
-                e.preventDefault(); // it is necessary
-                onMouseDown(x,y)}
-            } 
-            onMouseEnter={(e)=>{
-                e.preventDefault();
-                onMouseEnter(x,y)}
-            } 
-            onMouseUp={(e)=>{
-                e.preventDefault();
-                onMouseUp()}
-            } 
-            className={'square '+classNode} id={'row'+x+'_col'+y}
-            data_x={x} 
-            data_y={y} 
-            data_type={typeId} 
-            wall={isWall.toString()}
-            onDrop={drop} 
-            onDragOver={allowDrop}
+                    e.preventDefault(); // it is necessary
+                    onMouseDown(x,y)}
+                } 
+                onMouseEnter={(e)=>{
+                    e.preventDefault();
+                    onMouseEnter(x,y)}
+                } 
+                onMouseUp={(e)=>{
+                    e.preventDefault();
+                    onMouseUp()}
+                } 
+                className={'square '+classNode} id={'row'+x+'_col'+y}
+                data_x={x} 
+                data_y={y} 
+                data_type={typeId} 
+                wall={isWall.toString()}
+                onDrop={drop} 
+                onDragOver={allowDrop}
             >
             </div>
         )

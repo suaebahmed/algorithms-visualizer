@@ -1,22 +1,22 @@
-.path-container{
-   margin : 10px auto;
-   max-width: 938px;
+.path-container {
+  margin: 10px auto;
+  max-width: 1200px;
 }
 
-.path-header{
-   display: flex;
-   justify-content: space-between;
-   padding-bottom: 10px;
+.path-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
 }
 
-path-speed-btns{
-   margin-top: 6px;
+path-speed-btns {
+  margin-top: 6px;
 }
 
-.my-drop-down{
-   cursor: pointer;
-   padding: 5.5px;
-   margin-right: 8px;
+.my-drop-down {
+  cursor: pointer;
+  padding: 5.5px;
+  margin-right: 8px;
 }
 
 /* this css does not work drop-down inside text 
@@ -27,17 +27,20 @@ path-speed-btns{
 }
  ------------- button CSS ---------  */
 
-.button-1,.button-4 {
+.button-1,
+.button-4 {
   appearance: none;
-  background-color: #FAFBFC;
+  background-color: #fafbfc;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 4px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
-  color: #24292E;
+  color: #24292e;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -60,152 +63,150 @@ path-speed-btns{
   opacity: 0.8;
 }
 .button-4:disabled {
-   cursor: not-allowed;
- }
- select:disabled{
-   cursor: not-allowed;
+  cursor: not-allowed;
 }
- .button-4:active {
-   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-   transition: none 0s;
- }
- .button-4:focus {
-   outline: 1px transparent;
- }
- .button-4:before {
-   display: none;
- }
- .button-4:-webkit-details-marker {
-   display: none;
- }
-.start-btn{
-   background-color: #027ad6;
-   color: white;
+select:disabled {
+  cursor: not-allowed;
 }
-
-.start-maze-btn{
-   background-color: #000;
-   color: white;
+.button-4:active {
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
 }
-.start-maze-btn:hover{
-   background-color: #000;
+.button-4:focus {
+  outline: 1px transparent;
 }
-.curr-speed-btn{
-   background-color: #ae75f8;
-   color: white;
+.button-4:before {
+  display: none;
 }
-.curr-speed-btn:hover{
-   background-color: #ae75f8;
+.button-4:-webkit-details-marker {
+  display: none;
+}
+.start-btn {
+  background-color: #027ad6;
+  color: white;
 }
 
+.start-maze-btn {
+  background-color: #000;
+  color: white;
+}
+.start-maze-btn:hover {
+  background-color: #000;
+}
+.curr-speed-btn {
+  background-color: #ae75f8;
+  color: white;
+}
+.curr-speed-btn:hover {
+  background-color: #ae75f8;
+}
 
 /* this grid designing */
-.grid{
-   display: flex;
-   justify-content: center;
+.grid {
+  display: flex;
+  justify-content: center;
 }
 
-.ROW{
-   display: flex;
+.ROW {
+  display: flex;
 }
 
-.square{
-   outline: 1px solid #afd8f8;
-   width: 30px;
-   height: 30px;
-   background-color: rgb(255, 255, 255);
- }
+.square {
+  outline: 1px solid #afd8f8;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(255, 255, 255);
+}
 
- .START_NODE{
-   outline: 1px solid #afd8f8;
-   background-image: url(../icons/pin.png);
-   background-repeat: no-repeat;
-   background-size: 30px;
- }
- .END_NODE{
-   outline: 1px solid #afd8f8;
-   background-image: url(../icons/goal.png);
-   background-repeat: no-repeat;
-   background-size: 30px;
- }
+.START_NODE {
+  outline: 1px solid #afd8f8;
+  background-image: url(../icons/pin.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
+.END_NODE {
+  outline: 1px solid #afd8f8;
+  background-image: url(../icons/goal.png);
+  background-repeat: no-repeat;
+  background-size: 30px;
+}
 
- .obtacle{
-   outline: 1px solid #2C3E50;
-   background-color: #2C3E50;
-   animation: wallAnimation 250ms ease-in;
+.obtacle {
+  outline: 1px solid #2c3e50;
+  background-color: #2c3e50;
+  animation: wallAnimation 250ms ease-in;
 }
 /* -------- animation ------ */
 
 @keyframes wallAnimation {
-   0%{
-      transform: scale(1);
-   }
-   50%{
-      transform: scale(1.15);
-   }
-   100%{
-      transform: scale(1);
-   }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
-.node-visited{
-   width: 30px;
-   height: 30px;
-   outline: 1px solid rgb(107, 218, 233);
-   animation-name: visitedAnimation;
-   animation-duration: 1.5s;
-   animation-iteration-count: 1;
-   animation-fill-mode: forwards;
-   animation-play-state: running;
+.node-visited {
+  width: 30px;
+  height: 30px;
+  outline: 1px solid rgb(107, 218, 233);
+  animation-name: visitedAnimation;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
-
 
 @keyframes visitedAnimation {
-   0%{
-      transform: scale(0.3);
-      background-color: rgba(0, 0, 66, 0.75);
-      border-radius: 50%;
-   }
-   50%{
-      background-color: rgba(17, 104, 217, 0.75);
-   }
-   75%{
-      transform: scale(1.2);
-      background-color: rgba(0, 217, 159, 0.75);
-   }
-   100%{
-      transform: scale(1);
-      background-color: rgba(0, 190, 218, 0.75);
-   }
+  0% {
+    transform: scale(0.3);
+    background-color: rgba(0, 0, 66, 0.75);
+    border-radius: 50%;
+  }
+  50% {
+    background-color: rgba(17, 104, 217, 0.75);
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: rgba(0, 217, 159, 0.75);
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgba(0, 190, 218, 0.75);
+  }
 }
 
-.shortestPath{
-   width: 30px;
-   height: 30px;
-   outline: 1px solid #FFC300;
-   animation-name: shortestPathAnimation;
-   animation-duration: 500ms;
-   animation-iteration-count: 1;
-   animation-fill-mode: forwards;
-   animation-play-state: running;
+.shortestPath {
+  width: 30px;
+  height: 30px;
+  outline: 1px solid #ffc300;
+  animation-name: shortestPathAnimation;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
 
 @keyframes shortestPathAnimation {
-   0%{
-      transform: scale(0.5);
-      background-color: rgba(151, 143, 70, 0.75);
-      border-radius: 50%;
-   }
-   50%{
-      transform: scale(0.8);
-      background-color: rgba(192, 187, 39, 0.75);
-   }
-   75%{
-      transform: scale(0.9);
-      background-color: rgba(247, 235, 130, 0.75);
-   }
-   100%{
-      transform: scale(1);
-      background-color: #FFC300;
-   }
+  0% {
+    transform: scale(0.5);
+    background-color: rgba(151, 143, 70, 0.75);
+    border-radius: 50%;
+  }
+  50% {
+    transform: scale(0.8);
+    background-color: rgba(192, 187, 39, 0.75);
+  }
+  75% {
+    transform: scale(0.9);
+    background-color: rgba(247, 235, 130, 0.75);
+  }
+  100% {
+    transform: scale(1);
+    background-color: #ffc300;
+  }
 }
