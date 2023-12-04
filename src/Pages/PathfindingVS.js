@@ -1,5 +1,5 @@
-import React,{useEffect, useState} from 'react'
 import '../styles/PathfindingVS.css';
+import React,{useEffect, useState} from 'react'
 import Astar from '../algorithm/path/A_star_algo';
 import basicMaze from '../algorithm/maze/basic-maze';
 import BFS from '../algorithm/path/bfs';
@@ -9,6 +9,8 @@ import Randomized_dfs from '../algorithm/maze/randomized_dfs';
 import recursiveDivision from '../algorithm/maze/recursive_division';
 import Navbar from '../components/Navbar';
 import Modal from '../components/Modal';
+import { KruskalAlgorithm } from '../algorithm/maze/kruskal-algorithm';
+import { PrimsAlgorithm } from '../algorithm/maze/prim\'s-algorithm';
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -22,14 +24,18 @@ var END_NODE_ROW = rows-6, END_NODE_COL = cols-6;
 var InitSR = START_NODE_ROW, InitSC = START_NODE_COL;
 var InitER = END_NODE_ROW, InitEC = END_NODE_COL;
 
-var animateTime = 35; // 8,35,80
+const FAST = 5;
+const AVERAGE = 15;
+const SLOW = 50;
+var animateTime = AVERAGE; // default
+// old value: 8,35,80
 
 function App(){
     const [Grid,setGrid] = useState([]);  // array destructuring
     const [isMousePress,setIsMousePress] = useState(false);
+    const [animateType,setAnimateTimeType] = useState(2);
     const [mazeID,setMazeID] = useState(0);
     const [pathID,setPathID] = useState(0);
-    const [animateType,setAnimateTimeType] = useState(2);
 
 
     useEffect(()=>{
@@ -139,22 +145,46 @@ function App(){
         }
     }
     const mazeHandle = async () =>{        
+        // clear all walls and disable all buttons when maze is generating
+
+        var btns = document.getElementsByClassName('button-4');
+        document.getElementsByTagName('select')[0].disabled = true;
+        document.getElementsByTagName('select')[1].disabled = true;
+        for(let i=0; i<btns.length; i++){
+            btns[i].disabled = true;
+        }
+
         var arr = [];
         switch(mazeID){
             case 1:
                 arr = basicMaze(rows,cols);
-                mazeGenerator(arr);
+                await mazeGenerator(arr);
             break;
             case 2:
                 makeAllCellAsAWall();
                 arr = Randomized_dfs(rows,cols);
-                mazeGenerator(arr);
+                await mazeGenerator(arr);
             break;
             case 3: // recursive division
                 arr = recursiveDivision(rows,cols);
-                mazeGenerator(arr);
+                await mazeGenerator(arr);
+            break;
+            case 4:
+                arr = KruskalAlgorithm(rows,cols);
+                await mazeGenerator(arr);
+            break;
+            case 5:
+                arr = PrimsAlgorithm(rows,cols);
+                await mazeGenerator(arr);
             break;
             default:
+        }
+
+        // enable all buttons when maze is generated
+        document.getElementsByTagName('select')[0].disabled = false;
+        document.getElementsByTagName('select')[1].disabled = false;
+        for(let i=0; i<btns.length; i++){
+            btns[i].disabled = false;
         }
     }
     const clearPathHandle = () =>{
@@ -198,9 +228,9 @@ function App(){
         setIsMousePress(()=>false);
     }
     const animationTimeHandle = (type) =>{
-        if(type === 1) animateTime = 8;
-        else if(type === 2) animateTime = 35;
-        else animateTime = 80;
+        if(type === 1) animateTime = FAST;
+        else if(type === 2) animateTime = AVERAGE;
+        else animateTime = SLOW;
         setAnimateTimeType(type);
     }
 
@@ -276,8 +306,8 @@ function App(){
                                 <option value="1">Random basic maze</option>
                                 <option value="2">Randomized_dfs</option>
                                 <option value="3">Recursive division</option>
-                                {/* <option value="4">Kruskal's algorithm</option>
-                                <option value="5">Prim's algorithm</option> */}
+                                <option value="4">Kruskal algorithm</option>
+                                <option value="5">Prim's algorithm</option>
                             </select>
                             <button className='button-4 start-maze-btn' onClick={mazeHandle}>Create Maze</button>
                             <button className='button-4' onClick={gridInitialize}>Clear walls</button>
