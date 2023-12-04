@@ -12,7 +12,7 @@ function Home() {
   return (
     <div className=".Mycontainer">
       <Navbar msg={"Algorithms Visualizer"}></Navbar>
-      <h2 style={{ textAlign: "center", color: "#1e293b", padding: "8px" }}>
+      <h2 className="text-2xl text-center text-slate-700 py-4">
         A Better Visualization Of Different Algorithms
       </h2>
 

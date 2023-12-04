@@ -12,6 +12,7 @@ import Modal from "../components/Modal";
 import { KruskalAlgorithm } from "../algorithm/maze/kruskal-algorithm";
 import { PrimsAlgorithm } from "../algorithm/maze/prim's-algorithm";
 import { CostomCheckBox } from "../components/Costom-checkbox.tsx";
+import { Button } from "../components/Btn.tsx";
 
 /*
 super(props);// call the super class constructor and pass in the props parameter
@@ -20,14 +21,10 @@ super(props);// call the super class constructor and pass in the props parameter
 var rows = 17;
 var cols = 31;
 
-var START_NODE_ROW = 4,
-  START_NODE_COL = 6;
-var END_NODE_ROW = rows - 6,
-  END_NODE_COL = cols - 6;
-var InitSR = START_NODE_ROW,
-  InitSC = START_NODE_COL;
-var InitER = END_NODE_ROW,
-  InitEC = END_NODE_COL;
+var START_NODE_ROW = 4, START_NODE_COL = 6;
+var END_NODE_ROW = rows - 6, END_NODE_COL = cols - 6;
+var INIT_START_ROW = START_NODE_ROW, INIT_START_COL = START_NODE_COL;
+var INT_END_ROW = END_NODE_ROW, INIT_END_COL = END_NODE_COL;
 
 const FAST = 5;
 const AVERAGE = 15;
@@ -71,10 +68,10 @@ function App() {
       await waitForAnimatoin(animateTime);
       if (node.x === START_NODE_ROW && node.y === START_NODE_COL)
         document.getElementById(`row${node.x}_col${node.y}`).className =
-          "node-visited START_NODE";
+          "node-visited START_NODE cursor-grab";
       else if (node.x === END_NODE_ROW && node.y === END_NODE_COL)
         document.getElementById(`row${node.x}_col${node.y}`).className =
-          "node-visited END_NODE";
+          "node-visited END_NODE cursor-grab";
       else
         document.getElementById(`row${node.x}_col${node.y}`).className =
           "node-visited";
@@ -87,10 +84,10 @@ function App() {
       await waitForAnimatoin(animateTime);
       if (i === 0)
         document.getElementById(`row${node.x}_col${node.y}`).className =
-          "shortestPath START_NODE";
+          "shortestPath START_NODE cursor-grab";
       else if (i + 1 === pathNode.length)
         document.getElementById(`row${node.x}_col${node.y}`).className =
-          "shortestPath END_NODE";
+          "shortestPath END_NODE cursor-grab";
       else
         document.getElementById(`row${node.x}_col${node.y}`).className =
           "shortestPath";
@@ -98,7 +95,7 @@ function App() {
   }
 
   const pathFinding = async () => {
-    var btns = document.getElementsByClassName("button-4");
+    var btns = document.getElementsByClassName("btn-selector");
     document.getElementsByTagName("select")[0].disabled = true;
     document.getElementsByTagName("select")[1].disabled = true;
     for (let i = 0; i < btns.length; i++) {
@@ -165,7 +162,7 @@ function App() {
   const mazeHandle = async () => {
     // clear all walls and disable all buttons when maze is generating
 
-    var btns = document.getElementsByClassName("button-4");
+    var btns = document.getElementsByClassName("btn-selector");
     document.getElementsByTagName("select")[0].disabled = true;
     document.getElementsByTagName("select")[1].disabled = true;
     for (let i = 0; i < btns.length; i++) {
@@ -210,10 +207,10 @@ function App() {
       for (let j = 0; j < cols; j++) {
         if (i === START_NODE_ROW && j === START_NODE_COL) {
           document.getElementById(`row${i}_col${j}`).className =
-            "square START_NODE";
+            "square START_NODE cursor-grab";
         } else if (i === END_NODE_ROW && j === END_NODE_COL) {
           document.getElementById(`row${i}_col${j}`).className =
-            "square END_NODE";
+            "square END_NODE cursor-grab";
         } else if (!Grid[i][j].isWall)
           document.getElementById(`row${i}_col${j}`).className = "square";
       }
@@ -306,13 +303,13 @@ function App() {
         <div className="path-container">
           <div className="path-header mb-4">
             <div>
-              <div style={{ display: "flex", margin: "12px auto" }}>
-                <div>
-                  <button className="button-4 start-btn" onClick={pathFinding}>
-                    Find the possible path
-                  </button>
-                </div>
-                <div>
+              <div className="flex justify-end my-[12px] gap-3">
+                  <Button
+                    className="btn-selector"
+                    onClick={pathFinding}
+                    label="Find the possible path"
+                    // isBgColor
+                  />
                   <select
                     className="my-drop-down"
                     value={pathID}
@@ -325,7 +322,6 @@ function App() {
                     <option value="2">Depth-First Search</option>
                     <option value="3">Dijkstra</option>
                   </select>
-                </div>
               </div>
               <div className="path-speed-btns">
                 <div className="-m-1 flex flex-row flex-wrap">
@@ -348,7 +344,7 @@ function App() {
               </div>
             </div>
             <div>
-              <div style={{ display: "flex", margin: "12px auto" }}>
+              <div className="flex justify-end my-[12px] gap-3">
                 <select
                   className="my-drop-down"
                   value={mazeID}
@@ -365,33 +361,36 @@ function App() {
                   <option value="4">Kruskal algorithm</option>
                   <option value="5">Prim's algorithm</option>
                 </select>
-                <button
-                  className="button-4 start-maze-btn"
+                <Button
+                  className="btn-selector END-maze-btn"
                   onClick={mazeHandle}
-                >
-                  Create Maze
-                </button>
-                <button className="button-4" onClick={gridInitialize}>
-                  Clear walls
-                </button>
+                  label="Generate Maze"
+                  isBgColor
+                />
               </div>
-              <div style={{ display: "flex" }}>
-                <button className="button-4" onClick={clearPathHandle}>
-                  Clear path
-                </button>
-                <button
-                  className="button-4"
+              <div className="flex gap-3">
+                <Button
+                  className="btn-selector"
+                  onClick={gridInitialize}
+                  label="Clear walls"
+                />
+                <Button
+                  className="btn-selector"
+                  onClick={clearPathHandle}
+                  label="Clear path"
+                />
+                <Button
+                  className="btn-selector !border-red-500 !text-red-500 hover:!bg-red-500 hover:!text-white"
                   onClick={() => {
-                    START_NODE_ROW = InitSR;
-                    START_NODE_ROW = InitSC;
-                    END_NODE_ROW = InitER;
-                    END_NODE_COL = InitEC;
+                    START_NODE_ROW = INIT_START_ROW;
+                    START_NODE_COL = INIT_START_COL;
+                    END_NODE_ROW = INT_END_ROW;
+                    END_NODE_COL = INIT_END_COL;
                     clearPathHandle();
                     gridInitialize();
                   }}
-                >
-                  Reset board
-                </button>
+                  label="Reset board"
+                />
               </div>
             </div>
           </div>
@@ -496,9 +495,9 @@ function Node({ pv }) {
   };
 
   var classNode = isStart
-    ? "START_NODE"
+    ? "START_NODE cursor-grab"
     : isEnd
-    ? "END_NODE"
+    ? "END_NODE cursor-grab"
     : isWall
     ? "obtacle"
     : "";
