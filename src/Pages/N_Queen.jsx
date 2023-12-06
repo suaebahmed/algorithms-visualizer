@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/nqueens.css";
+import { Button } from "../components/Btn";
 
 var SpeedTime = 600;
 function N_Queen() {
@@ -238,21 +239,14 @@ function N_Queen() {
       <div className="queen_contianer">
         <div className="queen_header">
           <div>
-            <div>
-              <button
-                onClick={startHandle}
-                className="button-4 start-btn queen_btn"
-              >
-                Start Visualize
-              </button>
-              <button
+            <div className="flex gap-3">
+              <Button onClick={startHandle} label="Start Visualize" isBgColor />
+              <Button
                 onClick={() => {
                   gridInit();
                 }}
-                className="button-4 queen_btn"
-              >
-                Clear Board
-              </button>
+                label="Clear Board"
+              />
             </div>
           </div>
           <div>

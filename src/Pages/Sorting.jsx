@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/sorting.css";
 import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
+import { Button } from "../components/Btn";
 
 var BARS = 100;
 const barWidth = 15;
@@ -498,18 +499,15 @@ function SortingApp() {
         <Navbar msg="Sorting Algorithms"></Navbar>
         <div className="sorting-continer">
           <div className="Btn-Wrap">
-            <div style={{ display: "flex" }}>
-              <button
-                className="button-4 start-btn"
+            <div className="flex gap-3">
+              <Button
                 onClick={startSortingHandle}
-              >
-                Start Sorting
-              </button>
-              <button className="button-4" onClick={generateNewArray}>
-                Generate New
-              </button>
+                label="Start Sorting"
+                isBgColor
+              />
+              <Button onClick={generateNewArray} label="Generate New" />
               <select
-                className="my-drop-down"
+                className="form-select"
                 value={sortID}
                 onChange={(e) => {
                   setSortID(parseInt(e.target.value));
@@ -547,7 +545,7 @@ function SortingApp() {
             <div>
               <label htmlFor="num">Choose Size: </label>
               <select
-                className="my-drop-down"
+                className="form-select"
                 value={bar.length}
                 onChange={sizeHandle}
                 id="num"

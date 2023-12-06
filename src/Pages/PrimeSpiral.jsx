@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/PrimeSpiral.css";
 import prime_Spiral_Generate from "../algorithm/prime_spiral";
 import Navbar from "../components/Navbar";
+import { Button } from "../components/Btn";
 
 // Density of primes = n/ln(n);
 const N = 21;
@@ -74,9 +75,11 @@ function PrimeApp() {
       <Navbar msg="Spiral Primes"></Navbar>
       <div className="spiral-continer">
         <div className="spiral-btns">
-          <button className="button-4 start-btn" onClick={startPrimeSpiral}>
-            Show Prime spiral
-          </button>
+          <Button
+            onClick={startPrimeSpiral}
+            label="Show Prime spiral"
+            isBgColor
+          />
           <button className="button-4">
             {cntPrime} prime numbers found out of {N * N}
           </button>
