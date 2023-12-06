@@ -23,19 +23,19 @@
 /* animation effects */
 .unActive {
   top: 25% !important;
-  transition: 500ms;
-  visibility: hidden;
-  opacity: 0;
+  transition: 500ms ease-in-out !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 /* close button */
 .close {
   position: absolute;
-  top: 10px;
+  top: 5px;
   right: 20px;
   color: #aaa;
   float: right;
-  font-size: 40px;
+  font-size: 38px;
   font-weight: bold;
 }
 .close:hover,

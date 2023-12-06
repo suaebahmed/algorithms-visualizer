@@ -17,14 +17,22 @@ import { Button } from "../components/Btn.tsx";
 /*
 super(props);// call the super class constructor and pass in the props parameter
 */
-
-var rows = 17;
+var rows = 13;
 var cols = 31;
 
-var START_NODE_ROW = 4, START_NODE_COL = 6;
-var END_NODE_ROW = rows - 6, END_NODE_COL = cols - 6;
-var INIT_START_ROW = START_NODE_ROW, INIT_START_COL = START_NODE_COL;
-var INT_END_ROW = END_NODE_ROW, INIT_END_COL = END_NODE_COL;
+const CELL_SIZE = 30;
+const PADDING = 200;
+const MAX_ROW = Math.floor((window.innerHeight - PADDING) / CELL_SIZE);
+if (MAX_ROW > rows) rows = MAX_ROW >= 19 ? 19 : MAX_ROW; // Rows = [13, 19]
+
+var START_NODE_ROW = 4,
+  START_NODE_COL = 6;
+var END_NODE_ROW = rows - 6,
+  END_NODE_COL = cols - 6;
+var INIT_START_ROW = START_NODE_ROW,
+  INIT_START_COL = START_NODE_COL;
+var INT_END_ROW = END_NODE_ROW,
+  INIT_END_COL = END_NODE_COL;
 
 const FAST = 5;
 const AVERAGE = 15;
@@ -41,7 +49,6 @@ function App() {
 
   useEffect(() => {
     gridInitialize();
-    popupClickHandle();
   }, []);
 
   const gridInitialize = () => {
@@ -272,20 +279,13 @@ function App() {
       END_NODE_COL = c;
     }
   };
-  const popupClickHandle = () => {
-    var blur = document.getElementById("Container-blur");
-    blur.classList.toggle("active");
-    var popup = document.getElementById("popup");
-    popup.classList.toggle("unActive");
-  };
+
+  console.log(window.innerHeight, MAX_ROW, rows);
 
   return (
     <>
-      <Modal
-        style={{ border: "1px solid #334155", paddingBottom: "20px" }}
-        popupClickHandle={popupClickHandle}
-      >
-        <h3 style={{ color: "#334155", textAlign: "center" }}>
+      <Modal className="border border-slate-600">
+        <h3 className="text-xl text-slate-800 text-center mb-3">
           Video Tutorial
         </h3>
         <div style={{ display: "flex", justifyContent: "center" }}>
@@ -298,30 +298,30 @@ function App() {
         </div>
       </Modal>
 
-      <div id="Container-blur">
+      <div id="Container-blur" className="active">
         <Navbar msg="Path Finder Visualizer"></Navbar>
         <div className="path-container">
           <div className="path-header mb-4">
             <div>
               <div className="flex justify-end my-[12px] gap-3">
-                  <Button
-                    className="btn-selector"
-                    onClick={pathFinding}
-                    label="Find the possible path"
-                    // isBgColor
-                  />
-                  <select
-                    className="my-drop-down"
-                    value={pathID}
-                    onChange={(e) => {
-                      setPathID(parseInt(e.target.value));
-                    }}
-                  >
-                    <option value="0">A-Star Search</option>
-                    <option value="1">Breadth-First Search</option>
-                    <option value="2">Depth-First Search</option>
-                    <option value="3">Dijkstra</option>
-                  </select>
+                <Button
+                  className="btn-selector"
+                  onClick={pathFinding}
+                  label="Find the possible path"
+                  // isBgColor
+                />
+                <select
+                  className="form-select"
+                  value={pathID}
+                  onChange={(e) => {
+                    setPathID(parseInt(e.target.value));
+                  }}
+                >
+                  <option value="0">A-Star Search</option>
+                  <option value="1">Breadth-First Search</option>
+                  <option value="2">Depth-First Search</option>
+                  <option value="3">Dijkstra</option>
+                </select>
               </div>
               <div className="path-speed-btns">
                 <div className="-m-1 flex flex-row flex-wrap">
@@ -346,7 +346,7 @@ function App() {
             <div>
               <div className="flex justify-end my-[12px] gap-3">
                 <select
-                  className="my-drop-down"
+                  className="form-select"
                   value={mazeID}
                   onChange={(e) => {
                     setMazeID(parseInt(e.target.value));

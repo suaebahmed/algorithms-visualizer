@@ -283,22 +283,19 @@ function SortingApp() {
   return (
     <>
       {/* pop up modal */}
-      <Modal
-        style={{ border: "1px solid #334155", padding: "40px" }}
-        popupClickHandle={popupClickHandle}
-      >
+      <Modal className="border border-slate-600 px-10">
         <div style={{ marginRight: "20px", color: "#64748b" }}>
-          <h1 style={{ textAlign: "center", color: "#334155" }}>
+          <h1 className="text-2xl text-slate-700 text-center">
             Some Sorting Algorithms Tutorial
           </h1>
-          <h2 style={{ color: "#475569" }}>Bubble Sort</h2>
+          <h2 className="text-xl text-slate-600 mt-2 mb-1">Bubble Sort</h2>
           <p>
             Bubble Sort is a simple sorting algorithm that repeatedly steps
             through the list, compares adjacent elements and swaps them if they
             are in the wrong order.The pass through the list is repeated until
             the list is sorted.
           </p>
-          <h3 style={{ color: "#475569" }}>Performence</h3>
+          <h3 className="text-xl text-slate-600 mt-2 mb-1">Performence</h3>
           <ul>
             <li>
               Worst-case time complexity:{" "}
@@ -332,13 +329,13 @@ function SortingApp() {
             </li>
           </ul>
 
-          <h2 style={{ color: "#475569" }}>Selection Sort</h2>
+          <h2 className="text-xl text-slate-600 mt-2 mb-1">Selection Sort</h2>
           <p>
             The selection sort algorithm sorts an array by repeatedly finding
             the minimum element (considering ascending order) from the unsorted
             part and putting it at the beginning.
           </p>
-          <h3 style={{ color: "#475569" }}>Performence</h3>
+          <h3 className="text-xl text-slate-600 mt-2 mb-1">Performence</h3>
           <ul>
             <li>
               Worst-case time complexity:{" "}
@@ -372,7 +369,7 @@ function SortingApp() {
             </li>
           </ul>
 
-          <h2 style={{ color: "#475569" }}>Insertion Sort</h2>
+          <h2 className="text-xl text-slate-600 mt-2 mb-1">Insertion Sort</h2>
           <p>
             Insertion sort is a simple sorting algorithm that works similar to
             the way you sort playing cards in your hands. The array is virtually
@@ -380,7 +377,7 @@ function SortingApp() {
             part are picked and placed at the correct position in the sorted
             part.
           </p>
-          <h3 style={{ color: "#475569" }}>Performence</h3>
+          <h3 className="text-xl text-slate-600 mt-2 mb-1">Performence</h3>
           <ul>
             <li>
               Worst-case time complexity:{" "}
@@ -410,14 +407,14 @@ function SortingApp() {
             </li>
           </ul>
 
-          <h2 style={{ color: "#475569" }}>Quick Sort</h2>
+          <h2 className="text-xl text-slate-600 mt-2 mb-1">Quick Sort</h2>
           <p>
             QuickSort is a Divide and Conquer algorithm. It picks an element as
             a pivot and partitions the given array around the picked pivot.
             There are many different versions of quickSort that pick pivot in
             different ways.
           </p>
-          <ul>
+          <ul className="mt-2 mb-4 ml-2 list-disc list-inside">
             <li>Always pick the first element as a pivot.</li>
             <li>Always pick the last element as a pivot</li>
             <li>Pick a random element as a pivot.</li>
@@ -431,7 +428,7 @@ function SortingApp() {
             elements (greater than x) after x. All this should be done in linear
             time.
           </p>
-          <h3 style={{ color: "#475569" }}>Performence</h3>
+          <h3 className="text-xl text-slate-600 mt-2 mb-1">Performence</h3>
           <ul>
             <li>
               Worst-case time complexity:{" "}
@@ -457,13 +454,13 @@ function SortingApp() {
             </li>
           </ul>
 
-          <h2 style={{ color: "#475569" }}>Merge Sort</h2>
+          <h2 className="text-xl text-slate-600 mt-2 mb-1">Merge Sort</h2>
           <p>
             Merge Sort is an efficient, stable sorting algorithm that makes use
             of the divide and conquer strategy. Conceptually the algorithm works
             as follows:
           </p>
-          <ol>
+          <ol className="list-decimal list-inside mt-2">
             <li>
               Divide the unsorted list into n sublists, each containing one
               element(a list of one element is considered sorted)
@@ -473,7 +470,7 @@ function SortingApp() {
               there is only one sublist remaining. This will be the sorted list.
             </li>
           </ol>
-          <h3 style={{ color: "#475569" }}>Performence</h3>
+          <h3 className="text-xl text-slate-600 mt-2 mb-1">Performence</h3>
           <ul>
             <li>
               Worst-case time complexity:{" "}
@@ -497,7 +494,7 @@ function SortingApp() {
         </div>
       </Modal>
 
-      <div id="Container-blur">
+      <div id="Container-blur" className="active">
         <Navbar msg="Sorting Algorithms"></Navbar>
         <div className="sorting-continer">
           <div className="Btn-Wrap">

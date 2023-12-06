@@ -2,18 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  /* .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition ease-in-out duration-150;
-  } */
-
-  /* .form-input,
+@layer ccomponents {
+  .form-input,
   .form-textarea,
   .form-multiselect,
   .form-select,
   .form-checkbox,
   .form-radio {
-    @apply border bg-white text-sm text-slate-800;
+    @apply border bg-white text-sm text-slate-800 !important;
   }
 
   .form-input,
@@ -21,20 +17,20 @@
   .form-multiselect,
   .form-select,
   .form-checkbox {
-    @apply rounded;
+    @apply rounded !important;
   }
 
   .form-input,
   .form-textarea,
   .form-multiselect,
   .form-select {
-    @apply focus:border-primary-300 border-slate-200 py-2 px-3 leading-5 shadow-sm hover:border-slate-300;
+    @apply focus:border-blue-300 border-slate-300 py-2 px-3 leading-5 shadow-sm hover:border-slate-300 !important;
   }
 
   .form-input,
   .form-textarea {
     @apply placeholder-slate-400;
-  } */
+  }
 }
 
 html,
