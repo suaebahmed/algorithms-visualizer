@@ -8,7 +8,7 @@ import Dijkstra from "../algorithm/path/dijkstra";
 import Randomized_dfs from "../algorithm/maze/randomized_dfs";
 import recursiveDivision from "../algorithm/maze/recursive_division";
 import Navbar from "../components/Navbar";
-import Modal from "../components/Modal";
+// import Modal from "../components/Modal";
 import { KruskalAlgorithm } from "../algorithm/maze/kruskal-algorithm";
 import { PrimsAlgorithm } from "../algorithm/maze/prim's-algorithm";
 import { CostomCheckBox } from "../components/Costom-checkbox.tsx";
@@ -19,11 +19,14 @@ super(props);// call the super class constructor and pass in the props parameter
 */
 var rows = 13;
 var cols = 31;
-
 const CELL_SIZE = 30;
-const PADDING = 200;
-const MAX_ROW = Math.floor((window.innerHeight - PADDING) / CELL_SIZE);
-if (MAX_ROW > rows) rows = MAX_ROW >= 19 ? 19 : MAX_ROW; // Rows = [13, 19]
+const PADDING_Y = 200;
+const PADDING_X = 300;
+
+rows = Math.floor((window.innerHeight - PADDING_Y) / CELL_SIZE);
+if (rows > 50) rows = 51; // Rows = [13, 50]
+cols = Math.floor((window.innerWidth - PADDING_X) / CELL_SIZE);
+if (cols > 50) cols = 51; // cols = [31, 50]
 
 var START_NODE_ROW = 4,
   START_NODE_COL = 6;
@@ -35,21 +38,22 @@ var INT_END_ROW = END_NODE_ROW,
   INIT_END_COL = END_NODE_COL;
 
 const FAST = 5;
-const AVERAGE = 15;
-const SLOW = 50;
-var animateTime = AVERAGE; // default
+const AVERAGE = 30;
+const SLOW = 80;
+var SPEED = AVERAGE; // default
 // old value: 8,35,80
 
 function App() {
   const [Grid, setGrid] = useState([]); // array destructuring
   const [isMousePress, setIsMousePress] = useState(false);
   const [animateType, setAnimateTimeType] = useState(2);
-  const [mazeID, setMazeID] = useState(0);
+  const [cellSize, setCellSize] = useState(CELL_SIZE); // [20, 35]
+  const [mazeID, setMazeID] = useState(2);
   const [pathID, setPathID] = useState(0);
 
   useEffect(() => {
     gridInitialize();
-  }, []);
+  }, [cellSize]);
 
   const gridInitialize = () => {
     var grid = new Array(rows);
@@ -72,7 +76,14 @@ function App() {
   async function animateVisitedNodes(visitedNodes) {
     for (let i = 0; i < visitedNodes.length; i++) {
       const node = visitedNodes[i];
-      await waitForAnimatoin(animateTime);
+      await waitForAnimate(SPEED);
+      document.getElementById(
+        `row${node.x}_col${node.y}`
+      ).style.width = `${cellSize}px`;
+      document.getElementById(
+        `row${node.x}_col${node.y}`
+      ).style.height = `${cellSize}px`;
+
       if (node.x === START_NODE_ROW && node.y === START_NODE_COL)
         document.getElementById(`row${node.x}_col${node.y}`).className =
           "node-visited START_NODE cursor-grab";
@@ -88,7 +99,14 @@ function App() {
     pathNode.reverse();
     for (let i = 0; i < pathNode.length; i++) {
       const node = pathNode[i];
-      await waitForAnimatoin(animateTime);
+      await waitForAnimate(SPEED);
+      document.getElementById(
+        `row${node.x}_col${node.y}`
+      ).style.width = `${cellSize}px`;
+      document.getElementById(
+        `row${node.x}_col${node.y}`
+      ).style.height = `${cellSize}px`;
+
       if (i === 0)
         document.getElementById(`row${node.x}_col${node.y}`).className =
           "shortestPath START_NODE cursor-grab";
@@ -148,7 +166,7 @@ function App() {
         (ar[i].r === END_NODE_ROW && ar[i].c === END_NODE_COL)
       )
         continue;
-      await waitForAnimatoin(animateTime);
+      await waitForAnimate(SPEED);
       createWall(ar[i].r, ar[i].c);
     }
   };
@@ -250,10 +268,11 @@ function App() {
     setIsMousePress(() => false);
   };
   const animationTimeHandle = (type) => {
-    if (type === 1) animateTime = FAST;
-    else if (type === 2) animateTime = AVERAGE;
-    else animateTime = SLOW;
+    if (type === 1) SPEED = FAST;
+    else if (type === 2) SPEED = AVERAGE;
+    else SPEED = SLOW;
     setAnimateTimeType(type);
+    console.log(SPEED);
   };
 
   const setStartEndNode = (id, r, c) => {
@@ -280,11 +299,20 @@ function App() {
     }
   };
 
-  console.log(window.innerHeight, MAX_ROW, rows);
+  const rangeValueHandle = (event) => {
+    let value = parseInt(event.target.value); // [0, 15]
+    setCellSize(value + 20); // [20, 35]
+
+    rows = Math.floor((window.innerHeight - PADDING_Y) / (value + 20));
+    if (rows > 50) rows = 50; // Rows = [13, 50]
+    cols = Math.floor((window.innerWidth - PADDING_X) / (value + 20));
+    if (cols > 50) cols = 50; // cols = [31, 50]
+    (END_NODE_ROW = rows - 6), (END_NODE_COL = cols - 6);
+  };
 
   return (
     <>
-      <Modal className="border border-slate-600">
+      {/* <Modal className="border border-slate-600">
         <h3 className="text-xl text-slate-800 text-center mb-3">
           Video Tutorial
         </h3>
@@ -296,12 +324,12 @@ function App() {
             title="myVideo"
           ></iframe>
         </div>
-      </Modal>
+      </Modal> */}
 
-      <div id="Container-blur" className="active">
+      <div id="Container-blur" className="/active">
         <Navbar msg="Path Finder Visualizer"></Navbar>
-        <div className="path-container">
-          <div className="path-header mb-4">
+        <div className="my-[10px] pb-[10px] flex flex-col justify-center items-center">
+          <div className="max-w-[950px] w-full flex justify-around  pb-[10px] mb-4">
             <div>
               <div className="flex justify-end my-[12px] gap-3">
                 <Button
@@ -323,7 +351,7 @@ function App() {
                   <option value="3">Dijkstra</option>
                 </select>
               </div>
-              <div className="path-speed-btns">
+              <div className="flex gap-3 items-center mt-[6px]">
                 <div className="-m-1 flex flex-row flex-wrap">
                   <CostomCheckBox
                     checked={animateType == 1}
@@ -341,6 +369,20 @@ function App() {
                     label="Slow"
                   />
                 </div>
+                <div className="st-speed-range">
+                  <div>
+                    <input
+                      type="range"
+                      onChange={rangeValueHandle}
+                      name="range1"
+                      id="range1"
+                      value={cellSize - 20}
+                      min="0"
+                      max="15"
+                      step="1"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div>
@@ -352,9 +394,6 @@ function App() {
                     setMazeID(parseInt(e.target.value));
                   }}
                 >
-                  <option className="my-drop-down-option" disabled value="0">
-                    Select Maze
-                  </option>
                   <option value="1">Random basic maze</option>
                   <option value="2">Randomized_dfs</option>
                   <option value="3">Recursive division</option>
@@ -366,18 +405,6 @@ function App() {
                   onClick={mazeHandle}
                   label="Generate Maze"
                   isBgColor
-                />
-              </div>
-              <div className="flex gap-3">
-                <Button
-                  className="btn-selector"
-                  onClick={gridInitialize}
-                  label="Clear walls"
-                />
-                <Button
-                  className="btn-selector"
-                  onClick={clearPathHandle}
-                  label="Clear path"
                 />
                 <Button
                   className="btn-selector !border-red-500 !text-red-500 hover:!bg-red-500 hover:!text-white"
@@ -392,9 +419,21 @@ function App() {
                   label="Reset board"
                 />
               </div>
+              <div className="flex gap-3 justify-end">
+                <Button
+                  className="btn-selector"
+                  onClick={gridInitialize}
+                  label="Clear walls"
+                />
+                <Button
+                  className="btn-selector"
+                  onClick={clearPathHandle}
+                  label="Clear path"
+                />
+              </div>
             </div>
           </div>
-          <div className="grid">
+          <div className="flex justify-center">
             <div
               onMouseLeave={() => {
                 setIsMousePress(false);
@@ -403,7 +442,7 @@ function App() {
               {/* JSX Node Of Grid (2D Array) */}
               {Grid.map((R, idx_r) => {
                 return (
-                  <div key={idx_r} className="ROW">
+                  <div key={idx_r} className="flex">
                     {R.map((Value, idx_c) => {
                       const { x, y, isStart, isEnd, isWall } = Value;
                       return (
@@ -420,7 +459,8 @@ function App() {
                             onMouseUp,
                             setStartEndNode,
                           }}
-                        ></Node>
+                          cellSize={cellSize}
+                        />
                       );
                     })}
                   </div>
@@ -459,7 +499,7 @@ class Spot {
   }
 }
 
-function Node({ pv }) {
+function Node({ pv, cellSize }) {
   const {
     x,
     y,
@@ -493,11 +533,12 @@ function Node({ pv }) {
     var c = parseInt(e.target.attributes.data_y.value);
     setStartEndNode(id, r, c);
   };
-
+  const START_NODE = "START_NODE bg-contain bg-center cursor-grab";
+  const END_NODE = "END_NODE bg-contain bg-center cursor-grab";
   var classNode = isStart
-    ? "START_NODE cursor-grab"
+    ? START_NODE
     : isEnd
-    ? "END_NODE cursor-grab"
+    ? END_NODE
     : isWall
     ? "obtacle"
     : "";
@@ -506,7 +547,13 @@ function Node({ pv }) {
   if (isStart || isEnd) {
     return (
       <div
-        className={"square " + classNode}
+        className={classNode}
+        style={{
+          width: `${cellSize}px`,
+          height: `${cellSize}px`,
+          outline: "1px solid #afd8f8",
+          backgroundColor: "#fff",
+        }}
         id={"row" + x + "_col" + y}
         data_x={x}
         data_y={y}
@@ -516,7 +563,7 @@ function Node({ pv }) {
         onDragStart={drag}
         onDrop={drop}
         onDragOver={allowDrop}
-      ></div>
+      />
     );
   } else {
     return (
@@ -533,7 +580,13 @@ function Node({ pv }) {
           e.preventDefault();
           onMouseUp();
         }}
-        className={"square " + classNode}
+        className={classNode}
+        style={{
+          width: `${cellSize}px`,
+          height: `${cellSize}px`,
+          outline: "1px solid #afd8f8",
+          backgroundColor: "#fff",
+        }}
         id={"row" + x + "_col" + y}
         data_x={x}
         data_y={y}
@@ -541,16 +594,17 @@ function Node({ pv }) {
         wall={isWall.toString()}
         onDrop={drop}
         onDragOver={allowDrop}
-      ></div>
+      />
     );
   }
 }
 
-async function waitForAnimatoin(time) {
+async function waitForAnimate(sp) {
+  sp = sp < 5 ? 5 : sp;
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve("");
-    }, time);
+    }, sp);
   });
 }
 const isValid = (r, c) => {

@@ -80,7 +80,7 @@ function PrimeApp() {
             label="Show Prime spiral"
             isBgColor
           />
-          <button className="button-4">
+          <button>
             {cntPrime} prime numbers found out of {N * N}
           </button>
         </div>
