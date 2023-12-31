@@ -6,7 +6,7 @@ var grid = [];
 var visitedNodes = [];
 var path = [];
 
-function dfs_iterative(r,c,endNode,Grid,N,M,d){
+function dfs_iterative(r,c,endNode,Grid,N,M){
     grid[r][c].visited = 1;
     visitedNodes.push({x: r, y: c});
 
@@ -61,7 +61,7 @@ function DFS(Grid,startNode,endNode,N,M){
         }
         grid[i] = arr;
     }
-    dfs_iterative(startNode.x,startNode.y,endNode,Grid,N,M,0);
+    dfs_iterative(startNode.x,startNode.y,endNode,Grid,N,M);
     // -------   path  ---------------
     if(grid[endNode.x][endNode.y].x===-1 && grid[endNode.x][endNode.y].y===-1){
         return {path,visitedNodes,error:"path is not found"};

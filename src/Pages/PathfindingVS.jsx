@@ -14,9 +14,6 @@ import { PrimsAlgorithm } from "../algorithm/maze/prim's-algorithm";
 import { CostomCheckBox } from "../components/Costom-checkbox.tsx";
 import { Button } from "../components/Btn.tsx";
 
-/*
-super(props);// call the super class constructor and pass in the props parameter
-*/
 var rows = 13;
 var cols = 31;
 
@@ -280,7 +277,7 @@ function App() {
     }
   };
 
-  console.log(window.innerHeight, MAX_ROW, rows);
+  // console.log(window.innerHeight, MAX_ROW, rows);
 
   return (
     <>
@@ -301,7 +298,7 @@ function App() {
       <div id="Container-blur" className="active">
         <Navbar msg="Path Finder Visualizer"></Navbar>
         <div className="path-container">
-          <div className="path-header mb-4">
+          <div className="path-header mb-4 min-w-[775px]">
             <div>
               <div className="flex justify-end my-[12px] gap-3">
                 <Button
