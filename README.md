@@ -30,8 +30,8 @@ Each grid cell represents a node in a implicit graph.
   - [x] Basic random
   - [x] Randomized DFS
   - [x] Recursive division
-  - [ ] Kruskal's Algorithm
-  - [ ] Prim's Algorithm
+  - [x] Kruskal's Algorithm
+  - [x] Prim's Algorithm
 
 - [x] Draw your own wall nodes with mouse
 - [x] Drag and drop the source and target nodes
